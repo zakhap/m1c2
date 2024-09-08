@@ -1,7 +1,5 @@
 # M1C2 Website
 
-Welcome to the M1C2 website! This site serves as a digital space to explore the intersection of art and product development, showcasing the principles and practices that drive our creative process.
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Tenets](#tenets)
