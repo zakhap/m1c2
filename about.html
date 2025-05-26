@@ -62,6 +62,25 @@
         nav a:hover {
             text-decoration: underline;
         }
+
+        .sho-hover {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .sho-image {
+            position: fixed;
+            display: none;
+            z-index: 1000;
+            max-width: 300px;
+            border: 1px solid #555;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
@@ -83,12 +102,29 @@
         <li>Board member at Qubit, a NYC music+art+technology nonprofit</li>
         <li>Believes software and art have similar potentials to shape and change reality</li>
         <li>Likes to draw in free time, takes figure drawing classes</li>
-        <li>Plays the Shō</li>
+        <li>Plays the <span class="sho-hover" id="sho-trigger">Shō</span></li>
         <li>Consults the Tarot with regularity</li>
     </ul>
+
+    <img src="images/sho1.png" alt="Shō instrument" class="sho-image" id="sho-image">
 
     <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #444; color: #888; font-size: 0.9rem;">
         <p>measure once, cut twice</p>
     </footer>
+
+    <script>
+        const shoTrigger = document.getElementById('sho-trigger');
+        const shoImage = document.getElementById('sho-image');
+
+        shoTrigger.addEventListener('mouseenter', function() {
+            shoImage.style.display = 'block';
+        });
+
+        shoTrigger.addEventListener('mouseleave', function() {
+            shoImage.style.display = 'none';
+        });
+
+        // Remove the mousemove listener since we're centering the image
+    </script>
 </body>
 </html>
