@@ -11,8 +11,8 @@
             font-family: monospace;
             line-height: 1.6;
             padding: 0;
-            max-width: 800px;
-            margin: 1rem;
+            max-width: 1200px;
+            margin: 1rem auto;
         }
 
         h1, h2 {
@@ -32,13 +32,10 @@
         }
 
         .project {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-        }
-
-        .project:last-child {
-            border-bottom: none;
+            border: 1px solid #555;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: transparent;
         }
 
         .project-title {
@@ -58,7 +55,38 @@
         }
 
         nav {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 1rem;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
             margin-bottom: 2rem;
+        }
+
+        .section-container {
+            border: 1px solid #444;
+            padding: 1.5rem;
+        }
+
+        .section-container h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            body {
+                margin: 0.5rem;
+            }
         }
 
         nav ul {
@@ -95,122 +123,124 @@
         </ul>
     </nav>
 
-    <header>
+    <header style="border: 1px solid #444; padding: 1.5rem; margin-bottom: 2rem;">
         <h1>All Projects</h1>
         <p>A comprehensive view of m1c2's product pipeline</p>
     </header>
 
-    <section>
-        <h2>In Development</h2>
-        
-        <div class="project">
-            <div class="project-title">Subtext Report</div>
-            <div class="project-description">AI-powered analysis that reveals hidden narratives in political news coverage. There is no news. There are only narratives.</div>
-            <div class="project-status">In collaboration with Qubit</div>
+    <div class="section-grid">
+        <div class="section-container">
+            <h2>In Development</h2>
+            
+            <div class="project">
+                <div class="project-title">Subtext Report</div>
+                <div class="project-description">AI-powered analysis that reveals hidden narratives in political news coverage. There is no news. There are only narratives.</div>
+                <div class="project-status">In collaboration with Qubit</div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">$TEMPLE</div>
+                <div class="project-description">Token launcher that converts attention and transaction fees into charitable donations with tax write-offs. Monetize community while funding nonprofits.</div>
+                <div class="project-status">In collaboration with Qubit</div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Glass Bead Game <a href="https://gbg-tawny.vercel.app/" target="_blank">play</a></div>
+                <div class="project-description">A contemplative practice of intellectual improvisation, creating trajectories of meaning through symbolic connections between concepts.</div>
+                <div class="project-status">Experimental build</div>
+            </div>
         </div>
 
-        <div class="project">
-            <div class="project-title">$TEMPLE</div>
-            <div class="project-description">Token launcher that converts attention and transaction fees into charitable donations with tax write-offs. Monetize community while funding nonprofits.</div>
-            <div class="project-status">In collaboration with Qubit</div>
+        <div class="section-container">
+            <h2>Completed</h2>
+            
+            <div class="project">
+                <div class="project-title">Z-Index <a href="https://zindex-alpha.vercel.app/" target="_blank">try</a></div>
+                <div class="project-description">An experimental book recommendation engine serving as an underground literary oracle. Terminal aesthetic focused on avant-garde and experimental literature.</div>
+                <div class="project-status">Book engine by ZakCorp</div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Orange Shrine <a href="https://orange.m1c2.xyz/" target="_blank">visit</a></div>
+                <div class="project-description">A minimalist shrine to Orange the cat, pulling images from Are.na with experimental UI. A digital memorial space.</div>
+                <div class="project-status">Powered by Are.na</div>
+            </div>
         </div>
 
-        <div class="project">
-            <div class="project-title">Glass Bead Game <a href="https://gbg-tawny.vercel.app/" target="_blank">play</a></div>
-            <div class="project-description">A contemplative practice of intellectual improvisation, creating trajectories of meaning through symbolic connections between concepts.</div>
-            <div class="project-status">Experimental build</div>
-        </div>
-    </section>
+        <div class="section-container">
+            <h2>In Design</h2>
+            
+            <div class="project">
+                <div class="project-title">1010</div>
+                <div class="project-description">A trading platform open for only 20 minutes daily (10am and 10pm). Reduces market anxiety while maintaining opportunity. Everyone gets time to decide, minimal time investment required.</div>
+                <div class="project-status">Rethinking always-on volatility</div>
+            </div>
 
-    <section>
-        <h2>Completed</h2>
-        
-        <div class="project">
-            <div class="project-title">Z-Index <a href="https://zindex-alpha.vercel.app/" target="_blank">try</a></div>
-            <div class="project-description">An experimental book recommendation engine serving as an underground literary oracle. Terminal aesthetic focused on avant-garde and experimental literature.</div>
-            <div class="project-status">Book engine by ZakCorp</div>
-        </div>
+            <div class="project">
+                <div class="project-title">The Council</div>
+                <div class="project-description">AI astrological consultation based on Hellenistic Astrology. Planets as personalities offering perspectives on your specific moment and quandary. An archetypal confrontation with your particulars.</div>
+                <div class="project-status">Gods/Planets as advisors</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">Orange Shrine <a href="https://orange.m1c2.xyz/" target="_blank">visit</a></div>
-            <div class="project-description">A minimalist shrine to Orange the cat, pulling images from Are.na with experimental UI. A digital memorial space.</div>
-            <div class="project-status">Powered by Are.na</div>
-        </div>
-    </section>
-
-    <section>
-        <h2>In Design</h2>
-        
-        <div class="project">
-            <div class="project-title">1010</div>
-            <div class="project-description">A trading platform open for only 20 minutes daily (10am and 10pm). Reduces market anxiety while maintaining opportunity. Everyone gets time to decide, minimal time investment required.</div>
-            <div class="project-status">Rethinking always-on volatility</div>
+            <div class="project">
+                <div class="project-title">Recipe Coins</div>
+                <div class="project-description">Investment platform for viral recipes. Instagram/TikTok users can "stan at 58 likes." Just the recipe, tokenized, monetized via attention + influence. Let fans drive value with skin in the game.</div>
+                <div class="project-status">Financializing food culture</div>
+            </div>
         </div>
 
-        <div class="project">
-            <div class="project-title">The Council</div>
-            <div class="project-description">AI astrological consultation based on Hellenistic Astrology. Planets as personalities offering perspectives on your specific moment and quandary. An archetypal confrontation with your particulars.</div>
-            <div class="project-status">Gods/Planets as advisors</div>
-        </div>
+        <div class="section-container">
+            <h2>In Ideation</h2>
+            
+            <div class="project">
+                <div class="project-title">LinktreeTwoPointOh</div>
+                <div class="project-description">Reimagining the core data structure of the social web. The linktree as dynamic, intelligent routing for personal brand management.</div>
+                <div class="project-status">One-to-many, evolved</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">Recipe Coins</div>
-            <div class="project-description">Investment platform for viral recipes. Instagram/TikTok users can "stan at 58 likes." Just the recipe, tokenized, monetized via attention + influence. Let fans drive value with skin in the game.</div>
-            <div class="project-status">Financializing food culture</div>
-        </div>
-    </section>
+            <div class="project">
+                <div class="project-title">Social Proof Investment Fund</div>
+                <div class="project-description">Investment strategy based on social signals and proof-of-concept validation in digital communities.</div>
+                <div class="project-status">Early exploration</div>
+            </div>
 
-    <section>
-        <h2>In Ideation</h2>
-        
-        <div class="project">
-            <div class="project-title">LinktreeTwoPointOh</div>
-            <div class="project-description">Reimagining the core data structure of the social web. The linktree as dynamic, intelligent routing for personal brand management.</div>
-            <div class="project-status">One-to-many, evolved</div>
-        </div>
+            <div class="project">
+                <div class="project-title">NuCMS</div>
+                <div class="project-description">AI-powered CMS that formats any content type into custom backends with prompt-to-design UI. Remove rough edges by abstracting CMS + web-design process.</div>
+                <div class="project-status">Reinventing content management</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">Social Proof Investment Fund</div>
-            <div class="project-description">Investment strategy based on social signals and proof-of-concept validation in digital communities.</div>
-            <div class="project-status">Early exploration</div>
-        </div>
+            <div class="project">
+                <div class="project-title">MicroText</div>
+                <div class="project-description">Reinvented microblog for the distributed present. Back-to-the-land computing meets self-hosted social media.</div>
+                <div class="project-status">Decentralized expression</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">NuCMS</div>
-            <div class="project-description">AI-powered CMS that formats any content type into custom backends with prompt-to-design UI. Remove rough edges by abstracting CMS + web-design process.</div>
-            <div class="project-status">Reinventing content management</div>
-        </div>
+            <div class="project">
+                <div class="project-title">ZakStack</div>
+                <div class="project-description">Friends-of-friends network. Decentralized social media based on the strict graph of your actual relationships. Encrypted, P2P, no algorithmic discovery.</div>
+                <div class="project-status">True social graphs</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">MicroText</div>
-            <div class="project-description">Reinvented microblog for the distributed present. Back-to-the-land computing meets self-hosted social media.</div>
-            <div class="project-status">Decentralized expression</div>
-        </div>
+            <div class="project">
+                <div class="project-title">The PIR Futures Contract</div>
+                <div class="project-description">Onchain financial instrument based on "The Price is Right" rules. A derivative of AMMs and their asset prices - betting on exact price predictions.</div>
+                <div class="project-status">Game show meets DeFi</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">ZakStack</div>
-            <div class="project-description">Friends-of-friends network. Decentralized social media based on the strict graph of your actual relationships. Encrypted, P2P, no algorithmic discovery.</div>
-            <div class="project-status">True social graphs</div>
-        </div>
+            <div class="project">
+                <div class="project-title">Borrower's Card</div>
+                <div class="project-description">Library-style public reading records for blogs. Visitors must "sign in" publicly to read, creating a visible guest book of engagement. Name + date inscribed like library checkout cards.</div>
+                <div class="project-status">Transparent readership</div>
+            </div>
 
-        <div class="project">
-            <div class="project-title">The PIR Futures Contract</div>
-            <div class="project-description">Onchain financial instrument based on "The Price is Right" rules. A derivative of AMMs and their asset prices - betting on exact price predictions.</div>
-            <div class="project-status">Game show meets DeFi</div>
+            <div class="project">
+                <div class="project-title">The Last Dating App (Simulator)</div>
+                <div class="project-description">AI agents based on users date other agents online first. Real people only match after their digital representatives vet personality compatibility.</div>
+                <div class="project-status">Pre-screening via simulation</div>
+            </div>
         </div>
-
-        <div class="project">
-            <div class="project-title">Borrower's Card</div>
-            <div class="project-description">Library-style public reading records for blogs. Visitors must "sign in" publicly to read, creating a visible guest book of engagement. Name + date inscribed like library checkout cards.</div>
-            <div class="project-status">Transparent readership</div>
-        </div>
-
-        <div class="project">
-            <div class="project-title">The Last Dating App (Simulator)</div>
-            <div class="project-description">AI agents based on users date other agents online first. Real people only match after their digital representatives vet personality compatibility.</div>
-            <div class="project-status">Pre-screening via simulation</div>
-        </div>
-    </section>
+    </div>
 
     <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #444; color: #888; font-size: 0.9rem;">
         <p>measure once, cut twice</p>

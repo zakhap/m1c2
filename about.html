@@ -12,7 +12,7 @@
             line-height: 1.6;
             padding: 0;
             max-width: 800px;
-            margin: 1rem;
+            margin: 1rem auto;
         }
 
         h1, h2 {
@@ -40,7 +40,21 @@
         }
 
         nav {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 1rem;
+        }
+
+        .about-container {
+            border: 1px solid #444;
+            padding: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        .about-container h1 {
+            margin-top: 0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
         }
 
         nav ul {
@@ -90,21 +104,21 @@
         </ul>
     </nav>
 
-    <header>
+    <div class="about-container">
         <h1>Zak Hap</h1>
-    </header>
-
-    <ul>
-        <li>Founder, M1C2 product studio</li>
-        <li>Computer science + music composition @ Columbia</li>
-        <li>5 years Product Lead at Common</li>
-        <li>2x failed previous startups in his early 20s</li>
-        <li>Board member at Qubit, a NYC music+art+technology nonprofit</li>
-        <li>Believes software and art have similar potentials to shape and change reality</li>
-        <li>Likes to draw in free time, takes figure drawing classes</li>
-        <li>Plays the <span class="sho-hover" id="sho-trigger">Shō</span></li>
-        <li>Consults the Tarot with regularity</li>
-    </ul>
+        
+        <ul>
+            <li>Founder, M1C2 product studio</li>
+            <li>Computer science + music composition @ Columbia</li>
+            <li>5 years Product Lead at Common</li>
+            <li>2x failed previous startups in his early 20s</li>
+            <li>Board member at Qubit, a NYC music+art+technology nonprofit</li>
+            <li>Believes software and art have similar potentials to shape and change reality</li>
+            <li>Likes to draw in free time, takes figure drawing classes</li>
+            <li>Plays the <span class="sho-hover" id="sho-trigger">Shō</span></li>
+            <li>Consults the Tarot with regularity</li>
+        </ul>
+    </div>
 
     <img src="images/sho1.png" alt="Shō instrument" class="sho-image" id="sho-image">
 

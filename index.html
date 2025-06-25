@@ -11,8 +11,64 @@
             font-family: monospace;
             line-height: 1.6;
             padding: 0;
-            max-width: 800px;
-            margin: 1rem;
+            max-width: 1200px;
+            margin: 1rem auto;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-item {
+            border: 1px solid #444;
+            padding: 1.5rem;
+            background: transparent;
+        }
+
+        .grid-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .grid-item.header {
+            border: none;
+            padding: 1rem 0;
+        }
+
+        .grid-item h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #888;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .project-item {
+            border: 1px solid #555;
+            padding: 1rem;
+            background: transparent;
+        }
+
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            color: #888;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
         h1, h2 {
@@ -21,18 +77,14 @@
             margin-bottom: 1rem;
         }
 
-        h2 {
-            color: #888;
-            margin-top: 2rem;
+        p {
             margin-bottom: 1rem;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-        }
-
         nav {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 1rem;
         }
 
         nav ul {
@@ -60,14 +112,58 @@
             color: #fff;
             text-decoration: underline;
         }
+
+        .tenet-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .tenet-item {
+            border: 1px solid #555;
+            padding: 1rem;
+            background: transparent;
+        }
+
+        .tenet-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f0f0f0;
+        }
+
+        .tenet-item ul {
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        .tenet-item li {
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .tenet-list {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                margin: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
+    <div class="grid-item header full-width">
         <h1>m1c2 is a Product Studio.</h1>
-        <h4>m1c2=measure once, cut twice</h4>
-        <h6>Subtext Report • $TEMPLE</h6>
-    </header>
+        <p>m1c2=measure once, cut twice</p>
+        <p>Subtext Report • $TEMPLE</p>
+    </div>
+    
     <nav>
         <ul>
             <li><a href="projects.html">Projects</a></li>
@@ -76,117 +172,130 @@
         </ul>
     </nav>
 
-    <section>
-        <header>
+    <div class="container">
+        <div class="grid-item">
             <h2>Blog Posts</h2>
-        </header>
-        
-        <p>
-            <a href="latent-space-as-medium.html">Latent Space as Medium</a>, 
-            <a href="signatures.html">Signatures</a>, 
-            <a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a>, 
-            <a href="prompters.html">Prompters</a>, 
-            <a href="agent-response.html">Summonings</a>
-        </p>
-    </section>
+            <p>
+                <a href="latent-space-as-medium.html">Latent Space as Medium</a><br>
+                <a href="signatures.html">Signatures</a><br>
+                <a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a><br>
+                <a href="prompters.html">Prompters</a><br>
+                <a href="agent-response.html">Summonings</a>
+            </p>
+        </div>
 
-    <section>
-        <header>
+        <div class="grid-item">
             <h2>Current Projects</h2>
-        </header>
-        <p>Active development, testing in production</p>
-        
-        <div style="margin-bottom: 2rem;">
-            <strong>Subtext Report</strong> <a href="https://sr-next-beta.vercel.app/" target="_blank">demo</a><br>
-            AI-powered analysis revealing hidden narratives in political news coverage. There is no news. There are only narratives.
-            <br><em style="color: #888;">In collaboration with Qubit</em>
+            <p>Active development, testing in production</p>
+            
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-title">Subtext Report <a href="https://sr-next-beta.vercel.app/" target="_blank">demo</a></div>
+                    <p>AI-powered analysis revealing hidden narratives in political news coverage. There is no news. There are only narratives.</p>
+                    <div class="project-meta">In collaboration with Qubit</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">$TEMPLE <a href="https://t3mpl3.netlify.app/" target="_blank">splash</a></div>
+                    <p>Token launcher that converts attention and transaction fees into charitable donations. Monetize community while funding nonprofits.</p>
+                    <div class="project-meta">In collaboration with Qubit</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">Glass Bead Game <a href="https://gbg-tawny.vercel.app/" target="_blank">play</a></div>
+                    <p>A contemplative practice of intellectual improvisation, creating trajectories of meaning through symbolic connections between concepts.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;"><a href="projects.html">→ view all projects</a></p>
         </div>
 
-        <div style="margin-bottom: 2rem;">
-            <strong>$TEMPLE</strong> <a href="https://t3mpl3.netlify.app/" target="_blank">splash</a><br>
-            Token launcher that converts attention and transaction fees into charitable donations. Monetize community while funding nonprofits.
-            <br><em style="color: #888;">In collaboration with Qubit</em>
-        </div>
-
-        <div style="margin-bottom: 2rem;">
-            <strong>Glass Bead Game</strong> <a href="https://gbg-tawny.vercel.app/" target="_blank">play</a><br>
-            A contemplative practice of intellectual improvisation, creating trajectories of meaning through symbolic connections between concepts.
-        </div>
-
-        <p><a href="projects.html">→ view all projects</a></p>
-    </section>
-
-    <section>
-        <header>
+        <div class="grid-item full-width">
             <h2>Tenets</h2>
-        </header>
-        <p>"Tenets" for "my" studio practice – is art and product really that different? – things I care about for some reason or another</p>
-
-        <p>"test in prod" "works in progress" "ART MARKET FIT"</p>
-        
-        <ol>
-            <li>Art is an Iterative Process
-                <ul>
-                    <li>embrace the fluidity of creation</li>
-                    <li>living evolving works</li>
-                    <li>feedback + collaboration, a cybernetics of social relations #WLIAS (we live in a society)</li>
-                </ul>
-            </li>
-            <li>Test in Production
-                <ul>
-                    <li>Perfection is the enemy of <strong>Progress</strong></li>
-                    <li>be resilient, adaptive, responsive to the work in the lived environment</li>
-                </ul>
-            </li>
-            <li>Art Market Fit
-                <ul>
-                    <li>"cultural lightning" art is art that has found PMF</li>
-                    <li>seek <em>resonance</em> with the organism that is culture</li>
-                </ul>
-            </li>
-            <li>Agile Artistry
-                <ul>
-                    <li>reduce creative projects into manageable iterative cycles</li>
-                    <li>to be responsive, flexible, innovative without reducing <strong>output velocity</strong></li>
-                </ul>
-            </li>
-            <li>Measure Once
-                <ul>
-                    <li>strategic vision + thoughtful planning precedes execution</li>
-                    <li>set a clear + deliberate direction, ensuring each step is purposeful + informed or informing (toward being informed)</li>
-                </ul>
-            </li>
-            <li>Cut Twice
-                <ul>
-                    <li><strong>Execution is an art</strong></li>
-                    <li>commit to bold, decisive actions</li>
-                    <li>there will be missteps, be willing to "cut again", learning + adapting continuously</li>
-                </ul>
-            </li>
-            <li>Public Iteration
-                <ul>
-                    <li>Transparency in Process + Output is crucial to finding <em>resonance</em> (necessary for 3).</li>
-                    <li>through precise measurement one can derive the resonance of a room, or it can be discovered directly just by singing (preferred)</li>
-                </ul>
-            </li>
-            <li>Speed (a need)
-                <ul>
-                    <li>speed is not just about "moving fast" but maintaining momentum</li>
-                    <li>trend-casting, trend-tracing, trend-setting, trend-mapping are all opportunities in <strong>Alpha</strong></li>
-                    <li>information asymmetric opportunities are seized by those who move fast</li>
-                </ul>
-            </li>
-            <li>Open Source Innovation
-                <ul>
-                    <li>Share code, designs, + process</li>
-                    <li>contribute to the collective knowledge</li>
-                    <li>foster a culture that values innovation + transparency</li>
-                </ul>
-            </li>
-        </ol>
-        
-        <p>All art is spiritual; not spiritual, not art</p>
-    </section>
+            <p>"Tenets" for "my" studio practice – is art and product really that different? – things I care about for some reason or another</p>
+            <p>"test in prod" "works in progress" "ART MARKET FIT"</p>
+            
+            <div class="tenet-list">
+                <div class="tenet-item">
+                    <strong>Art is an Iterative Process</strong>
+                    <ul>
+                        <li>embrace the fluidity of creation</li>
+                        <li>living evolving works</li>
+                        <li>feedback + collaboration, a cybernetics of social relations #WLIAS (we live in a society)</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Test in Production</strong>
+                    <ul>
+                        <li>Perfection is the enemy of <strong>Progress</strong></li>
+                        <li>be resilient, adaptive, responsive to the work in the lived environment</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Art Market Fit</strong>
+                    <ul>
+                        <li>"cultural lightning" art is art that has found PMF</li>
+                        <li>seek <em>resonance</em> with the organism that is culture</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Agile Artistry</strong>
+                    <ul>
+                        <li>reduce creative projects into manageable iterative cycles</li>
+                        <li>to be responsive, flexible, innovative without reducing <strong>output velocity</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Measure Once</strong>
+                    <ul>
+                        <li>strategic vision + thoughtful planning precedes execution</li>
+                        <li>set a clear + deliberate direction, ensuring each step is purposeful + informed or informing (toward being informed)</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Cut Twice</strong>
+                    <ul>
+                        <li><strong>Execution is an art</strong></li>
+                        <li>commit to bold, decisive actions</li>
+                        <li>there will be missteps, be willing to "cut again", learning + adapting continuously</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Public Iteration</strong>
+                    <ul>
+                        <li>Transparency in Process + Output is crucial to finding <em>resonance</em> (necessary for 3).</li>
+                        <li>through precise measurement one can derive the resonance of a room, or it can be discovered directly just by singing (preferred)</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Speed (a need)</strong>
+                    <ul>
+                        <li>speed is not just about "moving fast" but maintaining momentum</li>
+                        <li>trend-casting, trend-tracing, trend-setting, trend-mapping are all opportunities in <strong>Alpha</strong></li>
+                        <li>information asymmetric opportunities are seized by those who move fast</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Open Source Innovation</strong>
+                    <ul>
+                        <li>Share code, designs, + process</li>
+                        <li>contribute to the collective knowledge</li>
+                        <li>foster a culture that values innovation + transparency</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p style="margin-top: 1rem;">All art is spiritual; not spiritual, not art</p>
+        </div>
+    </div>
 
     <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #444; color: #888; font-size: 0.9rem;">
         <p>measure once, cut twice</p>
