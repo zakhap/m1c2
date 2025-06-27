@@ -8,11 +8,13 @@
         body {
             background-color: #2d2d2d;
             color: #f0f0f0;
-            font-family: monospace;
-            line-height: 1.6;
-            padding: 0;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            line-height: 1.55;
+            padding: 0 1rem;
             max-width: 800px;
             margin: 1rem auto;
+            font-size: 15px;
+            box-sizing: border-box;
         }
 
         h1, h2 {
@@ -40,21 +42,40 @@
         }
 
         nav {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #444;
-            padding-bottom: 1rem;
+            margin-bottom: 1.618rem;
+            border: 1px solid #444;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #555;
+            padding: 1rem;
+            animation: fadeInUp 0.42s ease-out;
         }
 
         .about-container {
             border: 1px solid #444;
-            padding: 1.5rem;
+            border-bottom: 1px solid #555;
+            padding: 1rem;
             margin-bottom: 2rem;
+            animation: fadeInUp 0.42s ease-out 0.07s both;
         }
 
         .about-container h1 {
             margin-top: 0;
             border-bottom: 1px solid #444;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            position: relative;
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+        }
+
+        .about-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 2rem;
+            height: 1px;
+            background: #666;
         }
 
         nav ul {
@@ -66,14 +87,31 @@
         nav li {
             display: inline;
             margin-right: 1rem;
+            position: relative;
         }
 
-        nav a {
+        nav li:not(:last-child)::after {
+            content: '▪';
+            color: #555;
+            margin-left: 1rem;
+            font-size: 0.7rem;
+            position: relative;
+            top: -0.1em;
+        }
+
+        a {
             color: #f0f0f0;
-            text-decoration: none;
+            text-decoration: underline;
+            transition: color 0.1s ease;
         }
 
-        nav a:hover {
+        a:visited {
+            color: #ccc;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #fff;
             text-decoration: underline;
         }
 
@@ -94,6 +132,38 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin: 0.5rem auto;
+                padding: 0 0.5rem;
+                font-size: 14px;
+            }
+            
+            nav {
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            
+            .about-container {
+                padding: 0.75rem;
+            }
+            
+            nav li:not(:last-child)::after {
+                display: none;
+            }
         }
     </style>
 </head>

@@ -8,23 +8,57 @@
         body {
             background-color: #2d2d2d;
             color: #f0f0f0;
-            font-family: monospace;
-            line-height: 1.6;
-            padding: 0;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            line-height: 1.55;
+            padding: 0 1rem;
             max-width: 1200px;
             margin: 1rem auto;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .grid-item.header {
+            animation: fadeInUp 0.42s ease-out;
+        }
+
+        nav {
+            animation: fadeInUp 0.42s ease-out 0.07s both;
+        }
+
+        .container .grid-item:nth-child(1) {
+            animation: fadeInUp 0.42s ease-out 0.14s both;
+        }
+
+        .container .grid-item:nth-child(2) {
+            animation: fadeInUp 0.42s ease-out 0.21s both;
+        }
+
+        .container .grid-item:nth-child(3) {
+            animation: fadeInUp 0.42s ease-out 0.28s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: 1.618fr 1fr;
+            gap: 1.618rem;
+            margin-top: 1.618rem;
         }
 
         .grid-item {
             border: 1px solid #444;
-            padding: 1.5rem;
+            border-bottom: 1px solid #555;
+            padding: 1rem;
             background: transparent;
         }
 
@@ -33,35 +67,55 @@
         }
 
         .grid-item.header {
-            border: none;
-            padding: 1rem 0;
+            border: 1px solid #444;
+            border-bottom: 1px solid #555;
+            padding: 1rem;
+            margin-bottom: 0;
         }
 
         .grid-item h2 {
             margin-top: 0;
             margin-bottom: 1rem;
-            font-size: 1rem;
-            font-weight: normal;
-            color: #888;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #aaa;
             border-bottom: 1px solid #444;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .grid-item h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 2rem;
+            height: 1px;
+            background: #666;
         }
 
         .project-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 0.618rem;
         }
 
         .project-item {
             border: 1px solid #555;
-            padding: 1rem;
+            border: 1px solid #444;
+            border-right: 1px solid #555;
+            padding: 0.75rem;
             background: transparent;
         }
 
         .project-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.015em;
+            line-height: 1.3;
         }
 
         .project-meta {
@@ -73,8 +127,16 @@
 
         h1, h2 {
             font-size: 1rem;
-            font-weight: normal;
-            margin-bottom: 1rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+            line-height: 1.4;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
         }
 
         p {
@@ -82,9 +144,11 @@
         }
 
         nav {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #444;
-            padding-bottom: 1rem;
+            margin-bottom: 1.618rem;
+            border: 1px solid #444;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #555;
+            padding: 1rem;
         }
 
         nav ul {
@@ -96,11 +160,22 @@
         nav li {
             display: inline;
             margin-right: 1rem;
+            position: relative;
+        }
+
+        nav li:not(:last-child)::after {
+            content: '▪';
+            color: #555;
+            margin-left: 1rem;
+            font-size: 0.7rem;
+            position: relative;
+            top: -0.1em;
         }
 
         a {
             color: #f0f0f0;
             text-decoration: underline;
+            transition: color 0.1s ease;
         }
 
         a:visited {
@@ -113,15 +188,31 @@
             text-decoration: underline;
         }
 
+        a[href*="://"] {
+            color: #ddd;
+        }
+
+        a[href*="://"]:hover {
+            color: #fff;
+        }
+
         .tenet-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tenet-list .tenet-item:nth-child(1),
+        .tenet-list .tenet-item:nth-child(4),
+        .tenet-list .tenet-item:nth-child(7) {
+            grid-column: span 2;
         }
 
         .tenet-item {
-            border: 1px solid #555;
-            padding: 1rem;
+            border: 1px solid #444;
+            border-top: 1px solid #555;
+            padding: 0.75rem;
             background: transparent;
         }
 
@@ -129,16 +220,33 @@
             display: block;
             margin-bottom: 0.5rem;
             color: #f0f0f0;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            font-weight: 500;
+            text-transform: uppercase;
         }
+
 
         .tenet-item ul {
             margin: 0;
-            padding-left: 1rem;
+            padding-left: 0;
+            list-style: none;
         }
 
         .tenet-item li {
             margin-bottom: 0.25rem;
             font-size: 0.9rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .tenet-item li::before {
+            content: '◦';
+            color: #666;
+            position: absolute;
+            left: 0;
+            font-size: 0.7rem;
+            top: 0.1em;
         }
 
         @media (max-width: 768px) {
@@ -149,10 +257,35 @@
             
             .tenet-list {
                 grid-template-columns: 1fr;
+                gap: 0.618rem;
+            }
+            
+            .tenet-list .tenet-item {
+                grid-column: span 1 !important;
             }
             
             body {
-                margin: 0.5rem;
+                margin: 0.5rem auto;
+                padding: 0 0.5rem;
+                font-size: 14px;
+            }
+            
+            .grid-item {
+                padding: 0.75rem;
+            }
+            
+            .grid-item.header {
+                padding: 0.75rem;
+                margin-bottom: 0;
+            }
+            
+            nav {
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            
+            nav li:not(:last-child)::after {
+                display: none;
             }
         }
     </style>
@@ -174,18 +307,7 @@
 
     <div class="container">
         <div class="grid-item">
-            <h2>Blog Posts</h2>
-            <p>
-                <a href="latent-space-as-medium.html">Latent Space as Medium</a><br>
-                <a href="signatures.html">Signatures</a><br>
-                <a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a><br>
-                <a href="prompters.html">Prompters</a><br>
-                <a href="agent-response.html">Summonings</a>
-            </p>
-        </div>
-
-        <div class="grid-item">
-            <h2>Current Projects</h2>
+            <h2>Upcoming Projects</h2>
             <p>Active development, testing in production</p>
             
             <div class="project-grid">
@@ -208,6 +330,17 @@
             </div>
 
             <p style="margin-top: 1rem;"><a href="projects.html">→ view all projects</a></p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Blog Posts</h2>
+            <p>
+                <a href="latent-space-as-medium.html">Latent Space as Medium</a><br>
+                <a href="signatures.html">Signatures</a><br>
+                <a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a><br>
+                <a href="prompters.html">Prompters</a><br>
+                <a href="agent-response.html">Summonings</a>
+            </p>
         </div>
 
         <div class="grid-item full-width">
@@ -293,7 +426,9 @@
                 </div>
             </div>
             
-            <p style="margin-top: 1rem;">All art is spiritual; not spiritual, not art</p>
+            <div style="border: 1px solid #555; padding: 1rem; margin-top: 1rem; text-align: center;">
+                All art is spiritual; not spiritual, not art
+            </div>
         </div>
     </div>
 
