@@ -8,6 +8,7 @@
         body {
             background-color: #2a1f1a;
             color: #f5f1ed;
+            accent-color: #a37762;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             line-height: 1.55;
             padding: 0 1rem;
@@ -17,25 +18,51 @@
             box-sizing: border-box;
         }
 
-        .grid-item.header {
-            animation: fadeInUp 0.42s ease-out;
+
+        /* View Transitions API */
+        @view-transition {
+            navigation: auto;
         }
 
-        nav {
-            animation: fadeInUp 0.42s ease-out 0.07s both;
+        ::view-transition-old(root) {
+            animation: fadeOut 0.3s ease-out forwards;
         }
 
-        .container .grid-item:nth-child(1) {
-            animation: fadeInUp 0.42s ease-out 0.14s both;
+        ::view-transition-new(root) {
+            animation: fadeIn 0.3s ease-out forwards;
         }
 
-        .container .grid-item:nth-child(2) {
-            animation: fadeInUp 0.42s ease-out 0.21s both;
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
 
-        .container .grid-item:nth-child(3) {
-            animation: fadeInUp 0.42s ease-out 0.28s both;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #a37762;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Subtle hover dropshadow */
+        .grid-item, nav, .project-item, .tenet-item {
+            transition: box-shadow 0.2s ease-out;
+        }
+
+        .grid-item:hover, nav:hover, .project-item:hover, .tenet-item:hover {
+            box-shadow: 0 3px 4px rgba(163, 119, 98, 0.3);
+        }
+
 
         @keyframes fadeInUp {
             from {
@@ -291,6 +318,7 @@
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progress-bar"></div>
     <div class="grid-item header full-width">
         <h1>m1c2 is a Product Studio.</h1>
         <p>m1c2=measure once, cut twice</p>
@@ -435,5 +463,46 @@
     <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #5c4a3d; color: #a37762; font-size: 0.9rem;">
         <p>measure once, cut twice</p>
     </footer>
+    <script>
+        // View Transitions API support
+        function handleNavigation(url) {
+            if (!document.startViewTransition) {
+                // Fallback for browsers without view transitions support
+                window.location.href = url;
+                return;
+            }
+
+            document.startViewTransition(() => {
+                window.location.href = url;
+            });
+        }
+
+        // Add view transition handling to internal navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const internalLinks = document.querySelectorAll('a[href$=".html"], a[href="index.html"], a[href="projects.html"], a[href="about.html"]');
+            
+            internalLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleNavigation(link.href);
+                });
+            });
+        });
+
+        // No animations - content displays immediately
+
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
+    </script>
 </body>
 </html>

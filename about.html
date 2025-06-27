@@ -8,6 +8,7 @@
         body {
             background-color: #2a1f1a;
             color: #f5f1ed;
+            accent-color: #a37762;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             line-height: 1.55;
             padding: 0 1rem;
@@ -47,7 +48,6 @@
             border-top: 1px solid #4a3529;
             border-bottom: 1px solid #6b5647;
             padding: 1rem;
-            animation: fadeInUp 0.42s ease-out;
         }
 
         .about-container {
@@ -55,7 +55,6 @@
             border-bottom: 1px solid #6b5647;
             padding: 1rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 0.42s ease-out 0.07s both;
         }
 
         .about-container h1 {
@@ -134,16 +133,51 @@
             transform: translate(-50%, -50%);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        /* View Transitions API */
+        @view-transition {
+            navigation: auto;
         }
+
+        ::view-transition-old(root) {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+        ::view-transition-new(root) {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #a37762;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Subtle hover dropshadow */
+        .about-container, nav {
+            transition: box-shadow 0.2s ease-out;
+        }
+
+        .about-container:hover, nav:hover {
+            box-shadow: 0 3px 4px rgba(163, 119, 98, 0.3);
+        }
+
 
         @media (max-width: 768px) {
             body {
@@ -168,6 +202,7 @@
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progress-bar"></div>
     <nav>
         <ul>
             <li><a href="index.html">← back to m1c2</a></li>
@@ -197,6 +232,7 @@
     </footer>
 
     <script>
+        // Sho hover functionality
         const shoTrigger = document.getElementById('sho-trigger');
         const shoImage = document.getElementById('sho-image');
 
@@ -208,7 +244,45 @@
             shoImage.style.display = 'none';
         });
 
-        // Remove the mousemove listener since we're centering the image
+        // View Transitions API support
+        function handleNavigation(url) {
+            if (!document.startViewTransition) {
+                // Fallback for browsers without view transitions support
+                window.location.href = url;
+                return;
+            }
+
+            document.startViewTransition(() => {
+                window.location.href = url;
+            });
+        }
+
+        // Add view transition handling to internal navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const internalLinks = document.querySelectorAll('a[href$=".html"], a[href="index.html"], a[href="projects.html"], a[href="about.html"]');
+            
+            internalLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleNavigation(link.href);
+                });
+            });
+        });
+
+        // No animations - content displays immediately
+
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
     </script>
 </body>
 </html>
