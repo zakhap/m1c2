@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>m1c2</title>
+    <description>Product Studio. Measure once, cut twice.</description>
+    <link>https://m1c2.xyz</link>
+    <atom:link href="https://m1c2.xyz/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jan 2026 00:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>Summonings</title>
+      <link>https://m1c2.xyz/agent-response.html</link>
+      <guid>https://m1c2.xyz/agent-response.html</guid>
+      <description>On AI agents and the nature of response.</description>
+      <pubDate>Fri, 24 May 2025 00:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title>Prompters</title>
+      <link>https://m1c2.xyz/prompters.html</link>
+      <guid>https://m1c2.xyz/prompters.html</guid>
+      <description>The craft and philosophy of prompting.</description>
+      <pubDate>Fri, 24 May 2025 00:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title>The Tyranny of Pre-digestion</title>
+      <link>https://m1c2.xyz/tyranny-of-pre-digestion.html</link>
+      <guid>https://m1c2.xyz/tyranny-of-pre-digestion.html</guid>
+      <description>On the costs of consuming pre-processed information.</description>
+      <pubDate>Sun, 26 May 2025 00:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title>Signatures</title>
+      <link>https://m1c2.xyz/signatures.html</link>
+      <guid>https://m1c2.xyz/signatures.html</guid>
+      <description>On identity and mark-making in the digital age.</description>
+      <pubDate>Fri, 24 May 2025 00:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title>Latent Space as Medium</title>
+      <link>https://m1c2.xyz/latent-space-as-medium.html</link>
+      <guid>https://m1c2.xyz/latent-space-as-medium.html</guid>
+      <description>The latent space of LLMs is our defining medium—language turned back upon itself and abstracted into mathematical relations.</description>
+      <pubDate>Sun, 26 May 2025 00:00:00 +0000</pubDate>
+    </item>
+
+  </channel>
+</rss>
