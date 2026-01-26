@@ -42,11 +42,11 @@
         }
 
         ::view-transition-old(root) {
-            animation: fadeOut 0.3s ease-out forwards;
+            animation: fadeOut 120ms ease-out;
         }
 
         ::view-transition-new(root) {
-            animation: fadeIn 0.3s ease-out forwards;
+            animation: fadeIn 120ms ease-out;
         }
 
         @keyframes fadeOut {
@@ -490,42 +490,16 @@
     <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #5c4a3d; color: #a37762; font-size: 0.9rem;">
         <p>measure once, cut twice</p>
     </footer>
+
     <script>
-        // View Transitions API support
-        function handleNavigation(url) {
-            if (!document.startViewTransition) {
-                // Fallback for browsers without view transitions support
-                window.location.href = url;
-                return;
-            }
-
-            document.startViewTransition(() => {
-                window.location.href = url;
-            });
-        }
-
-        // Add view transition handling to internal navigation links
-        document.addEventListener('DOMContentLoaded', () => {
-            const internalLinks = document.querySelectorAll('a[href$=".html"], a[href="index.html"], a[href="projects.html"], a[href="about.html"]');
-            
-            internalLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    handleNavigation(link.href);
-                });
-            });
-        });
-
-        // No animations - content displays immediately
-
         // Progress bar functionality
         function updateProgressBar() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
-            
+
             const progressBar = document.getElementById('progress-bar');
-            progressBar.style.width = scrollPercent + '%';
+            if (progressBar) progressBar.style.width = scrollPercent + '%';
         }
 
         window.addEventListener('scroll', updateProgressBar);
