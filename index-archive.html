@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m1c2 — Product Studio</title>
+    <meta name="description" content="m1c2 is a product studio blending art and technology. Measure once, cut twice.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="m1c2 — Product Studio">
+    <meta property="og:description" content="Product studio blending art and technology. Measure once, cut twice.">
+    <meta property="og:url" content="https://m1c2.xyz">
+    <meta property="og:site_name" content="m1c2">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="m1c2 — Product Studio">
+    <meta name="twitter:description" content="Product studio blending art and technology. Measure once, cut twice.">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="m1c2 RSS Feed" href="/feed.xml">
+
+    <style>
+        body {
+            background-color: #2a1f1a;
+            color: #f5f1ed;
+            accent-color: #a37762;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            line-height: 1.55;
+            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 1rem auto;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+
+        /* View Transitions API */
+        @view-transition {
+            navigation: auto;
+        }
+
+        ::view-transition-old(root) {
+            animation: fadeOut 120ms ease-out;
+        }
+
+        ::view-transition-new(root) {
+            animation: fadeIn 120ms ease-out;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #a37762;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Subtle hover dropshadow */
+        .grid-item, nav, .project-item, .tenet-item {
+            transition: box-shadow 0.2s ease-out;
+        }
+
+        .grid-item:hover, nav:hover, .project-item:hover, .tenet-item:hover {
+            box-shadow: 0 3px 4px rgba(163, 119, 98, 0.3);
+        }
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1.618fr 1fr;
+            gap: 1.618rem;
+            margin-top: 1.618rem;
+        }
+
+        .grid-item {
+            border: 1px solid #5c4a3d;
+            border-bottom: 1px solid #6b5647;
+            padding: 1rem;
+            background: transparent;
+        }
+
+        .grid-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .grid-item.header {
+            border: 1px solid #5c4a3d;
+            border-bottom: 1px solid #6b5647;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+
+        .grid-item h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #c4a896;
+            border-bottom: 1px solid #5c4a3d;
+            padding-bottom: 0.25rem;
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .grid-item h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 2rem;
+            height: 1px;
+            background: #8b6f5e;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.618rem;
+        }
+
+        .project-item {
+            border: 1px solid #6b5647;
+            border: 1px solid #5c4a3d;
+            border-right: 1px solid #6b5647;
+            padding: 0.75rem;
+            background: transparent;
+        }
+
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.015em;
+            line-height: 1.3;
+        }
+
+        .project-meta {
+            color: #a37762;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        h1, h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+            line-height: 1.4;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        nav {
+            margin-bottom: 1.618rem;
+            border: 1px solid #5c4a3d;
+            border-top: 1px solid #4a3529;
+            border-bottom: 1px solid #6b5647;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 1rem;
+            position: relative;
+        }
+
+        nav li:not(:last-child)::after {
+            content: '▪';
+            color: #6b5647;
+            margin-left: 1rem;
+            font-size: 0.7rem;
+            position: relative;
+            top: -0.1em;
+        }
+
+        a {
+            color: #f5f1ed;
+            text-decoration: underline;
+            transition: color 0.1s ease;
+        }
+
+        a:visited {
+            color: #d4c4b5;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        a[href*="://"] {
+            color: #e5d5c6;
+        }
+
+        a[href*="://"]:hover {
+            color: #ffffff;
+        }
+
+        .tenet-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tenet-list .tenet-item:nth-child(1),
+        .tenet-list .tenet-item:nth-child(4),
+        .tenet-list .tenet-item:nth-child(7) {
+            grid-column: span 2;
+        }
+
+        .tenet-item {
+            border: 1px solid #5c4a3d;
+            border-top: 1px solid #6b5647;
+            padding: 0.75rem;
+            background: transparent;
+        }
+
+        .tenet-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f5f1ed;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+
+        .tenet-item ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tenet-item li {
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .tenet-item li::before {
+            content: '◦';
+            color: #8b6f5e;
+            position: absolute;
+            left: 0;
+            font-size: 0.7rem;
+            top: 0.1em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .tenet-list {
+                grid-template-columns: 1fr;
+                gap: 0.618rem;
+            }
+            
+            .tenet-list .tenet-item {
+                grid-column: span 1 !important;
+            }
+            
+            body {
+                margin: 0.5rem auto;
+                padding: 0 0.5rem;
+                font-size: 14px;
+            }
+            
+            .grid-item {
+                padding: 0.75rem;
+            }
+            
+            .grid-item.header {
+                padding: 0.75rem;
+                margin-bottom: 0;
+            }
+            
+            nav {
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            
+            nav li:not(:last-child)::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress-bar"></div>
+    <div class="grid-item header full-width">
+        <h1>m1c2 is a Product Studio.</h1>
+        <p>m1c2=measure once, cut twice</p>
+        <p>Subtext Report • $TEMPLE</p>
+    </div>
+    
+    <nav>
+        <ul>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="https://www.are.na/zak-hap/m1c2-corporate-moodboard" target="_blank">Are.na</a></li>
+            <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="grid-item">
+            <h2>Current Projects</h2>
+            <p>Active development, testing in production</p>
+            
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-title">Subtext Report</div>
+                    <p>AI-powered analysis revealing hidden narratives in political news coverage. There is no news. There are only narratives.</p>
+                    <div class="project-meta">In collaboration with <a href="https://qubitmusic.com/" target="_blank">Qubit</a></div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">$TEMPLE <a href="https://www.t3mpl3.fun/" target="_blank">splash</a></div>
+                    <p>Token launcher that converts attention and transaction fees into charitable donations. Monetize community while funding nonprofits.</p>
+                    <div class="project-meta">In collaboration with <a href="https://qubitmusic.com/" target="_blank">Qubit</a></div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">Glass Bead Game <a href="https://gbg.m1c2.xyz/" target="_blank">play</a></div>
+                    <p>A contemplative practice of intellectual improvisation, creating trajectories of meaning through symbolic connections between concepts.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;"><a href="projects.html">→ view all projects</a></p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Now</h2>
+            <p style="font-size: 0.9rem; color: #c4a896; margin-bottom: 0.5rem;">January 2026</p>
+            <p>Building <strong>Hit One</strong> — a perpetual futures trading platform. Head of Engineering. Deep in MegaETH integrations, real-time price feeds, and production hardening.</p>
+            <p>Writing about AI, latent space, and creative practice. Exploring Claude Code as a thinking partner for knowledge work.</p>
+            <p style="font-size: 0.85rem; color: #a37762;"><a href="https://nownownow.com/about" target="_blank" style="color: #a37762;">What is a /now page?</a></p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Writing</h2>
+            <p>
+                <a href="latent-space-as-medium.html">Latent Space as Medium</a><br>
+                <a href="signatures.html">Signatures</a><br>
+                <a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a><br>
+                <a href="prompters.html">Prompters</a><br>
+                <a href="agent-response.html">Summonings</a>
+            </p>
+            <p style="font-size: 0.85rem;"><a href="/feed.xml" style="color: #a37762;">RSS Feed</a></p>
+        </div>
+
+        <div class="grid-item full-width">
+            <h2>Tenets</h2>
+            <p>"Tenets" for "my" studio practice – is art and product really that different? – things I care about for some reason or another</p>
+            <p>"test in prod" "works in progress" "ART MARKET FIT"</p>
+            
+            <div class="tenet-list">
+                <div class="tenet-item">
+                    <strong>Art is an Iterative Process</strong>
+                    <ul>
+                        <li>embrace the fluidity of creation</li>
+                        <li>living evolving works</li>
+                        <li>feedback + collaboration, a cybernetics of social relations #WLIAS (we live in a society)</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Test in Production</strong>
+                    <ul>
+                        <li>Perfection is the enemy of <strong>Progress</strong></li>
+                        <li>be resilient, adaptive, responsive to the work in the lived environment</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Art Market Fit</strong>
+                    <ul>
+                        <li>"cultural lightning" art is art that has found PMF</li>
+                        <li>seek <em>resonance</em> with the organism that is culture</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Agile Artistry</strong>
+                    <ul>
+                        <li>reduce creative projects into manageable iterative cycles</li>
+                        <li>to be responsive, flexible, innovative without reducing <strong>output velocity</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Measure Once</strong>
+                    <ul>
+                        <li>strategic vision + thoughtful planning precedes execution</li>
+                        <li>set a clear + deliberate direction, ensuring each step is purposeful + informed or informing (toward being informed)</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Cut Twice</strong>
+                    <ul>
+                        <li><strong>Execution is an art</strong></li>
+                        <li>commit to bold, decisive actions</li>
+                        <li>there will be missteps, be willing to "cut again", learning + adapting continuously</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Public Iteration</strong>
+                    <ul>
+                        <li>Transparency in Process + Output is crucial to finding <em>resonance</em> (necessary for 3).</li>
+                        <li>through precise measurement one can derive the resonance of a room, or it can be discovered directly just by singing (preferred)</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Speed (a need)</strong>
+                    <ul>
+                        <li>speed is not just about "moving fast" but maintaining momentum</li>
+                        <li>trend-casting, trend-tracing, trend-setting, trend-mapping are all opportunities in <strong>Alpha</strong></li>
+                        <li>information asymmetric opportunities are seized by those who move fast</li>
+                    </ul>
+                </div>
+                
+                <div class="tenet-item">
+                    <strong>Open Source Innovation</strong>
+                    <ul>
+                        <li>Share code, designs, + process</li>
+                        <li>contribute to the collective knowledge</li>
+                        <li>foster a culture that values innovation + transparency</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="border: 1px solid #6b5647; padding: 1rem; margin-top: 1rem; text-align: center;">
+                All art is spiritual; not spiritual, not art
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #5c4a3d; color: #a37762; font-size: 0.9rem;">
+        <p>measure once, cut twice</p>
+    </footer>
+
+    <script>
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) progressBar.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
+    </script>
+</body>
+</html>

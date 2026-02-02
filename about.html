@@ -3,116 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — m1c2</title>
+    <title>About — Zak Hap</title>
     <meta name="description" content="Zak Hap — product builder, writer, and founder of m1c2 studio.">
 
     <!-- Open Graph -->
     <meta property="og:type" content="profile">
-    <meta property="og:title" content="About — m1c2">
+    <meta property="og:title" content="About — Zak Hap">
     <meta property="og:description" content="Zak Hap — product builder, writer, and founder of m1c2 studio.">
     <meta property="og:url" content="https://m1c2.xyz/about.html">
     <meta property="og:site_name" content="m1c2">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="About — m1c2">
-    <meta name="twitter:description" content="Zak Hap — product builder, writer, and founder of m1c2 studio.">
-
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="m1c2 RSS Feed" href="/feed.xml">
 
     <style>
         body {
             background-color: #2a1f1a;
             color: #f5f1ed;
-            accent-color: #a37762;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            line-height: 1.55;
-            padding: 0 1rem;
-            max-width: 800px;
-            margin: 1rem auto;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
             font-size: 15px;
             box-sizing: border-box;
         }
 
-        h1, h2 {
-            font-size: 1rem;
-            font-weight: normal;
-            margin-bottom: 1rem;
+        @view-transition {
+            navigation: auto;
         }
 
-        h2 {
-            color: #a37762;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+        ::view-transition-old(root) {
+            animation: fadeOut 120ms ease-out;
         }
 
-        p {
-            margin-bottom: 1.5rem;
+        ::view-transition-new(root) {
+            animation: fadeIn 120ms ease-out;
         }
 
-        ul {
-            margin-bottom: 1.5rem;
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
 
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        nav {
-            margin-bottom: 1.618rem;
-            border: 1px solid #5c4a3d;
-            border-top: 1px solid #4a3529;
-            border-bottom: 1px solid #6b5647;
-            padding: 1rem;
-        }
-
-        .about-container {
-            border: 1px solid #5c4a3d;
-            border-bottom: 1px solid #6b5647;
-            padding: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-container h1 {
-            margin-top: 0;
-            border-bottom: 1px solid #5c4a3d;
-            padding-bottom: 0.25rem;
-            position: relative;
-            font-size: 1.25rem;
-            font-weight: 300;
-            letter-spacing: 0.03em;
-        }
-
-        .about-container h1::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 2rem;
-            height: 1px;
-            background: #8b6f5e;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 1rem;
-            position: relative;
-        }
-
-        nav li:not(:last-child)::after {
-            content: '▪';
-            color: #6b5647;
-            margin-left: 1rem;
-            font-size: 0.7rem;
-            position: relative;
-            top: -0.1em;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         a {
@@ -123,12 +56,41 @@
 
         a:visited {
             color: #d4c4b5;
-            text-decoration: underline;
         }
 
         a:hover {
             color: #ffffff;
-            text-decoration: underline;
+        }
+
+        .name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.01em;
+        }
+
+        .subtitle {
+            color: #a37762;
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .column h2 {
+            color: #a37762;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin: 0 0 1rem 0;
+            letter-spacing: 0.02em;
+        }
+
+        .column p {
+            margin: 0 0 0.75rem 0;
         }
 
         .sho-hover {
@@ -150,106 +112,49 @@
             transform: translate(-50%, -50%);
         }
 
-
-        /* View Transitions API */
-        @view-transition {
-            navigation: auto;
-        }
-
-        ::view-transition-old(root) {
-            animation: fadeOut 0.3s ease-out forwards;
-        }
-
-        ::view-transition-new(root) {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Progress indicator */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: #a37762;
-            z-index: 9999;
-            transition: width 0.1s ease-out;
-        }
-
-        /* Subtle hover dropshadow */
-        .about-container, nav {
-            transition: box-shadow 0.2s ease-out;
-        }
-
-        .about-container:hover, nav:hover {
-            box-shadow: 0 3px 4px rgba(163, 119, 98, 0.3);
-        }
-
-
         @media (max-width: 768px) {
             body {
-                margin: 0.5rem auto;
-                padding: 0 0.5rem;
+                padding: 1.5rem 1rem;
                 font-size: 14px;
             }
-            
-            nav {
-                padding: 0.75rem;
-                margin-bottom: 1rem;
+
+            .columns {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            
-            .about-container {
-                padding: 0.75rem;
-            }
-            
-            nav li:not(:last-child)::after {
-                display: none;
+
+            .subtitle {
+                margin-bottom: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progress-bar"></div>
-    <nav>
-        <ul>
-            <li><a href="index.html">← back to m1c2</a></li>
-        </ul>
-    </nav>
+    <div class="name"><a href="index.html">Zak Hap</a></div>
+    <div class="subtitle">measure once, cut twice — m1c2 product studio</div>
 
-    <div class="about-container">
-        <h1>Zak Hap</h1>
-        
-        <ul>
-            <li>Founder, M1C2 product studio</li>
-            <li>Computer science + music composition @ Columbia</li>
-            <li>5 years Product Lead at Common</li>
-            <li>2x failed previous startups in his early 20s</li>
-            <li>Board member at <a href="https://qubitmusic.com/" target="_blank">Qubit</a>, a NYC music+art+technology nonprofit</li>
-            <li>Believes software and art have similar potentials to shape and change reality</li>
-            <li>Likes to draw in free time, takes figure drawing classes</li>
-            <li>Plays the <span class="sho-hover" id="sho-trigger">Shō</span></li>
-            <li>Consults the Tarot with regularity</li>
-        </ul>
+    <div class="columns">
+        <div class="column">
+            <h2>Background</h2>
+            <p>Founder of m1c2 product studio.</p>
+            <p>Computer science + music composition at Columbia.</p>
+            <p>5 years as Product Lead at Common.</p>
+            <p>2x failed startups in my early 20s.</p>
+            <p>Board member at <a href="https://qubitmusic.com/" target="_blank">Qubit</a>, a NYC music+art+technology nonprofit.</p>
+        </div>
+
+        <div class="column">
+            <h2>Miscellany</h2>
+            <p>Believes software and art have similar potentials to shape and change reality.</p>
+            <p>Likes to draw in free time, takes figure drawing classes.</p>
+            <p>Plays the <span class="sho-hover" id="sho-trigger">Shō</span>.</p>
+            <p>Consults the Tarot with regularity.</p>
+        </div>
     </div>
 
     <img src="images/sho1.png" alt="Shō instrument" class="sho-image" id="sho-image">
 
-    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #5c4a3d; color: #a37762; font-size: 0.9rem;">
-        <p>measure once, cut twice</p>
-    </footer>
-
     <script>
-        // Sho hover functionality
         const shoTrigger = document.getElementById('sho-trigger');
         const shoImage = document.getElementById('sho-image');
 
@@ -260,46 +165,6 @@
         shoTrigger.addEventListener('mouseleave', function() {
             shoImage.style.display = 'none';
         });
-
-        // View Transitions API support
-        function handleNavigation(url) {
-            if (!document.startViewTransition) {
-                // Fallback for browsers without view transitions support
-                window.location.href = url;
-                return;
-            }
-
-            document.startViewTransition(() => {
-                window.location.href = url;
-            });
-        }
-
-        // Add view transition handling to internal navigation links
-        document.addEventListener('DOMContentLoaded', () => {
-            const internalLinks = document.querySelectorAll('a[href$=".html"], a[href="index.html"], a[href="projects.html"], a[href="about.html"]');
-            
-            internalLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    handleNavigation(link.href);
-                });
-            });
-        });
-
-        // No animations - content displays immediately
-
-        // Progress bar functionality
-        function updateProgressBar() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            
-            const progressBar = document.getElementById('progress-bar');
-            progressBar.style.width = scrollPercent + '%';
-        }
-
-        window.addEventListener('scroll', updateProgressBar);
-        window.addEventListener('resize', updateProgressBar);
     </script>
 </body>
 </html>
