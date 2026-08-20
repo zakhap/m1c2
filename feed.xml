@@ -6,23 +6,9 @@
     <link>https://m1c2.xyz</link>
     <atom:link href="https://m1c2.xyz/feed.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 00:00:00 +0000</lastBuildDate>
 
-    <item>
-      <title>Summonings</title>
-      <link>https://m1c2.xyz/agent-response.html</link>
-      <guid>https://m1c2.xyz/agent-response.html</guid>
-      <description>On AI agents and the nature of response.</description>
-      <pubDate>Fri, 24 May 2025 00:00:00 +0000</pubDate>
-    </item>
 
-    <item>
-      <title>Prompters</title>
-      <link>https://m1c2.xyz/prompters.html</link>
-      <guid>https://m1c2.xyz/prompters.html</guid>
-      <description>The craft and philosophy of prompting.</description>
-      <pubDate>Fri, 24 May 2025 00:00:00 +0000</pubDate>
-    </item>
 
     <item>
       <title>The Tyranny of Pre-digestion</title>
