@@ -61,6 +61,22 @@
             to { opacity: 1; }
         }
 
+        /* Each fold of the page is its own <section> so we can later
+           control layout, order, and animation per "page" on desktop. */
+        section {
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 769px) {
+            section {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 3rem 0;
+            }
+        }
+
         .name {
             font-size: 1.1rem;
             font-weight: 500;
@@ -104,6 +120,7 @@
 
         .bio {
             margin: 0 0 1rem 0;
+            max-width: 50%;
         }
 
         .social-links {
@@ -130,7 +147,8 @@
             color: #a37762;
             font-style: italic;
             text-align: center;
-            margin: 0 0 3rem 0;
+            margin: 0 auto 3rem auto;
+            max-width: 50%;
         }
 
         .moon-cycle {
@@ -146,20 +164,29 @@
             display: block;
         }
 
-        .work-section {
-            margin-bottom: 1.5rem;
+        .moonlight-header {
+            text-align: center;
+            color: #f5f1ed;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0 0 2rem 0;
         }
 
-        .work-section:last-child {
-            margin-bottom: 0;
+        .two-col-table {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0.5rem 2rem;
+            margin: 0 0 2.5rem 0;
         }
 
-        .work-section p {
+        .two-col-table .label {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .two-col-table .desc {
             margin: 0 0 1rem 0;
-        }
-
-        .work-section p:last-child {
-            margin-bottom: 0;
+            color: #c4b5a5;
         }
 
         .sho-feature {
@@ -183,12 +210,6 @@
             font-size: 1.3rem;
             line-height: 1.35;
             max-width: 200px;
-        }
-
-        .lists-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
         }
 
         .chip-list {
@@ -236,6 +257,24 @@
                 font-size: 14px;
             }
 
+            .bio,
+            .aside {
+                max-width: 100%;
+            }
+
+            .two-col-table {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .two-col-table .label {
+                margin-top: 1.25rem;
+            }
+
+            .two-col-table .label:first-child {
+                margin-top: 0;
+            }
+
             .sho-feature {
                 flex-direction: column;
                 gap: 1.25rem;
@@ -246,9 +285,8 @@
                 max-width: none;
             }
 
-            .lists-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .section-musings {
+                margin-top: 3rem;
             }
         }
 
@@ -302,84 +340,90 @@
         })();
     </script>
 
-    <div class="name">Zak Hap</div>
-    <div class="subtitle">measure once, cut twice — m1c2 product studio</div>
+    <section class="section-intro">
+        <div class="name">Zak Hap</div>
+        <div class="subtitle">measure once, cut twice — m1c2 product studio</div>
 
-    <div class="spacer" style="height: var(--gap-1);"></div>
+        <div class="spacer" style="height: var(--gap-1);"></div>
 
-    <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University. <a href="about.html">more →</a></p>
+        <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University. <a href="about.html">more →</a></p>
 
-    <div class="dots-gap">
-        <p class="dot-line" style="margin-top: 10vh;">...</p>
-        <p class="dot-line" style="margin-top: 12vh;">....</p>
-        <p class="dot-line" style="margin-top: 14vh;">......</p>
-        <p class="dot-line" style="margin-top: 12vh;">...</p>
-    </div>
+        <div class="dots-gap">
+            <p class="dot-line" style="margin-top: 10vh;">...</p>
+            <p class="dot-line" style="margin-top: 12vh;">....</p>
+            <p class="dot-line" style="margin-top: 14vh;">......</p>
+            <p class="dot-line" style="margin-top: 12vh;">...</p>
+        </div>
+    </section>
 
-    <div class="section-label">Some current and prior daylight projects:</div>
-    <div class="project-list">
-        <p><a href="https://hit.one" target="_blank">Tech Lead at Hit One</a> since October 2025</p>
-        <p>Product Lead at Common for 5 years</p>
-        <p>Co-founder at Odefi for 1 year</p>
-        <p>Co-founder at Liminal Media for 1 year</p>
-    </div>
+    <section class="section-daylight">
+        <div class="section-label">Some current and prior daylight projects:</div>
+        <div class="project-list">
+            <p><a href="https://hit.one" target="_blank">Tech Lead at Hit One</a> since October 2025</p>
+            <p>Product Lead at Common for 5 years</p>
+            <p>Co-founder at Odefi for 1 year</p>
+            <p>Co-founder at Liminal Media for 1 year</p>
+        </div>
+    </section>
 
-    <div class="dots-gap">
-        <p class="dot-line" style="margin-top: 15vh;">...</p>
-        <p class="dot-line" style="margin-top: 20vh;">............</p>
-        <p class="dot-line" style="margin-top: 25vh;">........................</p>
-        <p class="dot-line" style="margin-top: 30vh;">............................................</p>
-        <p class="dot-line" style="margin-top: 35vh;">............................................................</p>
-    </div>
-
-    <p class="aside">At this point you must be wondering what else this person does with their time.</p>
-
-    <div class="moon-cycle" aria-hidden="true">
-        <svg style="margin-top: 0rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="20" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 0.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="11" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 1.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="2" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 1.8rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="-7" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 2.4rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="-16" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 3rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="47" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 3.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="38" cy="20" r="18" fill="#1f1329" /></g></svg>
-        <svg style="margin-top: 4.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="29" cy="20" r="18" fill="#1f1329" /></g></svg>
-    </div>
-
-    <div class="section-label">Moonlight projects:</div>
-    <div class="work-section">
-        <p>Host of <a href="https://studyhall.nyc" target="_blank">Study Hall</a>, a creative building series on Monday nights in New York, with Charlie Freiberg.<br>
-        Recent venues: Lincoln Center, Collaborative Fund, NYC Resistor.</p>
-
-        <p>Board member at <a href="https://qubitmusic.com/" target="_blank">Qubit Music NYC</a>.</p>
-    </div>
-
-    <div class="sho-feature">
-        <img src="images/sho1.png" alt="Zak playing the Shō">
-        <p>He also plays<br>the Shō.</p>
-    </div>
-
-    <div class="spacer" style="height: var(--gap-1);"></div>
-
-    <div class="lists-grid">
-        <div class="list-col">
-            <div class="section-label">Some writings</div>
-            <div class="chip-list">
-                <a class="chip-item" href="tenets.html">Studio Practice Tenets</a>
-                <a class="chip-item" href="latent-space-as-medium.html">Latent Space as Medium</a>
-                <a class="chip-item" href="signatures.html">Signatures</a>
-                <a class="chip-item" href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a>
-            </div>
+    <section class="section-wondering">
+        <div class="dots-gap">
+            <p class="dot-line" style="margin-top: 15vh;">...</p>
+            <p class="dot-line" style="margin-top: 20vh;">............</p>
+            <p class="dot-line" style="margin-top: 25vh;">........................</p>
+            <p class="dot-line" style="margin-top: 30vh;">............................................</p>
+            <p class="dot-line" style="margin-top: 35vh;">............................................................</p>
         </div>
 
-        <div class="list-col">
-            <div class="section-label">Some app musings</div>
-            <div class="chip-list">
-                <a class="chip-item" href="https://zindex.m1c2.xyz/" target="_blank">Z-Index: Book Recommendation Engine</a>
-                <a class="chip-item" href="https://gbg.m1c2.xyz/" target="_blank">Glass Bead Game</a>
-                <a class="chip-item" href="https://orange.m1c2.xyz/" target="_blank">Orange Shrine</a>
-            </div>
+        <p class="aside">At this point you must be wondering what else this person does with their time.</p>
+    </section>
+
+    <section class="section-moonlight">
+        <div class="moon-cycle" aria-hidden="true">
+            <svg style="margin-top: 0rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="20" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 0.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="11" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 1.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="2" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 1.8rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="-7" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 2.4rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="-16" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 3rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="47" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 3.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="38" cy="20" r="18" fill="#1f1329" /></g></svg>
+            <svg style="margin-top: 4.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="29" cy="20" r="18" fill="#1f1329" /></g></svg>
         </div>
-    </div>
+
+        <h2 class="moonlight-header">Moonlight</h2>
+
+        <div class="two-col-table">
+            <p class="label"><a href="https://studyhall.nyc" target="_blank">Cohost of Study Hall</a></p>
+            <p class="desc">A creative building series on Monday nights in New York, with Charlie Freiberg, since 2025. Past venues include Lincoln Center, Collaborative Fund, NYC Resistor.</p>
+
+            <p class="label"><a href="https://qubitmusic.com/" target="_blank">Board member at Qubit</a></p>
+            <p class="desc">A contemporary music and performance art initiative founded in 2010.</p>
+        </div>
+
+        <div class="sho-feature">
+            <img src="images/sho1.png" alt="Zak playing the Shō">
+            <p>He also plays<br>the Shō.</p>
+        </div>
+    </section>
+
+    <section class="section-writings">
+        <div class="section-label">Some writings</div>
+        <div class="chip-list">
+            <a class="chip-item" href="tenets.html">Studio Practice Tenets</a>
+            <a class="chip-item" href="latent-space-as-medium.html">Latent Space as Medium</a>
+            <a class="chip-item" href="signatures.html">Signatures</a>
+            <a class="chip-item" href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a>
+        </div>
+    </section>
+
+    <section class="section-musings">
+        <div class="section-label">Some app musings</div>
+        <div class="chip-list">
+            <a class="chip-item" href="https://zindex.m1c2.xyz/" target="_blank">Z-Index: Book Recommendation Engine</a>
+            <a class="chip-item" href="https://gbg.m1c2.xyz/" target="_blank">Glass Bead Game</a>
+            <a class="chip-item" href="https://orange.m1c2.xyz/" target="_blank">Orange Shrine</a>
+        </div>
+    </section>
 
     <p class="footer-links"><a href="https://x.com/zakhap" target="_blank">X</a> <a href="https://github.com/zakhap" target="_blank">GitHub</a> <a href="https://www.are.na/zak-hap" target="_blank">Are.na</a> <a href="/feed.xml">RSS</a></p>
 </body>
