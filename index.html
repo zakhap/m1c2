@@ -128,11 +128,23 @@
         }
 
         .section-label {
-            color: #a37762;
-            font-size: 0.9rem;
-            font-weight: 400;
-            margin: 0 0 1rem 0;
+            display: inline-block;
+            color: #1f1329;
+            background: #d9b8a3;
+            font-size: 2.2rem;
+            font-weight: 500;
+            padding: 0.05em 0.25em;
+            margin: 0 0 1.5rem 0;
             letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+
+        .section-musings .section-label {
+            background: #c9b3d9;
+        }
+
+        .section-musings .chip-item {
+            text-align: right;
         }
 
         .aside {
@@ -482,6 +494,10 @@
             .bio,
             .aside {
                 max-width: 100%;
+            }
+
+            .section-label {
+                font-size: 1.5rem;
             }
 
             .two-col-table {
