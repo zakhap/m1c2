@@ -36,6 +36,7 @@
             margin: 0 auto;
             font-size: 15px;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         /* View Transitions API */
@@ -90,11 +91,11 @@
         }
 
         .hero-image {
-            width: 220px;
-            max-width: 55%;
+            width: 480px;
+            max-width: 88%;
             height: auto;
             display: block;
-            margin: 1.5rem 0 0 0;
+            margin: -0.5rem 0 0 auto;
         }
 
         a {
@@ -165,6 +166,32 @@
             max-width: 50%;
         }
 
+        .section-wondering {
+            position: relative;
+        }
+
+        .btc-aside {
+            display: none;
+        }
+
+        @media (min-width: 1000px) {
+            .btc-aside {
+                display: block;
+                position: absolute;
+                top: 12%;
+                left: 100%;
+                margin-left: 2rem;
+                writing-mode: vertical-rl;
+                font-weight: 300;
+                font-size: 0.85rem;
+                letter-spacing: 0.15em;
+                color: rgba(10, 33, 15, 0.3);
+                background: #d4c4b5;
+                padding: 1.5rem 0.6rem;
+                white-space: nowrap;
+            }
+        }
+
         .moon-cycle {
             display: flex;
             justify-content: center;
@@ -225,6 +252,26 @@
             font-size: 1.3rem;
             line-height: 1.35;
             max-width: 200px;
+        }
+
+        .minerva-feature {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0 0 0;
+        }
+
+        .minerva-feature img {
+            width: 220px;
+            height: auto;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            flex-shrink: 0;
+        }
+
+        .minerva-feature p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.4;
         }
 
         .full-bleed-strip {
@@ -551,6 +598,16 @@
                 max-width: none;
             }
 
+            .minerva-feature {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .minerva-feature img {
+                width: 100%;
+            }
+
             .section-musings {
                 margin-top: 3rem;
             }
@@ -614,7 +671,7 @@
 
         <div class="spacer" style="height: var(--gap-1);"></div>
 
-        <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University. <a href="about.html">more →</a></p>
+        <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University.</p>
 
         <div class="dots-gap">
             <p class="dot-line" style="margin-top: 10vh;">...</p>
@@ -647,9 +704,16 @@
             <p class="label">Co-founder at Liminal Media</p>
             <p class="desc">One year. A media studio producing commercial video and technical content, including ghostwritten whitepapers for blockchain startups that collectively raised ~$50M, translating protocol architecture and token mechanics for investor audiences.</p>
         </div>
+
+        <div class="minerva-feature">
+            <img src="images/minerva-drawing.jpg" alt="Figure drawing from art class">
+            <p>Something I drew in <a href="https://www.springstudiosoho.com/" target="_blank">Minerva</a>'s art class</p>
+        </div>
     </section>
 
     <section class="section-wondering">
+        <p class="btc-aside">Bro how the Fuck do Bitcoins Work</p>
+
         <div class="dots-gap">
             <p class="dot-line" style="margin-top: 15vh;">...</p>
             <p class="dot-line" style="margin-top: 20vh;">............</p>
@@ -658,7 +722,7 @@
             <p class="dot-line" style="margin-top: 35vh;">............................................................</p>
         </div>
 
-        <p class="aside">At this point you must be wondering what else this person does with their time.</p>
+        <p class="aside">You must wonder what else this person does with their time.</p>
     </section>
 
     <section class="section-moonlight">
