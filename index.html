@@ -305,6 +305,32 @@
             display: block;
         }
 
+        .scriabin-media {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin: 1.5rem 0 0 0;
+        }
+
+        .scriabin-media img {
+            width: 60%;
+            max-width: 300px;
+            height: auto;
+            display: block;
+        }
+
+        .scriabin-quote {
+            position: relative;
+            z-index: 1;
+            align-self: flex-start;
+            width: 78%;
+            margin: -1.4em 0 0 0;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #f5f1ed;
+        }
+
         @media (max-width: 768px) {
             .quote-media {
                 align-items: center;
@@ -327,6 +353,21 @@
 
             .literary-image {
                 width: 80%;
+            }
+
+            .scriabin-media {
+                align-items: center;
+            }
+
+            .scriabin-media img {
+                width: 85%;
+            }
+
+            .scriabin-quote {
+                align-self: center;
+                width: 90%;
+                margin-top: -1em;
+                font-size: 0.95rem;
             }
 
             .big-statement {
@@ -515,6 +556,11 @@
     <section class="section-literary">
         <p class="literary-line">And so he turned, eager to see her, forgetting his promise</p>
         <img class="literary-image" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxNDg3OTI4My9vcmlnaW5hbF81MjEwOGEyY2VhY2RkNmIzZDMzZDY0MjYwNTNkOWU3Ni5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" alt="">
+
+        <div class="scriabin-media">
+            <img src="https://d2w9rnfcy7mm78.cloudfront.net/7952319/original_5913823c215196ee9e5e5d98e5ff7842.gif?1594334114" alt="">
+            <p class="scriabin-quote">I was one told about a woman living in Paris—a descendant of Scriabin—who spent her entire life writing music not meant to be heard. What it is, and how she does it, is not very clear; but I have always envied this woman. I envy her insanity, her impracticality.</p>
+        </div>
     </section>
 
     <section class="section-gif-quote">
