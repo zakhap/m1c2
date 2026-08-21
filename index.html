@@ -161,8 +161,8 @@
         .aside {
             color: #a37762;
             font-style: italic;
-            text-align: center;
-            margin: 0 auto 3rem auto;
+            text-align: left;
+            margin: 0 0 3rem 0;
             max-width: 50%;
         }
 
@@ -199,6 +199,26 @@
             gap: 0.75rem;
             margin: 0 0 3rem 0;
             flex-wrap: wrap;
+        }
+
+        .moon-cycle svg:nth-child(1) { margin-top: 0; }
+        .moon-cycle svg:nth-child(2) { margin-top: 10vh; }
+        .moon-cycle svg:nth-child(3) { margin-top: 20vh; }
+        .moon-cycle svg:nth-child(4) { margin-top: 30vh; }
+        .moon-cycle svg:nth-child(5) { margin-top: 40vh; }
+        .moon-cycle svg:nth-child(6) { margin-top: 50vh; }
+        .moon-cycle svg:nth-child(7) { margin-top: 60vh; }
+        .moon-cycle svg:nth-child(8) { margin-top: 70vh; }
+
+        @media (max-width: 768px) {
+            .moon-cycle svg:nth-child(1) { margin-top: 0; }
+            .moon-cycle svg:nth-child(2) { margin-top: 5vh; }
+            .moon-cycle svg:nth-child(3) { margin-top: 10vh; }
+            .moon-cycle svg:nth-child(4) { margin-top: 15vh; }
+            .moon-cycle svg:nth-child(5) { margin-top: 20vh; }
+            .moon-cycle svg:nth-child(6) { margin-top: 25vh; }
+            .moon-cycle svg:nth-child(7) { margin-top: 30vh; }
+            .moon-cycle svg:nth-child(8) { margin-top: 35vh; }
         }
 
         .moon-cycle svg {
@@ -632,6 +652,26 @@
             vector-effect: non-scaling-stroke;
             opacity: 0.35;
         }
+
+        .ceiling-hugger {
+            position: fixed;
+            bottom: -60px;
+            right: -50px;
+            width: 220px;
+            height: auto;
+            transform: rotate(180deg);
+            z-index: 5;
+            pointer-events: none;
+            box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
+        }
+
+        @media (max-width: 768px) {
+            .ceiling-hugger {
+                width: 140px;
+                bottom: -36px;
+                right: -30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -644,6 +684,8 @@
             <rect x="32" y="10" width="36" height="38" />
         </svg>
     </div>
+
+    <img class="ceiling-hugger" src="images/geotic-abysma.jpg" alt="">
 
     <script>
         (function () {
@@ -727,14 +769,14 @@
 
     <section class="section-moonlight">
         <div class="moon-cycle" aria-hidden="true">
-            <svg style="margin-top: 0rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#0a210f" /><circle cx="20" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 0.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#0a210f" /><circle cx="11" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 1.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#0a210f" /><circle cx="2" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 1.8rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#0a210f" /><circle cx="-7" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 2.4rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#0a210f" /><circle cx="-16" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 3rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#0a210f" /><circle cx="47" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 3.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#0a210f" /><circle cx="38" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg style="margin-top: 4.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#0a210f" /><circle cx="29" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#0a210f" /><circle cx="20" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#0a210f" /><circle cx="11" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#0a210f" /><circle cx="2" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#0a210f" /><circle cx="-7" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#0a210f" /><circle cx="-16" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#0a210f" /><circle cx="47" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#0a210f" /><circle cx="38" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#0a210f" /><circle cx="29" cy="20" r="18" fill="#f7f1f9" /></g></svg>
         </div>
 
         <h2 class="moonlight-header">Moonlight</h2>
