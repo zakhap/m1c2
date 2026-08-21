@@ -22,13 +22,17 @@
     <link rel="alternate" type="application/rss+xml" title="m1c2 RSS Feed" href="/feed.xml">
 
     <style>
+        :root {
+            --gap-1: 40vh;
+        }
+
         body {
             background-color: #1f1329;
             color: #f5f1ed;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             line-height: 1.6;
-            padding: 2rem 1.5rem;
-            max-width: 1100px;
+            padding: 2rem 1.5rem 6rem;
+            max-width: 700px;
             margin: 0 auto;
             font-size: 15px;
             box-sizing: border-box;
@@ -67,25 +71,6 @@
         .subtitle {
             color: #a37762;
             font-size: 0.9rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .column h2 {
-            color: #a37762;
-            font-size: 0.9rem;
-            font-weight: 400;
-            margin: 0 0 1rem 0;
-            letter-spacing: 0.02em;
-        }
-
-        .column p {
-            margin: 0 0 1rem 0;
         }
 
         a {
@@ -102,6 +87,65 @@
             color: #ffffff;
         }
 
+        .spacer {
+            width: 1px;
+        }
+
+        .dots-gap {
+            margin: 0 0 3rem 0;
+        }
+
+        .dot-line {
+            color: #a37762;
+            opacity: 0.45;
+            letter-spacing: 0.2em;
+            margin: 0;
+        }
+
+        .bio {
+            margin: 0 0 1rem 0;
+        }
+
+        .social-links {
+            margin: 0;
+        }
+
+        .section-label {
+            color: #a37762;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin: 0 0 1rem 0;
+            letter-spacing: 0.02em;
+        }
+
+        .project-list p {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .project-list p:last-child {
+            margin-bottom: 0;
+        }
+
+        .aside {
+            color: #a37762;
+            font-style: italic;
+            text-align: center;
+            margin: 0 0 3rem 0;
+        }
+
+        .moon-cycle {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 0 0 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .moon-cycle svg {
+            display: block;
+        }
+
         .work-section {
             margin-bottom: 1.5rem;
         }
@@ -110,39 +154,101 @@
             margin-bottom: 0;
         }
 
-        .work-label {
-            color: #a37762;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+        .work-section p {
+            margin: 0 0 1rem 0;
         }
 
-        .writing-item {
-            margin-bottom: 0.35rem;
+        .work-section p:last-child {
+            margin-bottom: 0;
         }
 
-        .writing-item a {
+        .sho-feature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0 0 0;
+        }
+
+        .sho-feature img {
+            width: 170px;
+            height: auto;
+            border: 12px solid #f5f1ed;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+
+        .sho-feature p {
+            margin: 0;
+            font-size: 1.3rem;
+            line-height: 1.35;
+            max-width: 200px;
+        }
+
+        .lists-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .chip-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .chip-item {
             display: block;
+            padding: 0.6rem 0.85rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #1f1329;
+            text-decoration: none;
         }
 
-        .writing-meta {
-            color: #8b7355;
-            font-size: 0.85rem;
-            margin-top: 0.15rem;
+        .chip-item:visited {
+            color: #1f1329;
+        }
+
+        .chip-item:hover {
+            filter: brightness(1.1);
+            color: #1f1329;
+        }
+
+        .chip-list a:nth-child(4n+1) { background: #d9b8a3; }
+        .chip-list a:nth-child(4n+2) { background: #c9b3d9; }
+        .chip-list a:nth-child(4n+3) { background: #d4c4b5; }
+        .chip-list a:nth-child(4n+4) { background: #b98f7a; }
+
+        .footer-links {
+            margin-top: 4rem;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
+            :root {
+                --gap-1: 18vh;
+            }
+
             body {
-                padding: 1.5rem 1rem;
+                padding: 1.5rem 1rem 4rem;
                 font-size: 14px;
             }
 
-            .columns {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .sho-feature {
+                flex-direction: column;
+                gap: 1.25rem;
             }
 
-            .subtitle {
-                margin-bottom: 2rem;
+            .sho-feature p {
+                text-align: center;
+                max-width: none;
+            }
+
+            .lists-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
         }
 
@@ -199,77 +305,82 @@
     <div class="name">Zak Hap</div>
     <div class="subtitle">measure once, cut twice — m1c2 product studio</div>
 
-    <div class="columns">
-        <div class="column">
-            <h2>About</h2>
-            <p>Based in NYC. Studied computer science and music composition at Columbia University. <a href="about.html">more →</a></p>
-            <p><a href="https://x.com/zakhap" target="_blank">X</a> <a href="https://github.com/zakhap" target="_blank">GitHub</a> <a href="https://www.are.na/zak-hap" target="_blank">Are.na</a> <a href="/feed.xml">RSS</a></p>
+    <div class="spacer" style="height: var(--gap-1);"></div>
+
+    <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University. <a href="about.html">more →</a></p>
+
+    <div class="dots-gap">
+        <p class="dot-line" style="margin-top: 10vh;">...</p>
+        <p class="dot-line" style="margin-top: 12vh;">....</p>
+        <p class="dot-line" style="margin-top: 14vh;">......</p>
+        <p class="dot-line" style="margin-top: 12vh;">...</p>
+    </div>
+
+    <div class="section-label">Some current and prior daylight projects:</div>
+    <div class="project-list">
+        <p><a href="https://hit.one" target="_blank">Tech Lead at Hit One</a> since October 2025</p>
+        <p>Product Lead at Common for 5 years</p>
+        <p>Co-founder at Odefi for 1 year</p>
+        <p>Co-founder at Liminal Media for 1 year</p>
+    </div>
+
+    <div class="dots-gap">
+        <p class="dot-line" style="margin-top: 15vh;">...</p>
+        <p class="dot-line" style="margin-top: 20vh;">............</p>
+        <p class="dot-line" style="margin-top: 25vh;">........................</p>
+        <p class="dot-line" style="margin-top: 30vh;">............................................</p>
+        <p class="dot-line" style="margin-top: 35vh;">............................................................</p>
+    </div>
+
+    <p class="aside">At this point you must be wondering what else this person does with their time.</p>
+
+    <div class="moon-cycle" aria-hidden="true">
+        <svg style="margin-top: 0rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="20" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 0.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="11" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 1.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="2" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 1.8rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="-7" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 2.4rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="-16" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 3rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="47" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 3.6rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="38" cy="20" r="18" fill="#1f1329" /></g></svg>
+        <svg style="margin-top: 4.2rem;" width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#f5f1ed" /><circle cx="29" cy="20" r="18" fill="#1f1329" /></g></svg>
+    </div>
+
+    <div class="section-label">Moonlight projects:</div>
+    <div class="work-section">
+        <p>Host of <a href="https://studyhall.nyc" target="_blank">Study Hall</a>, a creative building series on Monday nights in New York, with Charlie Freiberg.<br>
+        Recent venues: Lincoln Center, Collaborative Fund, NYC Resistor.</p>
+
+        <p>Board member at <a href="https://qubitmusic.com/" target="_blank">Qubit Music NYC</a>.</p>
+    </div>
+
+    <div class="sho-feature">
+        <img src="images/sho1.png" alt="Zak playing the Shō">
+        <p>He also plays<br>the Shō.</p>
+    </div>
+
+    <div class="spacer" style="height: var(--gap-1);"></div>
+
+    <div class="lists-grid">
+        <div class="list-col">
+            <div class="section-label">Some writings</div>
+            <div class="chip-list">
+                <a class="chip-item" href="tenets.html">Studio Practice Tenets</a>
+                <a class="chip-item" href="latent-space-as-medium.html">Latent Space as Medium</a>
+                <a class="chip-item" href="signatures.html">Signatures</a>
+                <a class="chip-item" href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a>
+            </div>
         </div>
 
-        <div class="column">
-            <h2>Work</h2>
-
-            <div class="work-section">
-                <div class="work-label">Daylight</div>
-                <p>Tech Lead at <a href="https://hit.one" target="_blank">Hit One</a>.</p>
-            </div>
-
-            <div class="work-section">
-                <div class="work-label">Nighttime</div>
-                <p>Host of <a href="https://studyhall.nyc" target="_blank">Study Hall</a>, a creative building series on Monday nights in New York, with Charlie Freiberg.<br>
-                Recent venues: Lincoln Center, Collaborative Fund, NYC Resistor.</p>
-                <p>Board member at <a href="https://qubitmusic.com/" target="_blank">Qubit Music NYC</a>.<br>
-                Aspiring App Star.</p>
-            </div>
-
-            <div class="work-section">
-                <div class="work-label">Backburners</div>
-                <p>Subtext Report.<br>
-                $TEMPLE.</p>
-            </div>
-
-            <div class="work-section">
-                <div class="work-label">Past</div>
-                <p>Co-founded Liminal Media and Odefi.<br>
-                Product Lead at Common (DAO Governance Platform).</p>
-            </div>
-        </div>
-
-        <div class="column">
-            <h2>Writing</h2>
-
-            <div class="writing-item">
-                <a href="tenets.html">Studio Practice Tenets</a>
-            </div>
-
-            <div class="writing-item">
-                <a href="latent-space-as-medium.html">Latent Space as Medium</a>
-            </div>
-
-            <div class="writing-item">
-                <a href="signatures.html">Signatures</a>
-            </div>
-
-            <div class="writing-item">
-                <a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a>
-            </div>
-
-
-
-            <h2 style="margin-top: 2rem;">App Musings</h2>
-
-            <div class="writing-item">
-                <a href="https://zindex.m1c2.xyz/" target="_blank">Z-Index: Book Recommendation Engine</a>
-            </div>
-
-            <div class="writing-item">
-                <a href="https://gbg.m1c2.xyz/" target="_blank">Glass Bead Game</a>
-            </div>
-
-            <div class="writing-item">
-                <a href="https://orange.m1c2.xyz/" target="_blank">Orange Shrine</a>
+        <div class="list-col">
+            <div class="section-label">Some app musings</div>
+            <div class="chip-list">
+                <a class="chip-item" href="https://zindex.m1c2.xyz/" target="_blank">Z-Index: Book Recommendation Engine</a>
+                <a class="chip-item" href="https://gbg.m1c2.xyz/" target="_blank">Glass Bead Game</a>
+                <a class="chip-item" href="https://orange.m1c2.xyz/" target="_blank">Orange Shrine</a>
             </div>
         </div>
     </div>
+
+    <p class="footer-links"><a href="https://x.com/zakhap" target="_blank">X</a> <a href="https://github.com/zakhap" target="_blank">GitHub</a> <a href="https://www.are.na/zak-hap" target="_blank">Are.na</a> <a href="/feed.xml">RSS</a></p>
 </body>
 </html>
