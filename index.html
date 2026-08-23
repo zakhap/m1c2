@@ -294,6 +294,39 @@
             line-height: 1.4;
         }
 
+        .machine-vision-row {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .machine-vision-text {
+            flex: 1;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #0a210f;
+            margin: 0;
+        }
+
+        .machine-vision-img {
+            width: 220px;
+            height: auto;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .machine-vision-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .machine-vision-img {
+                width: 60%;
+            }
+        }
+
         .full-bleed-strip {
             width: 100vw;
             margin: 0 0 4px calc(50% - 50vw);
@@ -876,6 +909,13 @@
             <a class="chip-item" href="https://zindex.m1c2.xyz/" target="_blank">Z-Index: Book Recommendation Engine</a>
             <a class="chip-item" href="https://gbg.m1c2.xyz/" target="_blank">Glass Bead Game</a>
             <a class="chip-item" href="https://orange.m1c2.xyz/" target="_blank">Orange Shrine</a>
+        </div>
+    </section>
+
+    <section class="section-machine-vision">
+        <div class="machine-vision-row">
+            <p class="machine-vision-text">Machines have learned to see. Without us. I have spent the summer teaching my machine to see, like Baldessari, like Hockney. To see fairies. To see fractals. I want to see what happens to the phone camera if we rewire its optical unconscious.</p>
+            <img class="machine-vision-img" src="images/machine-vision.gif" alt="">
         </div>
     </section>
 
