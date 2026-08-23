@@ -125,9 +125,7 @@
         }
 
         .dot-line {
-            color: #4a6d8f;
-            opacity: 0.55;
-            letter-spacing: 0.2em;
+            display: block;
             margin: 0;
         }
 
@@ -157,6 +155,7 @@
 
         .section-musings .section-label {
             border-style: dashed;
+            align-self: flex-end;
         }
 
         .section-musings .chip-item {
@@ -183,7 +182,7 @@
             .btc-aside {
                 display: block;
                 position: absolute;
-                top: 12%;
+                top: 15vh;
                 left: 100%;
                 margin-left: 2rem;
                 writing-mode: vertical-rl;
@@ -427,6 +426,13 @@
             font-weight: 500;
             text-align: left;
             margin: 0;
+        }
+
+        .big-statement-footnote {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #4a6d8f;
+            margin: 1rem 0 0 0;
         }
 
         .triangle-frame {
@@ -900,10 +906,10 @@
         <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University.</p>
 
         <div class="dots-gap">
-            <p class="dot-line" style="margin-top: 10vh;"></p>
-            <p class="dot-line" style="margin-top: 12vh;"></p>
-            <p class="dot-line" style="margin-top: 14vh;"></p>
-            <p class="dot-line" style="margin-top: 12vh;"></p>
+            <div class="dot-line" style="height: 10vh;"></div>
+            <div class="dot-line" style="height: 12vh;"></div>
+            <div class="dot-line" style="height: 14vh;"></div>
+            <div class="dot-line" style="height: 12vh;"></div>
         </div>
     </section>
 
@@ -936,11 +942,11 @@
         <p class="btc-aside">Bro how the Fuck do Bitcoins Work</p>
 
         <div class="dots-gap">
-            <p class="dot-line" style="margin-top: 15vh;"></p>
-            <p class="dot-line" style="margin-top: 20vh;"></p>
-            <p class="dot-line" style="margin-top: 25vh;"></p>
-            <p class="dot-line" style="margin-top: 30vh;"></p>
-            <p class="dot-line" style="margin-top: 35vh;"></p>
+            <div class="dot-line" style="height: 15vh;"></div>
+            <div class="dot-line" style="height: 20vh;"></div>
+            <div class="dot-line" style="height: 25vh;"></div>
+            <div class="dot-line" style="height: 30vh;"></div>
+            <div class="dot-line" style="height: 35vh;"></div>
 
             <div class="minerva-feature">
                 <img src="images/minerva-drawing.jpg" alt="Figure drawing from art class">
@@ -1007,7 +1013,7 @@
 
     <section class="section-machine-vision">
         <div class="machine-vision-row">
-            <p class="machine-vision-text">Machines have learned to see. Without us. I have spent the summer teaching my machine to see, like Baldessari, like Hockney. To see fairies. To see fractals. I want to see what happens to the phone camera if we rewire its optical unconscious.</p>
+            <p class="machine-vision-text">Machines have learned to see. Without us. I have spent the summer teaching my machine to see like Baldessari, like Hockney. To see fairies. To see fractals. I want to see what happens to the phone camera if we rewire its optical unconscious.</p>
             <img class="machine-vision-img" src="images/machine-vision.gif" alt="">
         </div>
     </section>
@@ -1049,7 +1055,8 @@
     </section>
 
     <section class="section-statement">
-        <p class="big-statement">soup is<br>a vegetable<br>in tea form,<br>meat ancillary</p>
+        <p class="big-statement">soup is<br>a vegetable*<br>in tea form,<br>meat ancillary</p>
+        <p class="big-statement-footnote">*im working on a cookbook on the boundaries of food</p>
     </section>
 
     <section class="section-critique">
