@@ -27,8 +27,8 @@
         }
 
         body {
-            background-color: #f7f1f9;
-            color: #0a210f;
+            background-color: #fafcff;
+            color: #10233d;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             line-height: 1.6;
             padding: 2rem 1.5rem 6rem;
@@ -86,8 +86,10 @@
         }
 
         .subtitle {
-            color: #a37762;
+            color: #1b5fa8;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .hero-image {
@@ -99,17 +101,19 @@
         }
 
         a {
-            color: #0a210f;
+            color: #10233d;
             text-decoration: underline;
+            text-decoration-color: #1b5fa8;
+            text-underline-offset: 2px;
             transition: color 0.1s ease;
         }
 
         a:visited {
-            color: #a37762;
+            color: #4a6d8f;
         }
 
         a:hover {
-            color: #42213d;
+            color: #1b5fa8;
         }
 
         .spacer {
@@ -121,8 +125,8 @@
         }
 
         .dot-line {
-            color: #a37762;
-            opacity: 0.45;
+            color: #4a6d8f;
+            opacity: 0.55;
             letter-spacing: 0.2em;
             margin: 0;
         }
@@ -140,18 +144,19 @@
             display: inline-block;
             align-self: flex-start;
             width: fit-content;
-            color: #0a210f;
-            background: #d9b8a3;
+            color: #10233d;
+            background: #fafcff;
+            border: 2px solid #1b5fa8;
             font-size: 2.2rem;
             font-weight: 500;
-            padding: 0.05em 0.25em;
+            padding: 0.05em 0.3em;
             margin: 0 0 1.5rem 0;
             letter-spacing: 0.02em;
             line-height: 1.2;
         }
 
         .section-musings .section-label {
-            background: #8c7aa9;
+            border-style: dashed;
         }
 
         .section-musings .chip-item {
@@ -159,7 +164,7 @@
         }
 
         .aside {
-            color: #a37762;
+            color: #4a6d8f;
             font-style: italic;
             text-align: left;
             margin: 0 0 3rem 0;
@@ -185,8 +190,8 @@
                 font-weight: 300;
                 font-size: 0.85rem;
                 letter-spacing: 0.15em;
-                color: rgba(10, 33, 15, 0.1);
-                background: #ede4de;
+                color: rgba(16, 35, 61, 0.15);
+                background: #dce9f5;
                 padding: 1.5rem 0.6rem;
                 white-space: nowrap;
             }
@@ -227,9 +232,11 @@
 
         .moonlight-header {
             text-align: center;
-            color: #0a210f;
+            color: #10233d;
             font-size: 1.4rem;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin: 0 0 2rem 0;
         }
 
@@ -247,7 +254,7 @@
 
         .two-col-table .desc {
             margin: 0 0 1rem 0;
-            color: #a37762;
+            color: #4a6d8f;
             text-align: justify;
         }
 
@@ -262,8 +269,8 @@
         .sho-feature img {
             width: 170px;
             height: auto;
-            border: 12px solid #0a210f;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+            border: 12px solid #1b5fa8;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
             flex-shrink: 0;
         }
 
@@ -305,7 +312,7 @@
             font-style: italic;
             font-size: 1.05rem;
             line-height: 1.6;
-            color: #0a210f;
+            color: #10233d;
             margin: 0;
         }
 
@@ -349,27 +356,31 @@
 
         .chip-item {
             display: block;
-            padding: 0.6rem 0.85rem;
+            box-sizing: border-box;
+            padding: 0.55rem 0.85rem;
             font-size: 1.05rem;
             font-weight: 600;
             line-height: 1.3;
-            color: #0a210f;
+            color: #10233d;
+            background: #fafcff;
+            border: 2px solid #1b5fa8;
             text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
 
         .chip-item:visited {
-            color: #0a210f;
+            color: #10233d;
         }
 
-        .chip-item:hover {
-            filter: brightness(1.1);
-            color: #0a210f;
-        }
+        .chip-list a:nth-child(4n+1) { border-style: solid; }
+        .chip-list a:nth-child(4n+2) { border-style: dashed; }
+        .chip-list a:nth-child(4n+3) { border-color: #4a6d8f; }
+        .chip-list a:nth-child(4n+4) { background: #dce9f5; }
 
-        .chip-list a:nth-child(4n+1) { background: #d9b8a3; }
-        .chip-list a:nth-child(4n+2) { background: #dc6bad; }
-        .chip-list a:nth-child(4n+3) { background: #d4c4b5; }
-        .chip-list a:nth-child(4n+4) { background: #b98f7a; }
+        .chip-list a:hover {
+            background: #1b5fa8;
+            color: #fafcff;
+        }
 
         .footer-links {
             margin-top: 4rem;
@@ -401,8 +412,9 @@
         }
 
         .quote-text a {
-            background: #dc6bad;
-            color: #42213d;
+            background: #fafcff;
+            color: #10233d;
+            border: 1.5px solid #1b5fa8;
             text-decoration: underline;
             box-decoration-break: clone;
             -webkit-box-decoration-break: clone;
@@ -423,7 +435,7 @@
             max-width: 280px;
             aspect-ratio: 1 / 1.05;
             padding: 10px;
-            background: #a37762;
+            background: #1b5fa8;
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             margin: 0 0 2rem auto;
         }
@@ -471,7 +483,7 @@
             margin: 0;
             font-size: 0.75rem;
             line-height: 1.35;
-            color: #0a210f;
+            color: #10233d;
         }
 
         .nightmare-cutout {
@@ -515,7 +527,7 @@
             font-style: italic;
             font-size: 1.3rem;
             line-height: 1.5;
-            color: #0a210f;
+            color: #10233d;
             max-width: 70%;
             margin: 0 0 1.5rem 0;
         }
@@ -543,16 +555,18 @@
         }
 
         .gigs-header .hl {
-            background: #8c7aa9;
-            color: #0a210f;
+            background: #fafcff;
+            color: #10233d;
+            border: 2px solid #1b5fa8;
             font-size: 1.3rem;
             font-weight: 600;
             line-height: 1.6;
         }
 
         .gig-item .hl {
-            background: #d9b8a3;
-            color: #0a210f;
+            background: #fafcff;
+            color: #10233d;
+            border: 1.5px dashed #4a6d8f;
             font-size: 0.95rem;
             line-height: 1.7;
         }
@@ -603,7 +617,7 @@
             font-style: italic;
             font-size: 0.85rem;
             line-height: 1.6;
-            color: #0a210f;
+            color: #10233d;
         }
 
         @media (max-width: 768px) {
@@ -737,10 +751,50 @@
         .room-lines line,
         .room-lines rect {
             fill: none;
-            stroke: #a37762;
+            stroke: #1b5fa8;
             stroke-width: 2;
             vector-effect: non-scaling-stroke;
             opacity: 0.35;
+        }
+
+        .room-lines .tick line {
+            stroke-width: 1;
+            opacity: 0.55;
+        }
+
+        .room-lines .dim-line line {
+            stroke-width: 1;
+            opacity: 0.45;
+        }
+
+        .dim-label {
+            position: fixed;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            color: #1b5fa8;
+            opacity: 0.55;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .dim-label-1 {
+            top: 57%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dim-label-2 {
+            top: 27%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .dim-label {
+                display: none;
+            }
         }
 
         .ceiling-hugger {
@@ -772,8 +826,30 @@
             <line x1="0" y1="100" x2="32" y2="48" />
             <line x1="100" y1="100" x2="68" y2="48" />
             <rect x="32" y="10" width="36" height="38" />
+
+            <g class="tick">
+                <line x1="30" y1="10" x2="34" y2="10" />
+                <line x1="32" y1="8" x2="32" y2="12" />
+                <line x1="66" y1="10" x2="70" y2="10" />
+                <line x1="68" y1="8" x2="68" y2="12" />
+                <line x1="30" y1="48" x2="34" y2="48" />
+                <line x1="32" y1="46" x2="32" y2="50" />
+                <line x1="66" y1="48" x2="70" y2="48" />
+                <line x1="68" y1="46" x2="68" y2="50" />
+                <line x1="48" y1="27" x2="52" y2="27" />
+                <line x1="50" y1="25" x2="50" y2="29" />
+            </g>
+
+            <g class="dim-line">
+                <line x1="32" y1="54" x2="32" y2="58" />
+                <line x1="68" y1="54" x2="68" y2="58" />
+                <line x1="32" y1="56" x2="68" y2="56" />
+            </g>
         </svg>
     </div>
+
+    <div class="dim-label dim-label-1">9'-4"</div>
+    <div class="dim-label dim-label-2">M1C2 STUDIO</div>
 
     <img class="ceiling-hugger" src="images/geotic-abysma.jpg" alt="">
 
@@ -860,14 +936,14 @@
 
     <section class="section-moonlight">
         <div class="moon-cycle" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#0a210f" /><circle cx="20" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#0a210f" /><circle cx="11" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#0a210f" /><circle cx="2" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#0a210f" /><circle cx="-7" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#0a210f" /><circle cx="-16" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#0a210f" /><circle cx="47" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#0a210f" /><circle cx="38" cy="20" r="18" fill="#f7f1f9" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#a37762" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#0a210f" /><circle cx="29" cy="20" r="18" fill="#f7f1f9" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="20" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="11" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="2" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="-7" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="-16" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="47" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="38" cy="20" r="18" fill="#fafcff" /></g></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="29" cy="20" r="18" fill="#fafcff" /></g></svg>
         </div>
 
         <h2 class="moonlight-header">Moonlight</h2>
