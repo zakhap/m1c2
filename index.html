@@ -423,10 +423,12 @@
         }
 
         .dome-strip {
-            flex: 0 0 60%;
-            width: 60%;
-            height: auto;
+            flex: 0 0 auto;
+            width: calc(60% + (50vw - 50%));
+            height: 92px;
+            object-fit: cover;
             display: block;
+            margin-left: calc(50% - 50vw);
         }
 
         .dome-caption {
@@ -458,6 +460,9 @@
 
             .dome-strip {
                 width: 100%;
+                height: auto;
+                object-fit: initial;
+                margin-left: 0;
             }
 
             .dome-caption {
