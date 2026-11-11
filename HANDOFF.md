@@ -62,6 +62,9 @@ asking; the "no JS" property is the point of the piece.
   that fills the height, and move the scroll cue beside the wall. `type.css` gives them the portrait type sizes.
 - Fallback: with `prefers-reduced-motion`, or in browsers without `animation-timeline: scroll()`
   (Firefox by default, Safari before 26), the same HTML shows as a plain stacked document.
+- Scroll snapping (`scroll-snap-type: y mandatory` on `html`, `scroll-snap-align: start` on `.stop`) makes every
+  page a snap point: the space bar and Page Down land exactly on the next page, and a scroll never rests mid-turn.
+  The stacked fallback turns snapping off. Remove those two lines for free scrolling.
 - Also in `engine.css`: the styled scrollbar, a clickable fallback rail (`.rail`, one link per pane,
   must list the page's pane ids), the scroll cue arrow (`.cue`) and the `^top` link.
 

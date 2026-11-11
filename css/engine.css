@@ -407,6 +407,11 @@ body { height: calc((var(--pages) + 1) * 100vh); overscroll-behavior: none; }
 body { height: auto; }
 html { scroll-behavior: smooth; }
 .stop { height: 100vh; }
+/* Every page is a snap point, so the space bar, Page Down and the arrow keys land exactly on the
+   next page (the browser's own page step is ~87% of the screen, which would land mid-turn), and a
+   scroll that stops between pages settles onto the nearer one. */
+html { scroll-snap-type: y mandatory; }
+.stop { scroll-snap-align: start; }
 
 .wall {
   position: fixed; left: 50%; top: 50%; width: 600px; height: 600px;
@@ -533,7 +538,7 @@ html { scroll-behavior: smooth; }
         and anyone who asks for reduced motion, get the same HTML as an
         ordinary stacked page. Anchors still work. ---- */
 @supports not (animation-timeline: scroll()) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto; scroll-snap-type: none; }
   .lines, .hud, .cue, .rail { display: none; }
   .totop { opacity: 1; }
   .stop { height: auto; }
@@ -543,7 +548,7 @@ html { scroll-behavior: smooth; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto; scroll-snap-type: none; }
   .lines, .hud, .cue, .rail { display: none; }
   .totop { opacity: 1; }
   .stop { height: auto; }
