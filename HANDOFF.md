@@ -65,8 +65,8 @@ asking; the "no JS" property is the point of the piece.
 - Scroll snapping (`scroll-snap-type: y mandatory` on `html`, `scroll-snap-align: start` on `.stop`) makes every
   page a snap point: the space bar and Page Down land exactly on the next page, and a scroll never rests mid-turn.
   The stacked fallback turns snapping off. Remove those two lines for free scrolling.
-- Also in `engine.css`: the styled scrollbar, a clickable fallback rail (`.rail`, one link per pane,
-  must list the page's pane ids), the scroll cue arrow (`.cue`) and the `^top` link.
+- Also in `engine.css`: the browser scrollbar is hidden and a drawn rail (`.rail`, one link per pane,
+  must list the page's pane ids) replaces it: click to jump, not draggable, the scroll cue arrow (`.cue`) and the `^top` link.
 
 ## Design decisions already made (don't relitigate without Zak)
 
@@ -114,8 +114,8 @@ asking; the "no JS" property is the point of the piece.
 1. ~~Landscape phones~~ fixed: own camera rule. Text is ~13px; a square wall on a 390px-tall screen can't do much better.
 2. ~~Lower case in prose~~ fixed: prose keeps its capitals.
 3. ~~Small text on laptops~~ improved: ~15px with `--cam: 1.6`. Go to 1.4 for bigger, but the cue then overlaps the wall.
-4. **The styled scrollbar did not render in the Claude app's viewer** for Zak, though it works in
-   Chrome. The drawn `.rail` covers that case (clickable, not draggable). Not diagnosed.
+4. ~~Styled scrollbar missing in the Claude app's viewer~~ moot: the browser scrollbar is now hidden everywhere
+   and the drawn `.rail` is the only scrollbar.
 5. **Mid-turn on portrait phones** the two visible walls are cropped at the screen edges.
 6. On the two turns where a wall passes through the viewer (panes 1→2 and 5→6), outgoing and
    incoming text overlap briefly.

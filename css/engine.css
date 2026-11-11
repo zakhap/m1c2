@@ -100,20 +100,13 @@
 * { margin: 0; box-sizing: border-box; }
 html { background: var(--bg); }
 
-/* The page's real scrollbar, restyled: a hairline track with a slim thumb in the ink colour.
-   Because it is the browser's own scrollbar it can be dragged, and clicking the track jumps. */
-html::-webkit-scrollbar { width: 13px; }
-html::-webkit-scrollbar-track {
-  background: linear-gradient(90deg, transparent 6px, color-mix(in srgb, var(--ink) 35%, transparent) 6px 7px, transparent 7px);
-  margin-block: 16vh;
-}
-html::-webkit-scrollbar-thumb {
-  background: var(--ink); background-clip: padding-box;
-  border: solid transparent; border-width: 0 5px; border-radius: 6px;     /* 3px of thumb inside a 13px grab area */
-}
-html::-webkit-scrollbar-thumb:hover, html::-webkit-scrollbar-thumb:active { border-width: 0 4px; }
-@supports not selector(::-webkit-scrollbar) {      /* Firefox */
-  html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
+/* The browser's own scrollbar is hidden; the drawn .rail (below) stands in for it. Only while the room
+   is showing: the stacked fallback (reduced motion, no scroll timelines) keeps the normal scrollbar. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html { scrollbar-width: none; }
+    html::-webkit-scrollbar { display: none; }
+  }
 }
 body { height: calc((var(--pages) + 1) * 100vh); overscroll-behavior: none; }
 
@@ -263,10 +256,9 @@ body { height: calc((var(--pages) + 1) * 100vh); overscroll-behavior: none; }
 }
 @media (orientation: portrait) { .cue { --cue-y: 50vmin; } }
 
-/* Fallback rail, for browsers that do not draw the styled scrollbar above (it looks the same).
-   It is a column of invisible links, one per page, so clicking it jumps to that page; the thumb
-   follows the scroll. It cannot be dragged. When the real scrollbar is present it takes up width,
-   and that width pushes this rail off-screen so the two never show together. */
+/* The scrollbar: a column of invisible links, one per page, so clicking it jumps to that page; the
+   thumb follows the scroll. It cannot be dragged. If a browser ever draws its own scrollbar anyway,
+   that scrollbar takes up width, and the width pushes this rail off-screen so the two never show together. */
 .rail {
   position: fixed; z-index: 3; top: 16vh; bottom: 16vh; width: 13px;
   right: calc((100% - 100vw) * 100);            /* 0 when there is no scrollbar gutter, far off-screen when there is */
