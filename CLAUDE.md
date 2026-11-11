@@ -4,32 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static HTML website for M1C2, a product studio founded by Zak Hap. The site showcases studio tenets, projects in various stages of development, and blog posts about art, technology, and product development.
+Static site for m1c2.xyz, the product studio of Zak Hap. The site is drawn as the inside of a wireframe
+tesseract: each page of content is a 600 × 600 px square of HTML pinned to a wall, and scrolling turns the
+tesseract through 4D to bring the next one in. **HTML and CSS only, no JavaScript** (a deliberate constraint;
+ask before adding a script).
 
-## Architecture
+**Read `HANDOFF.md` before changing anything.** It covers how the engine works, the design decisions already
+made, known problems and the working method (check every pane for overflow at desktop and phone size).
 
-- **Static HTML Site**: No build process or dependencies required
-- **Inline CSS**: Each HTML file contains its own embedded styles in `<style>` tags
-- **Shared Design System**: Consistent dark theme with monospace font across all pages
-  - Background: `#2d2d2d`
-  - Text: `#f0f0f0` 
-  - Accent: `#888`
-  - Links maintain underline styling with hover states
-- **Navigation**: Simple link-based navigation between pages
-- **Interactive Elements**: Minimal JavaScript for hover effects (e.g., Shō image on about.html)
+## Files
 
-## Content Structure
+- `index.html` home (11 panes); `tenets.html` and three essays (`latent-space-as-medium.html`,
+  `signatures.html`, `tyranny-of-pre-digestion.html`), paged by hand at ~140 words per pane
+- `css/type.css` all typography, layout and colour. This is the file to work in
+- `css/engine.css` the tesseract maths. Touch only the knobs in its first `:root` block and the camera media queries
+- `fonts/` STIX Two Text; `img/` site images (including `og.png`, the share card)
+- `images/` assets from the previous site, no longer referenced; kept so old links don't break
+- `feed.xml`, `sitemap.xml`, `robots.txt`, `llms.txt` hand-written; update them when adding an essay
 
-- `index.html` - Main landing page with tenets, current projects, and blog links
-- `about.html` - Personal bio for Zak Hap with interactive elements
-- `projects.html` - Comprehensive project pipeline (In Development, In Design, In Ideation)
-- Blog posts: `latent-space-as-medium.html`, `signatures.html`, `tyranny-of-pre-digestion.html`, `prompters.html`, `agent-response.html`
-- `images/` - Static assets (e.g., sho1.png)
-
-## Development Notes
-
-- No package.json or build tools - direct file editing
-- CSS is embedded in each HTML file for self-contained pages
-- Maintain consistent styling when adding new pages
-- Studio philosophy emphasizes "test in production" and iterative development
-- External links point to live demos on Vercel/Netlify for active projects
+No build step, no dependencies. Open `index.html` in Chrome, or serve the folder.

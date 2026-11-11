@@ -1,0 +1,657 @@
+/* engine.css: the tesseract. Generated; the knobs worth touching are in the first :root block.
+   Typography and layout live in type.css. */
+
+/* No script and no CSS 3D. One number, --p, follows the scroll. Every
+   corner of the tesseract is rotated in 4D and projected to the screen
+   inside calc(); every edge is a flat 1px line stretched between its two
+   corners with atan2() and hypot(). */
+
+@property --p { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --ca { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --sa { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --cb { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --sb { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --cc { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --sc { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --cd { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --sd { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --ce { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --se { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --Az1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Aw1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Ax2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Aw2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Ax3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Az3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Ay4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Aw4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Ay5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Az5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Ak { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --AX { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --AY { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Ad { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Au { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Acx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Acy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Acd { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Acw { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Asx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Asy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Am { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Aal { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bz1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bw1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bx2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bw2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bx3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bz3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --By4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bw4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --By5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bz5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bk { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --BX { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --BY { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bd { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bu { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bcx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bcy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bcd { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bcw { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bsx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bsy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bm { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --Bal { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@property --vis { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --lit { syntax: '<number>'; inherits: false; initial-value: 0; }
+
+@property --pi { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --pf { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --px { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --r0 { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --r1 { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --r2 { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --r3 { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --r4 { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --r5 { syntax: '<number>'; inherits: true; initial-value: 0; }
+
+:root {
+  --bg: #c9c9c9;
+  --ink: #000;                 /* lines, rules and text */
+  --warm: var(--ink);          /* line colour at w = -1 */
+  --cool: var(--ink);          /* line colour at w = +1 */
+  --pages: 6;
+  --wdist: 2;      /* 4D eye distance along w */
+  --cam: 1.6;      /* 3D eye, outside the tesseract (2.2 = whole outer cube in view, 0.55 = inside the inner room) */
+  --near: 0.1;     /* near clip plane */
+  --focal: 100;    /* vmin; longer lens to match the pulled-back eye */
+
+  /* ---- animation knobs ---- */
+  --ease: 0.6;     /* 0 = turn tracks the scroll exactly; 1 = each turn eases in and out, so pages settle */
+  --in-at: 0.15;   /* how far into a turn the arriving page starts to fade in (0 to 1) */
+  --in-len: 0.4;   /* how much of the turn that fade-in takes */
+  --out-at: 0.45;  /* how far into the next turn the leaving page starts to fade out */
+  --out-len: 0.4;  /* how much of the turn that fade-out takes */
+}
+* { margin: 0; box-sizing: border-box; }
+html { background: var(--bg); }
+
+/* The page's real scrollbar, restyled: a hairline track with a slim thumb in the ink colour.
+   Because it is the browser's own scrollbar it can be dragged, and clicking the track jumps. */
+html::-webkit-scrollbar { width: 13px; }
+html::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, transparent 6px, color-mix(in srgb, var(--ink) 35%, transparent) 6px 7px, transparent 7px);
+  margin-block: 16vh;
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--ink); background-clip: padding-box;
+  border: solid transparent; border-width: 0 5px; border-radius: 6px;     /* 3px of thumb inside a 13px grab area */
+}
+html::-webkit-scrollbar-thumb:hover, html::-webkit-scrollbar-thumb:active { border-width: 0 4px; }
+@supports not selector(::-webkit-scrollbar) {      /* Firefox */
+  html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
+}
+body { height: calc((var(--pages) + 1) * 100vh); overscroll-behavior: none; }
+
+.lines { position: fixed; inset: 0; overflow: hidden; }
+.scene {
+  animation: travel 48s linear infinite;       /* clock fallback */
+
+  /* Page k turns one plane by a quarter. mod() drops a finished turn back
+     to zero: a quarter-turn maps the tesseract onto itself, so the picture
+     is the same and each page starts clean. */
+  /* where we are: whole pages scrolled (--pi), how far into the current turn (--pf),
+     and which of the six turns it is (--px). The six turns repeat for as many pages as there are. */
+  --pi: round(down, var(--p));
+  --pf: calc(var(--p) - var(--pi));
+  --px: mod(var(--pi), 6);
+  --r0: calc(var(--pf) * max(0, 1 - max(var(--px) - 0, 0 - var(--px))));
+  --t0: calc(var(--r0) + var(--ease) * (var(--r0) * var(--r0) * (3 - 2 * var(--r0)) - var(--r0)));
+  --r1: calc(var(--pf) * max(0, 1 - max(var(--px) - 1, 1 - var(--px))));
+  --t1: calc(var(--r1) + var(--ease) * (var(--r1) * var(--r1) * (3 - 2 * var(--r1)) - var(--r1)));
+  --r2: calc(var(--pf) * max(0, 1 - max(var(--px) - 2, 2 - var(--px))));
+  --t2: calc(var(--r2) + var(--ease) * (var(--r2) * var(--r2) * (3 - 2 * var(--r2)) - var(--r2)));
+  --r3: calc(var(--pf) * max(0, 1 - max(var(--px) - 3, 3 - var(--px))));
+  --t3: calc(var(--r3) + var(--ease) * (var(--r3) * var(--r3) * (3 - 2 * var(--r3)) - var(--r3)));
+  --r4: calc(var(--pf) * max(0, 1 - max(var(--px) - 4, 4 - var(--px))));
+  --t4: calc(var(--r4) + var(--ease) * (var(--r4) * var(--r4) * (3 - 2 * var(--r4)) - var(--r4)));
+  --r5: calc(var(--pf) * max(0, 1 - max(var(--px) - 5, 5 - var(--px))));
+  --t5: calc(var(--r5) + var(--ease) * (var(--r5) * var(--r5) * (3 - 2 * var(--r5)) - var(--r5)));
+  --qa: calc((var(--t0) - var(--t4)) * 90deg);   /* z ↔ w : pages 1 and 5 (reversed) */
+  --qb: calc(var(--t1) * 90deg);                 /* x ↔ w : page 2 */
+  --qc: calc(var(--t2) * 90deg);                 /* x ↔ z : page 3 */
+  --qd: calc(var(--t3) * 90deg);                 /* y ↔ w : page 4 */
+  --qe: calc(var(--t5) * 90deg);                 /* y ↔ z : page 6 */
+  --ca: cos(var(--qa)); --sa: sin(var(--qa));
+  --cb: cos(var(--qb)); --sb: sin(var(--qb));
+  --cc: cos(var(--qc)); --sc: sin(var(--qc));
+  --cd: cos(var(--qd)); --sd: sin(var(--qd));
+  --ce: cos(var(--qe)); --se: sin(var(--qe));
+}
+/* --last is the index of the final page (pages - 1). Set it on <main> in each HTML file. */
+@keyframes travel { from { --p: 0; } to { --p: var(--last, 6); } }
+@supports (animation-timeline: scroll()) {
+  .scene {
+    animation-duration: auto; animation-iteration-count: 1;
+    animation-fill-mode: both; animation-timeline: scroll(root block);
+  }
+}
+
+/* ---- One edge. Its inline style holds the two corners it joins. ---- */
+.lines > i {
+  position: absolute; left: 50%; top: 50%;
+  width: 100vmin; height: 1.25px; margin-top: -0.625px;
+  transform-origin: 0 50%;
+
+  /* endpoint A: five plane rotations (only one is ever non-zero) */
+  --Az1: calc(var(--AZ) * var(--ca) - var(--AW) * var(--sa));
+  --Aw1: calc(var(--AZ) * var(--sa) + var(--AW) * var(--ca));
+  --Ax2: calc(var(--AX0) * var(--cb) - var(--Aw1) * var(--sb));
+  --Aw2: calc(var(--AX0) * var(--sb) + var(--Aw1) * var(--cb));
+  --Ax3: calc(var(--Ax2) * var(--cc) - var(--Az1) * var(--sc));
+  --Az3: calc(var(--Ax2) * var(--sc) + var(--Az1) * var(--cc));
+  --Ay4: calc(var(--AY0) * var(--cd) - var(--Aw2) * var(--sd));
+  --Aw4: calc(var(--AY0) * var(--sd) + var(--Aw2) * var(--cd));
+  --Ay5: calc(var(--Ay4) * var(--ce) - var(--Az3) * var(--se));
+  --Az5: calc(var(--Ay4) * var(--se) + var(--Az3) * var(--ce));
+  /* 4D → 3D perspective, then depth in front of the eye */
+  --Ak: calc(var(--wdist) / (var(--wdist) - var(--Aw4)));
+  --AX: calc(var(--Ax3) * var(--Ak));
+  --AY: calc(var(--Ay5) * var(--Ak));
+  --Ad: calc(var(--cam) - var(--Az5) * var(--Ak));
+  /* slide this end along the edge to the near plane if it is behind us */
+  --Au: clamp(0, (var(--near) - var(--Ad)) / max(0.0001, var(--Bd) - var(--Ad)), 1);
+  --Acx: calc(var(--AX) + (var(--BX) - var(--AX)) * var(--Au));
+  --Acy: calc(var(--AY) + (var(--BY) - var(--AY)) * var(--Au));
+  --Acd: calc(var(--Ad) + (var(--Bd) - var(--Ad)) * var(--Au));
+  --Acw: calc(var(--Aw4) + (var(--Bw4) - var(--Aw4)) * var(--Au));
+  /* 3D → screen, in vmin from centre */
+  --Asx: calc(var(--Acx) / max(var(--near), var(--Acd)) * var(--focal));
+  --Asy: calc(-1 * var(--Acy) / max(var(--near), var(--Acd)) * var(--focal));
+  /* tint by w, fade by depth */
+  --Am: clamp(0, (var(--Acw) + 1) / 2, 1);
+  --Aal: clamp(0.22, 3 / (0.6 + var(--Acd)), 1);
+  --Acol: color-mix(in srgb, color-mix(in srgb, var(--cool) calc(var(--Am) * 100%), var(--warm)) calc(var(--Aal) * 100%), transparent);
+
+  /* endpoint B: five plane rotations (only one is ever non-zero) */
+  --Bz1: calc(var(--BZ) * var(--ca) - var(--BW) * var(--sa));
+  --Bw1: calc(var(--BZ) * var(--sa) + var(--BW) * var(--ca));
+  --Bx2: calc(var(--BX0) * var(--cb) - var(--Bw1) * var(--sb));
+  --Bw2: calc(var(--BX0) * var(--sb) + var(--Bw1) * var(--cb));
+  --Bx3: calc(var(--Bx2) * var(--cc) - var(--Bz1) * var(--sc));
+  --Bz3: calc(var(--Bx2) * var(--sc) + var(--Bz1) * var(--cc));
+  --By4: calc(var(--BY0) * var(--cd) - var(--Bw2) * var(--sd));
+  --Bw4: calc(var(--BY0) * var(--sd) + var(--Bw2) * var(--cd));
+  --By5: calc(var(--By4) * var(--ce) - var(--Bz3) * var(--se));
+  --Bz5: calc(var(--By4) * var(--se) + var(--Bz3) * var(--ce));
+  /* 4D → 3D perspective, then depth in front of the eye */
+  --Bk: calc(var(--wdist) / (var(--wdist) - var(--Bw4)));
+  --BX: calc(var(--Bx3) * var(--Bk));
+  --BY: calc(var(--By5) * var(--Bk));
+  --Bd: calc(var(--cam) - var(--Bz5) * var(--Bk));
+  /* slide this end along the edge to the near plane if it is behind us */
+  --Bu: clamp(0, (var(--near) - var(--Bd)) / max(0.0001, var(--Ad) - var(--Bd)), 1);
+  --Bcx: calc(var(--BX) + (var(--AX) - var(--BX)) * var(--Bu));
+  --Bcy: calc(var(--BY) + (var(--AY) - var(--BY)) * var(--Bu));
+  --Bcd: calc(var(--Bd) + (var(--Ad) - var(--Bd)) * var(--Bu));
+  --Bcw: calc(var(--Bw4) + (var(--Aw4) - var(--Bw4)) * var(--Bu));
+  /* 3D → screen, in vmin from centre */
+  --Bsx: calc(var(--Bcx) / max(var(--near), var(--Bcd)) * var(--focal));
+  --Bsy: calc(-1 * var(--Bcy) / max(var(--near), var(--Bcd)) * var(--focal));
+  /* tint by w, fade by depth */
+  --Bm: clamp(0, (var(--Bcw) + 1) / 2, 1);
+  --Bal: clamp(0.22, 3 / (0.6 + var(--Bcd)), 1);
+  --Bcol: color-mix(in srgb, color-mix(in srgb, var(--cool) calc(var(--Bm) * 100%), var(--warm)) calc(var(--Bal) * 100%), transparent);
+
+  --dx: calc(var(--Bsx) - var(--Asx));
+  --dy: calc(var(--Bsy) - var(--Asy));
+  /* hidden when both ends are behind the eye */
+  --vis: clamp(0, (max(var(--Ad), var(--Bd)) - var(--near)) * 100000, 1);
+  opacity: var(--vis);
+  /* engraved look: a white highlight 1px down-and-right of the line on
+     screen. In the line's own rotated frame that is this far sideways: */
+  --ang: atan2(var(--dy), var(--dx));
+  --lit: calc(cos(var(--ang)) - sin(var(--ang)));
+  box-shadow: 0 calc(var(--lit) * 1.25px) 0 rgb(255 255 255 / calc(0.9 * var(--Aal)));
+  background: linear-gradient(90deg, var(--Acol), var(--Bcol));
+  transform:
+    translate(calc(var(--Asx) * 1vmin), calc(var(--Asy) * 1vmin))
+    rotate(var(--ang))
+    scaleX(calc(hypot(var(--dx), var(--dy)) / 100));   /* base is 100vmin wide, so pixel rounding stays invisible */
+}
+
+/* scroll cue: a small glowing arrow on the floor below the text wall. It stays on for as long
+   as there is another page below, and fades out as you arrive at the last one. */
+.cue {
+  position: fixed; z-index: 3; left: 50%; top: calc(50% + var(--cue-y, 33vmin));
+  width: 22px; height: 26px; margin: -13px 0 0 -11px; pointer-events: none;
+  opacity: clamp(0, (var(--last, 6) - var(--p)) * 4, 1);    /* stays on while you scroll; fades out only on the way into the last page */
+  animation: cue-bob 1.8s ease-in-out infinite;
+}
+.cue::before {
+  content: ""; position: absolute; inset: 0; background: var(--ink);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Cpath d='M11 1v23M2.5 15.5l8.5 8.5 8.5-8.5'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Cpath d='M11 1v23M2.5 15.5l8.5 8.5 8.5-8.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@keyframes cue-bob {
+  0%, 100% { transform: translateY(-4px); filter: drop-shadow(0 0 2px color-mix(in srgb, var(--ink) 35%, transparent)); }
+  50%      { transform: translateY(5px);  filter: drop-shadow(0 0 7px var(--ink)) drop-shadow(0 0 14px color-mix(in srgb, var(--ink) 60%, transparent)); }
+}
+@media (orientation: portrait) { .cue { --cue-y: 50vmin; } }
+
+/* Fallback rail, for browsers that do not draw the styled scrollbar above (it looks the same).
+   It is a column of invisible links, one per page, so clicking it jumps to that page; the thumb
+   follows the scroll. It cannot be dragged. When the real scrollbar is present it takes up width,
+   and that width pushes this rail off-screen so the two never show together. */
+.rail {
+  position: fixed; z-index: 3; top: 16vh; bottom: 16vh; width: 13px;
+  right: calc((100% - 100vw) * 100);            /* 0 when there is no scrollbar gutter, far off-screen when there is */
+  display: flex; flex-direction: column;
+  --pages: calc(var(--last, 6) + 1);
+}
+.rail a { flex: 1; }
+.rail::before { content: ""; position: absolute; left: 6px; top: 0; bottom: 0; width: 1px; background: color-mix(in srgb, var(--ink) 35%, transparent); pointer-events: none; }
+.rail::after  { content: ""; position: absolute; left: 5px; width: 3px; border-radius: 2px; background: var(--ink); pointer-events: none;
+  height: calc(100% / var(--pages)); top: calc(var(--p) / var(--pages) * 100%); }
+.rail:hover::after { left: 4px; width: 5px; }
+
+/* floating link back to the first page: fades in once you leave it */
+.totop {
+  position: fixed; z-index: 4; right: 16px; bottom: calc(16vh - 34px);     /* tucked under the end of the scrollbar, clear of the room's corner line */
+  font: 12px/1.5 "Courier New", Courier, monospace; color: var(--ink); text-decoration: none;
+  opacity: clamp(0, var(--p) * 4, 1);
+}
+.totop:hover, .totop:focus-visible { text-decoration: underline; }
+
+.hud {
+  position: fixed; left: 20px; bottom: 18px; width: max-content;
+  padding-top: 9px; pointer-events: none; user-select: none;
+  font: 12px/1.5 "Courier New", Courier, monospace;
+  color: color-mix(in srgb, var(--ink) 60%, transparent); white-space: nowrap;
+}
+.hud::before, .hud::after {
+  content: ""; position: absolute; left: 0; top: 0; height: 1px; width: 100%;
+  background: color-mix(in srgb, var(--ink) 20%, transparent);
+}
+.hud::after {
+  background: var(--cool); transform-origin: 0 50%;
+  transform: scaleX(calc(var(--p) / var(--pages)));
+}
+
+/* ---- Pages on walls: real HTML, warped onto a face by a matrix3d whose
+        entries are solved in calc() from the face's four projected
+        corners (top-left, top-right, bottom-right, bottom-left). ---- */
+@property --vpx { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --C0X0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0Y0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0Z { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0W { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0z1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0w1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0x2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0w2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0x3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0z3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0y4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0w4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0y5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0z5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0k { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0d { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0sx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C0sy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1X0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1Y0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1Z { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1W { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1z1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1w1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1x2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1w2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1x3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1z3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1y4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1w4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1y5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1z5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1k { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1d { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1sx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C1sy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2X0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2Y0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2Z { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2W { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2z1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2w1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2x2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2w2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2x3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2z3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2y4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2w4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2y5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2z5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2k { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2d { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2sx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C2sy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3X0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3Y0 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3Z { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3W { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3z1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3w1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3x2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3w2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3x3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3z3 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3y4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3w4 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3y5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3z5 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3k { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3d { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3sx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --C3sy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --hit { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --on { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dx1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dx2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --hsx { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dy1 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dy2 { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --hsy { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --den { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --ok { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dn { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --g { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --h { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --ha { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --hb { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --hd { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --he { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --dmin { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --show { syntax: '<number>'; inherits: false; initial-value: 0; }
+
+
+.scene { --vpx: tan(atan2(1vmin, 1px)); }   /* how many px in 1vmin, as a plain number */
+
+/* Each page is a real in-flow section one screen tall, so the document
+   has ordinary scroll positions and #anchors; its text is lifted out
+   (position: fixed) and pinned to a wall. */
+body { height: auto; }
+html { scroll-behavior: smooth; }
+.stop { height: 100vh; }
+
+.wall {
+  position: fixed; left: 50%; top: 50%; width: 600px; height: 600px;
+  transform-origin: 0 0; overflow: hidden;
+
+  --on: clamp(0, (var(--p) - var(--n)) * 100000 + 1, 1);   /* 1 once scroll reaches page n */
+
+  /* corner 0: before this page is reached it rides the incoming face (i…), after that the far wall (f…) */
+  --C0X0: calc(var(--f0x) * var(--on) + var(--i0x) * (1 - var(--on)));
+  --C0Y0: calc(var(--f0y) * var(--on) + var(--i0y) * (1 - var(--on)));
+  --C0Z:  calc(var(--f0z) * var(--on) + var(--i0z) * (1 - var(--on)));
+  --C0W:  calc(var(--f0w) * var(--on) + var(--i0w) * (1 - var(--on)));
+  --C0z1: calc(var(--C0Z) * var(--ca) - var(--C0W) * var(--sa));
+  --C0w1: calc(var(--C0Z) * var(--sa) + var(--C0W) * var(--ca));
+  --C0x2: calc(var(--C0X0) * var(--cb) - var(--C0w1) * var(--sb));
+  --C0w2: calc(var(--C0X0) * var(--sb) + var(--C0w1) * var(--cb));
+  --C0x3: calc(var(--C0x2) * var(--cc) - var(--C0z1) * var(--sc));
+  --C0z3: calc(var(--C0x2) * var(--sc) + var(--C0z1) * var(--cc));
+  --C0y4: calc(var(--C0Y0) * var(--cd) - var(--C0w2) * var(--sd));
+  --C0w4: calc(var(--C0Y0) * var(--sd) + var(--C0w2) * var(--cd));
+  --C0y5: calc(var(--C0y4) * var(--ce) - var(--C0z3) * var(--se));
+  --C0z5: calc(var(--C0y4) * var(--se) + var(--C0z3) * var(--ce));
+  --C0k: calc(var(--wdist) / (var(--wdist) - var(--C0w4)));
+  --C0d: calc(var(--cam) - var(--C0z5) * var(--C0k));
+  --C0sx: calc(var(--C0x3) * var(--C0k) / max(0.12, var(--C0d)) * var(--focal));
+  --C0sy: calc(-1 * var(--C0y5) * var(--C0k) / max(0.12, var(--C0d)) * var(--focal));
+  /* corner 1: before this page is reached it rides the incoming face (i…), after that the far wall (f…) */
+  --C1X0: calc(var(--f1x) * var(--on) + var(--i1x) * (1 - var(--on)));
+  --C1Y0: calc(var(--f1y) * var(--on) + var(--i1y) * (1 - var(--on)));
+  --C1Z:  calc(var(--f1z) * var(--on) + var(--i1z) * (1 - var(--on)));
+  --C1W:  calc(var(--f1w) * var(--on) + var(--i1w) * (1 - var(--on)));
+  --C1z1: calc(var(--C1Z) * var(--ca) - var(--C1W) * var(--sa));
+  --C1w1: calc(var(--C1Z) * var(--sa) + var(--C1W) * var(--ca));
+  --C1x2: calc(var(--C1X0) * var(--cb) - var(--C1w1) * var(--sb));
+  --C1w2: calc(var(--C1X0) * var(--sb) + var(--C1w1) * var(--cb));
+  --C1x3: calc(var(--C1x2) * var(--cc) - var(--C1z1) * var(--sc));
+  --C1z3: calc(var(--C1x2) * var(--sc) + var(--C1z1) * var(--cc));
+  --C1y4: calc(var(--C1Y0) * var(--cd) - var(--C1w2) * var(--sd));
+  --C1w4: calc(var(--C1Y0) * var(--sd) + var(--C1w2) * var(--cd));
+  --C1y5: calc(var(--C1y4) * var(--ce) - var(--C1z3) * var(--se));
+  --C1z5: calc(var(--C1y4) * var(--se) + var(--C1z3) * var(--ce));
+  --C1k: calc(var(--wdist) / (var(--wdist) - var(--C1w4)));
+  --C1d: calc(var(--cam) - var(--C1z5) * var(--C1k));
+  --C1sx: calc(var(--C1x3) * var(--C1k) / max(0.12, var(--C1d)) * var(--focal));
+  --C1sy: calc(-1 * var(--C1y5) * var(--C1k) / max(0.12, var(--C1d)) * var(--focal));
+  /* corner 2: before this page is reached it rides the incoming face (i…), after that the far wall (f…) */
+  --C2X0: calc(var(--f2x) * var(--on) + var(--i2x) * (1 - var(--on)));
+  --C2Y0: calc(var(--f2y) * var(--on) + var(--i2y) * (1 - var(--on)));
+  --C2Z:  calc(var(--f2z) * var(--on) + var(--i2z) * (1 - var(--on)));
+  --C2W:  calc(var(--f2w) * var(--on) + var(--i2w) * (1 - var(--on)));
+  --C2z1: calc(var(--C2Z) * var(--ca) - var(--C2W) * var(--sa));
+  --C2w1: calc(var(--C2Z) * var(--sa) + var(--C2W) * var(--ca));
+  --C2x2: calc(var(--C2X0) * var(--cb) - var(--C2w1) * var(--sb));
+  --C2w2: calc(var(--C2X0) * var(--sb) + var(--C2w1) * var(--cb));
+  --C2x3: calc(var(--C2x2) * var(--cc) - var(--C2z1) * var(--sc));
+  --C2z3: calc(var(--C2x2) * var(--sc) + var(--C2z1) * var(--cc));
+  --C2y4: calc(var(--C2Y0) * var(--cd) - var(--C2w2) * var(--sd));
+  --C2w4: calc(var(--C2Y0) * var(--sd) + var(--C2w2) * var(--cd));
+  --C2y5: calc(var(--C2y4) * var(--ce) - var(--C2z3) * var(--se));
+  --C2z5: calc(var(--C2y4) * var(--se) + var(--C2z3) * var(--ce));
+  --C2k: calc(var(--wdist) / (var(--wdist) - var(--C2w4)));
+  --C2d: calc(var(--cam) - var(--C2z5) * var(--C2k));
+  --C2sx: calc(var(--C2x3) * var(--C2k) / max(0.12, var(--C2d)) * var(--focal));
+  --C2sy: calc(-1 * var(--C2y5) * var(--C2k) / max(0.12, var(--C2d)) * var(--focal));
+  /* corner 3: before this page is reached it rides the incoming face (i…), after that the far wall (f…) */
+  --C3X0: calc(var(--f3x) * var(--on) + var(--i3x) * (1 - var(--on)));
+  --C3Y0: calc(var(--f3y) * var(--on) + var(--i3y) * (1 - var(--on)));
+  --C3Z:  calc(var(--f3z) * var(--on) + var(--i3z) * (1 - var(--on)));
+  --C3W:  calc(var(--f3w) * var(--on) + var(--i3w) * (1 - var(--on)));
+  --C3z1: calc(var(--C3Z) * var(--ca) - var(--C3W) * var(--sa));
+  --C3w1: calc(var(--C3Z) * var(--sa) + var(--C3W) * var(--ca));
+  --C3x2: calc(var(--C3X0) * var(--cb) - var(--C3w1) * var(--sb));
+  --C3w2: calc(var(--C3X0) * var(--sb) + var(--C3w1) * var(--cb));
+  --C3x3: calc(var(--C3x2) * var(--cc) - var(--C3z1) * var(--sc));
+  --C3z3: calc(var(--C3x2) * var(--sc) + var(--C3z1) * var(--cc));
+  --C3y4: calc(var(--C3Y0) * var(--cd) - var(--C3w2) * var(--sd));
+  --C3w4: calc(var(--C3Y0) * var(--sd) + var(--C3w2) * var(--cd));
+  --C3y5: calc(var(--C3y4) * var(--ce) - var(--C3z3) * var(--se));
+  --C3z5: calc(var(--C3y4) * var(--se) + var(--C3z3) * var(--ce));
+  --C3k: calc(var(--wdist) / (var(--wdist) - var(--C3w4)));
+  --C3d: calc(var(--cam) - var(--C3z5) * var(--C3k));
+  --C3sx: calc(var(--C3x3) * var(--C3k) / max(0.12, var(--C3d)) * var(--focal));
+  --C3sy: calc(-1 * var(--C3y5) * var(--C3k) / max(0.12, var(--C3d)) * var(--focal));
+
+  /* unit square → quadrilateral (Heckbert) */
+  --dx1: calc(var(--C1sx) - var(--C2sx));
+  --dx2: calc(var(--C3sx) - var(--C2sx));
+  --hsx: calc(var(--C0sx) - var(--C1sx) + var(--C2sx) - var(--C3sx));
+  --dy1: calc(var(--C1sy) - var(--C2sy));
+  --dy2: calc(var(--C3sy) - var(--C2sy));
+  --hsy: calc(var(--C0sy) - var(--C1sy) + var(--C2sy) - var(--C3sy));
+  --den: calc(var(--dx1) * var(--dy2) - var(--dx2) * var(--dy1));
+  --ok:  clamp(0, (max(var(--den), -1 * var(--den)) - 0.001) * 100000, 1);  /* 0 when edge-on */
+  --dn:  calc(var(--den) + 1 - var(--ok));
+  --g:   calc((var(--hsx) * var(--dy2) - var(--dx2) * var(--hsy)) / var(--dn));
+  --h:   calc((var(--dx1) * var(--hsy) - var(--hsx) * var(--dy1)) / var(--dn));
+  --ha:  calc(var(--C1sx) - var(--C0sx) + var(--g) * var(--C1sx));
+  --hb:  calc(var(--C3sx) - var(--C0sx) + var(--h) * var(--C3sx));
+  --hd:  calc(var(--C1sy) - var(--C0sy) + var(--g) * var(--C1sy));
+  --he:  calc(var(--C3sy) - var(--C0sy) + var(--h) * var(--C3sy));
+
+  /* fade in while arriving, out while leaving; gone if the wall is passing through us */
+  --dmin: min(var(--C0d), var(--C1d), var(--C2d), var(--C3d));
+  --show: calc(var(--ok) * clamp(0, (var(--dmin) - 0.12) * 100000, 1)
+          * min(clamp(0, (var(--p) - var(--n) + 1 - var(--in-at)) / var(--in-len), 1),
+                clamp(0, 1 - (var(--p) - var(--n) - var(--out-at)) / var(--out-len), 1)));
+  opacity: var(--show);
+  --hit: clamp(0, var(--show) * 100000, 1);   /* 0 while invisible: collapses the pane so its links can't be clicked */
+  transform: scale(var(--hit)) scale(var(--vpx)) matrix3d(
+    calc(var(--ha) / 600), calc(var(--hd) / 600), 0, calc(var(--g) / 600),
+    calc(var(--hb) / 600), calc(var(--he) / 600), 0, calc(var(--h) / 600),
+    0, 0, 1, 0,
+    var(--C0sx), var(--C0sy), 0, 1);
+}
+@media (orientation: portrait) {
+  :root { --cam: 0.55; --focal: 76; }   /* phones: stay inside the room so the text wall fills the width */
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  :root { --cam: 0.55; --focal: 82; }   /* landscape phones: inside the room, so the wall fills the height */
+  .cue { --cue-y: 0px; left: calc(50% + 50vh + 28px); }   /* beside the wall, not over its text */
+}
+
+/* ---- Plain-document fallback: browsers without scroll-driven animation,
+        and anyone who asks for reduced motion, get the same HTML as an
+        ordinary stacked page. Anchors still work. ---- */
+@supports not (animation-timeline: scroll()) {
+  html { scroll-behavior: auto; }
+  .lines, .hud, .cue, .rail { display: none; }
+  .totop { opacity: 1; }
+  .stop { height: auto; }
+  .wall {
+    position: static; transform: none; opacity: 1;
+    width: auto; max-width: 600px; height: auto; margin: 0 auto 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lines, .hud, .cue, .rail { display: none; }
+  .totop { opacity: 1; }
+  .stop { height: auto; }
+  .wall {
+    position: static; transform: none; opacity: 1;
+    width: auto; max-width: 600px; height: auto; margin: 0 auto 24px;
+  }
+}
+
+/* Keyboard users: tabbing to a link on a page that isn't in view lays that
+   page flat in the middle of the screen while focus is inside it. */
+.wall:has(:focus-visible) {
+  opacity: 1; z-index: 2; background-color: var(--bg); outline: 2px solid var(--ink);
+  transform: scale(calc(var(--vpx) * 0.14)) translate(-50%, -50%);
+}
+
+/* ---- generated constants: which two corners each line joins ---- */
+.lines > i:nth-child(1) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: -1; --BZ: -1; --BW: -1; }
+.lines > i:nth-child(2) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: -1; --BY0: 1; --BZ: -1; --BW: -1; }
+.lines > i:nth-child(3) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: -1; --BY0: -1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(4) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: -1; --BY0: -1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(5) { --AX0: 1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: -1; --BW: -1; }
+.lines > i:nth-child(6) { --AX0: 1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: -1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(7) { --AX0: 1; --AY0: -1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: -1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(8) { --AX0: -1; --AY0: 1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: -1; --BW: -1; }
+.lines > i:nth-child(9) { --AX0: -1; --AY0: 1; --AZ: -1; --AW: -1; --BX0: -1; --BY0: 1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(10) { --AX0: -1; --AY0: 1; --AZ: -1; --AW: -1; --BX0: -1; --BY0: 1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(11) { --AX0: 1; --AY0: 1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(12) { --AX0: 1; --AY0: 1; --AZ: -1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(13) { --AX0: -1; --AY0: -1; --AZ: 1; --AW: -1; --BX0: 1; --BY0: -1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(14) { --AX0: -1; --AY0: -1; --AZ: 1; --AW: -1; --BX0: -1; --BY0: 1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(15) { --AX0: -1; --AY0: -1; --AZ: 1; --AW: -1; --BX0: -1; --BY0: -1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(16) { --AX0: 1; --AY0: -1; --AZ: 1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(17) { --AX0: 1; --AY0: -1; --AZ: 1; --AW: -1; --BX0: 1; --BY0: -1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(18) { --AX0: -1; --AY0: 1; --AZ: 1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: -1; }
+.lines > i:nth-child(19) { --AX0: -1; --AY0: 1; --AZ: 1; --AW: -1; --BX0: -1; --BY0: 1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(20) { --AX0: 1; --AY0: 1; --AZ: 1; --AW: -1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(21) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: 1; --BX0: 1; --BY0: -1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(22) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: 1; --BX0: -1; --BY0: 1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(23) { --AX0: -1; --AY0: -1; --AZ: -1; --AW: 1; --BX0: -1; --BY0: -1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(24) { --AX0: 1; --AY0: -1; --AZ: -1; --AW: 1; --BX0: 1; --BY0: 1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(25) { --AX0: 1; --AY0: -1; --AZ: -1; --AW: 1; --BX0: 1; --BY0: -1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(26) { --AX0: -1; --AY0: 1; --AZ: -1; --AW: 1; --BX0: 1; --BY0: 1; --BZ: -1; --BW: 1; }
+.lines > i:nth-child(27) { --AX0: -1; --AY0: 1; --AZ: -1; --AW: 1; --BX0: -1; --BY0: 1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(28) { --AX0: 1; --AY0: 1; --AZ: -1; --AW: 1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(29) { --AX0: -1; --AY0: -1; --AZ: 1; --AW: 1; --BX0: 1; --BY0: -1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(30) { --AX0: -1; --AY0: -1; --AZ: 1; --AW: 1; --BX0: -1; --BY0: 1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(31) { --AX0: 1; --AY0: -1; --AZ: 1; --AW: 1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: 1; }
+.lines > i:nth-child(32) { --AX0: -1; --AY0: 1; --AZ: 1; --AW: 1; --BX0: 1; --BY0: 1; --BZ: 1; --BW: 1; }
+
+/* ---- generated constants ----
+   Every page rests on the far wall of the inner room (f...). Before its turn it rides in on
+   another face of the tesseract (i...), which depends on which of the six turns brings it in. */
+.stop > .wall { --f0x: -1; --f0y: 1; --f0z: -1; --f0w: -1; --f1x: 1; --f1y: 1; --f1z: -1; --f1w: -1; --f2x: 1; --f2y: -1; --f2z: -1; --f2w: -1; --f3x: -1; --f3y: -1; --f3z: -1; --f3w: -1; }
+.stop:nth-of-type(6n+2) > .wall { --i0x: -1; --i0y: 1; --i0z: -1; --i0w: 1; --i1x: 1; --i1y: 1; --i1z: -1; --i1w: 1; --i2x: 1; --i2y: -1; --i2z: -1; --i2w: 1; --i3x: -1; --i3y: -1; --i3z: -1; --i3w: 1; }
+.stop:nth-of-type(6n+3) > .wall { --i0x: -1; --i0y: 1; --i0z: -1; --i0w: 1; --i1x: -1; --i1y: 1; --i1z: -1; --i1w: -1; --i2x: -1; --i2y: -1; --i2z: -1; --i2w: -1; --i3x: -1; --i3y: -1; --i3z: -1; --i3w: 1; }
+.stop:nth-of-type(6n+4) > .wall { --i0x: -1; --i0y: 1; --i0z: 1; --i0w: -1; --i1x: -1; --i1y: 1; --i1z: -1; --i1w: -1; --i2x: -1; --i2y: -1; --i2z: -1; --i2w: -1; --i3x: -1; --i3y: -1; --i3z: 1; --i3w: -1; }
+.stop:nth-of-type(6n+5) > .wall { --i0x: -1; --i0y: -1; --i0z: -1; --i0w: -1; --i1x: 1; --i1y: -1; --i1z: -1; --i1w: -1; --i2x: 1; --i2y: -1; --i2z: -1; --i2w: 1; --i3x: -1; --i3y: -1; --i3z: -1; --i3w: 1; }
+.stop:nth-of-type(6n+6) > .wall { --i0x: -1; --i0y: 1; --i0z: 1; --i0w: -1; --i1x: 1; --i1y: 1; --i1z: 1; --i1w: -1; --i2x: 1; --i2y: -1; --i2z: 1; --i2w: -1; --i3x: -1; --i3y: -1; --i3z: 1; --i3w: -1; }
+.stop:nth-of-type(6n+1) > .wall { --i0x: -1; --i0y: -1; --i0z: -1; --i0w: -1; --i1x: 1; --i1y: -1; --i1z: -1; --i1w: -1; --i2x: 1; --i2y: -1; --i2z: 1; --i2w: -1; --i3x: -1; --i3y: -1; --i3z: 1; --i3w: -1; }
+.stop:first-of-type > .wall { --i0x: -1; --i0y: 1; --i0z: -1; --i0w: -1; --i1x: 1; --i1y: 1; --i1z: -1; --i1w: -1; --i2x: 1; --i2y: -1; --i2z: -1; --i2w: -1; --i3x: -1; --i3y: -1; --i3z: -1; --i3w: -1; }   /* the first page has nothing before it */
+
+/* page order: --n is the page's index, counted from 0. Rules for 48 pages; add more if a page needs them. */
+.stop:nth-of-type(1) > .wall { --n: 0; }
+.stop:nth-of-type(2) > .wall { --n: 1; }
+.stop:nth-of-type(3) > .wall { --n: 2; }
+.stop:nth-of-type(4) > .wall { --n: 3; }
+.stop:nth-of-type(5) > .wall { --n: 4; }
+.stop:nth-of-type(6) > .wall { --n: 5; }
+.stop:nth-of-type(7) > .wall { --n: 6; }
+.stop:nth-of-type(8) > .wall { --n: 7; }
+.stop:nth-of-type(9) > .wall { --n: 8; }
+.stop:nth-of-type(10) > .wall { --n: 9; }
+.stop:nth-of-type(11) > .wall { --n: 10; }
+.stop:nth-of-type(12) > .wall { --n: 11; }
+.stop:nth-of-type(13) > .wall { --n: 12; }
+.stop:nth-of-type(14) > .wall { --n: 13; }
+.stop:nth-of-type(15) > .wall { --n: 14; }
+.stop:nth-of-type(16) > .wall { --n: 15; }
+.stop:nth-of-type(17) > .wall { --n: 16; }
+.stop:nth-of-type(18) > .wall { --n: 17; }
+.stop:nth-of-type(19) > .wall { --n: 18; }
+.stop:nth-of-type(20) > .wall { --n: 19; }
+.stop:nth-of-type(21) > .wall { --n: 20; }
+.stop:nth-of-type(22) > .wall { --n: 21; }
+.stop:nth-of-type(23) > .wall { --n: 22; }
+.stop:nth-of-type(24) > .wall { --n: 23; }
+.stop:nth-of-type(25) > .wall { --n: 24; }
+.stop:nth-of-type(26) > .wall { --n: 25; }
+.stop:nth-of-type(27) > .wall { --n: 26; }
+.stop:nth-of-type(28) > .wall { --n: 27; }
+.stop:nth-of-type(29) > .wall { --n: 28; }
+.stop:nth-of-type(30) > .wall { --n: 29; }
+.stop:nth-of-type(31) > .wall { --n: 30; }
+.stop:nth-of-type(32) > .wall { --n: 31; }
+.stop:nth-of-type(33) > .wall { --n: 32; }
+.stop:nth-of-type(34) > .wall { --n: 33; }
+.stop:nth-of-type(35) > .wall { --n: 34; }
+.stop:nth-of-type(36) > .wall { --n: 35; }
+.stop:nth-of-type(37) > .wall { --n: 36; }
+.stop:nth-of-type(38) > .wall { --n: 37; }
+.stop:nth-of-type(39) > .wall { --n: 38; }
+.stop:nth-of-type(40) > .wall { --n: 39; }
+.stop:nth-of-type(41) > .wall { --n: 40; }
+.stop:nth-of-type(42) > .wall { --n: 41; }
+.stop:nth-of-type(43) > .wall { --n: 42; }
+.stop:nth-of-type(44) > .wall { --n: 43; }
+.stop:nth-of-type(45) > .wall { --n: 44; }
+.stop:nth-of-type(46) > .wall { --n: 45; }
+.stop:nth-of-type(47) > .wall { --n: 46; }
+.stop:nth-of-type(48) > .wall { --n: 47; }

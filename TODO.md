@@ -1,41 +1,45 @@
 # TODO
 
+> 11 Nov 2026: items marked [x] were done with the tesseract redesign. The og:image is a
+> screenshot of the first pane (`img/og.png`), not the mono card described below. `tenets.html` has
+> no publication date, so it has none on the page either.
+
 Deferred work on m1c2.xyz. Nothing here is blocking; grouped by what it buys you.
 
 ## Discovery — social / link unfurls
 
-- [ ] **`og:image`** — none exists anywhere on the site. Every link posted to X, Slack,
+- [x] **`og:image`** — none exists anywhere on the site. Every link posted to X, Slack,
       iMessage, or Discord unfurls as a bare gray box. One reusable 1200×630 card is
       enough: `#2a1f1a` ground, `measure once, cut twice` in the mono face, nothing else.
       Reference it site-wide with `og:image`, `og:image:width`, `og:image:height`, and
       `twitter:image`. Bump `twitter:card` to `summary_large_image` once it exists.
-- [ ] **OG / Twitter tags on subpages** — only `index.html` has any. `about.html`,
+- [x] **OG / Twitter tags on subpages** — only `index.html` has any. `about.html`,
       `tenets.html`, and all three essays have zero, so they unfurl with whatever the
       crawler guesses. Each needs `og:type` (`article` for essays), `og:title`,
       `og:description`, `og:url`.
-- [ ] **`<link rel="canonical">`** — absent site-wide. Cheap insurance against
+- [x] **`<link rel="canonical">`** — absent site-wide. Cheap insurance against
       `m1c2.xyz` / `www.m1c2.xyz` / trailing-slash variants splitting ranking signal.
 
 ## Discovery — search engines
 
-- [ ] **`sitemap.xml`** — 6 pages, hand-written, no build step needed.
-- [ ] **`robots.txt`** — currently absent, so crawler behavior is entirely default.
+- [x] **`sitemap.xml`** — 6 pages, hand-written, no build step needed.
+- [x] **`robots.txt`** — currently absent, so crawler behavior is entirely default.
       Should at minimum point at the sitemap.
-- [ ] **JSON-LD** — `Person` on `about.html`, `BlogPosting` on each essay. This is what
+- [x] **JSON-LD** — `Person` on `about.html`, `BlogPosting` on each essay. This is what
       populates knowledge panels and rich results.
-- [ ] **Visible dates on essays** — none of the essays display a publication date in the
+- [x] **Visible dates on essays** — none of the essays display a publication date in the
       page body. Both readers and crawlers currently have no way to tell how old a piece
       is. Pairs with `datePublished` in the JSON-LD.
 
 ## Discovery — agents / LLM retrieval
 
-- [ ] **`/llms.txt`** — the emerging convention for telling agents what a site contains
+- [x] **`/llms.txt`** — the emerging convention for telling agents what a site contains
       and where the good stuff is. Small site, so a hand-written one covering the six
       pages is genuinely complete rather than a summary.
 - [ ] **Semantic structure in essays** — `tenets.html` renders its tenets as
       `<div class="tenet">` with an `<h2>` inside. Real sectioning elements (`<article>`,
       `<section>`) extract far more reliably than divs when a model is chunking the page.
-- [ ] **Descriptive `<title>` on essays** — check each is `Title — m1c2` rather than
+- [x] **Descriptive `<title>` on essays** — check each is `Title — m1c2` rather than
       bare. Titles are weighted heavily in both search snippets and retrieval.
 
 ## Feed

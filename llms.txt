@@ -1,0 +1,17 @@
+# m1c2
+
+> m1c2 is the product studio of Zak Hap, a New York programmer who studied computer science and music composition at Columbia. Motto: measure once, cut twice.
+
+The site is drawn as the inside of a tesseract in HTML and CSS only; each page of content is a 600px square on one wall. The text is ordinary HTML and reads fine without the styling.
+
+## Writings
+
+- [Studio Practice Tenets](https://m1c2.xyz/tenets.html): the studio's working principles
+- [Latent Space as Medium](https://m1c2.xyz/latent-space-as-medium.html): the latent space of LLMs as our defining medium (May 2025)
+- [Notes on Signatures](https://m1c2.xyz/signatures.html): identity and mark-making in the digital age (May 2025)
+- [The Tyranny of Pre-digestion](https://m1c2.xyz/tyranny-of-pre-digestion.html): the costs of consuming pre-processed information (May 2025)
+
+## About
+
+- [Home](https://m1c2.xyz/): work history (Hit One, Common, Odefi, Liminal Media), Study Hall and Qubit, apps, talks, links
+- [RSS](https://m1c2.xyz/feed.xml)

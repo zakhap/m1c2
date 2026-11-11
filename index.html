@@ -1,1074 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zak Hap — m1c2</title>
-    <meta name="description" content="Zak Hap — product builder, writer, and founder of m1c2 studio.">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Zak Hap — m1c2">
-    <meta property="og:description" content="Product builder, writer, and founder of m1c2 studio.">
-    <meta property="og:url" content="https://m1c2.xyz">
-    <meta property="og:site_name" content="m1c2">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Zak Hap — m1c2">
-    <meta name="twitter:description" content="Product builder, writer, and founder of m1c2 studio.">
-
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="m1c2 RSS Feed" href="/feed.xml">
-
-    <style>
-        :root {
-            --gap-1: 40vh;
-        }
-
-        body {
-            background-color: #fafcff;
-            color: #10233d;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            line-height: 1.6;
-            padding: 2rem 1.5rem 6rem;
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 15px;
-            box-sizing: border-box;
-            overflow-x: hidden;
-        }
-
-        /* View Transitions API */
-        @view-transition {
-            navigation: auto;
-        }
-
-        ::view-transition-old(root) {
-            animation: fadeOut 120ms ease-out;
-        }
-
-        ::view-transition-new(root) {
-            animation: fadeIn 120ms ease-out;
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Each fold of the page is its own <section> so we can later
-           control layout, order, and animation per "page" on desktop. */
-        section {
-            box-sizing: border-box;
-        }
-
-        @media (min-width: 769px) {
-            section {
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 3rem 0;
-            }
-        }
-
-        .name {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-            letter-spacing: 0.01em;
-        }
-
-        .subtitle {
-            color: #1b5fa8;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .hero-image {
-            width: 480px;
-            max-width: 88%;
-            height: auto;
-            display: block;
-            margin: 1.5rem 0 0 auto;
-        }
-
-        a {
-            color: #10233d;
-            text-decoration: underline;
-            text-decoration-color: #1b5fa8;
-            text-underline-offset: 2px;
-            transition: color 0.1s ease;
-        }
-
-        a:visited {
-            color: #4a6d8f;
-        }
-
-        a:hover {
-            color: #1b5fa8;
-        }
-
-        .spacer {
-            width: 1px;
-        }
-
-        .dots-gap {
-            margin: 0 0 3rem 0;
-        }
-
-        .dot-line {
-            display: block;
-            margin: 0;
-        }
-
-        .bio {
-            margin: 0 0 1rem 0;
-            max-width: 50%;
-        }
-
-        .social-links {
-            margin: 0;
-        }
-
-        .section-label {
-            display: inline-block;
-            align-self: flex-start;
-            width: fit-content;
-            color: #10233d;
-            background: #fafcff;
-            border: 2px solid #1b5fa8;
-            font-size: 2.2rem;
-            font-weight: 500;
-            padding: 0.05em 0.3em;
-            margin: 0 0 1.5rem 0;
-            letter-spacing: 0.02em;
-            line-height: 1.2;
-        }
-
-        .section-musings .section-label {
-            border-style: dashed;
-            align-self: flex-end;
-        }
-
-        .section-musings .chip-item {
-            text-align: right;
-        }
-
-        .aside {
-            color: #4a6d8f;
-            font-style: italic;
-            text-align: left;
-            margin: 0 0 3rem 0;
-            max-width: 50%;
-        }
-
-        .section-wondering {
-            position: relative;
-        }
-
-        .btc-aside {
-            display: none;
-        }
-
-        @media (min-width: 1000px) {
-            .btc-aside {
-                display: block;
-                position: absolute;
-                top: 15vh;
-                left: 100%;
-                margin-left: 2rem;
-                writing-mode: vertical-rl;
-                font-weight: 300;
-                font-size: 0.85rem;
-                letter-spacing: 0.15em;
-                color: rgba(16, 35, 61, 0.15);
-                background: #dce9f5;
-                padding: 1.5rem 0.6rem;
-                white-space: nowrap;
-            }
-        }
-
-        .moon-cycle {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin: 0 0 3rem 0;
-            flex-wrap: wrap;
-        }
-
-        .moon-cycle svg:nth-child(1) { margin-top: 0; }
-        .moon-cycle svg:nth-child(2) { margin-top: 10vh; }
-        .moon-cycle svg:nth-child(3) { margin-top: 20vh; }
-        .moon-cycle svg:nth-child(4) { margin-top: 30vh; }
-        .moon-cycle svg:nth-child(5) { margin-top: 40vh; }
-        .moon-cycle svg:nth-child(6) { margin-top: 50vh; }
-        .moon-cycle svg:nth-child(7) { margin-top: 60vh; }
-        .moon-cycle svg:nth-child(8) { margin-top: 70vh; }
-
-        @media (max-width: 768px) {
-            .moon-cycle svg:nth-child(1) { margin-top: 0; }
-            .moon-cycle svg:nth-child(2) { margin-top: 5vh; }
-            .moon-cycle svg:nth-child(3) { margin-top: 10vh; }
-            .moon-cycle svg:nth-child(4) { margin-top: 15vh; }
-            .moon-cycle svg:nth-child(5) { margin-top: 20vh; }
-            .moon-cycle svg:nth-child(6) { margin-top: 25vh; }
-            .moon-cycle svg:nth-child(7) { margin-top: 30vh; }
-            .moon-cycle svg:nth-child(8) { margin-top: 35vh; }
-        }
-
-        .moon-cycle svg {
-            display: block;
-        }
-
-        .moonlight-header {
-            text-align: center;
-            color: #10233d;
-            font-size: 1.4rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin: 0 0 2rem 0;
-        }
-
-        .two-col-table {
-            display: grid;
-            grid-template-columns: minmax(120px, 1fr) 2.5fr;
-            gap: 0.5rem 3.5rem;
-            margin: 0 0 2.5rem 0;
-        }
-
-        .two-col-table .label {
-            margin: 0;
-            font-weight: 600;
-        }
-
-        .two-col-table .desc {
-            margin: 0 0 1rem 0;
-            color: #4a6d8f;
-            text-align: justify;
-        }
-
-        .sho-feature {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            margin: 8rem 0;
-        }
-
-        .sho-feature img {
-            width: 170px;
-            height: auto;
-            border: 12px solid #1b5fa8;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-            flex-shrink: 0;
-        }
-
-        .sho-feature p {
-            margin: 0;
-            font-size: 1.3rem;
-            line-height: 1.35;
-            max-width: 200px;
-        }
-
-        .minerva-feature {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .minerva-feature img {
-            width: 220px;
-            height: auto;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-            flex-shrink: 0;
-        }
-
-        .minerva-feature p {
-            margin: 0;
-            font-size: 1.1rem;
-            line-height: 1.4;
-        }
-
-        .machine-vision-row {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        .machine-vision-text {
-            flex: 1;
-            font-style: italic;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #10233d;
-            margin: 0;
-        }
-
-        .machine-vision-img {
-            width: 220px;
-            height: auto;
-            display: block;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .machine-vision-row {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .machine-vision-img {
-                width: 60%;
-            }
-        }
-
-        .full-bleed-strip {
-            width: 100vw;
-            margin: 0 0 4px calc(50% - 50vw);
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .full-bleed-strip img {
-            display: block;
-            width: 100%;
-            height: 130px;
-            object-fit: fill;
-        }
-
-        .chip-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .chip-item {
-            display: block;
-            box-sizing: border-box;
-            padding: 0.55rem 0.85rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-            line-height: 1.3;
-            color: #10233d;
-            background: #dce9f5;
-            border: 2px solid #1b5fa8;
-            text-decoration: none;
-            transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .chip-item:visited {
-            color: #10233d;
-        }
-
-        .chip-list a:nth-child(4n+1) { border-style: solid; }
-        .chip-list a:nth-child(4n+2) { border-style: dashed; }
-        .chip-list a:nth-child(4n+3) { border-color: #4a6d8f; }
-        .chip-list a:nth-child(4n+4) { border-style: solid; }
-
-        .chip-list a:hover {
-            background: #1b5fa8;
-            color: #fafcff;
-        }
-
-        .footer-links {
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .quote-media {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin: 0;
-        }
-
-        .quote-media img {
-            width: 70%;
-            max-width: 340px;
-            height: auto;
-            display: block;
-        }
-
-        .quote-text {
-            position: relative;
-            align-self: flex-start;
-            z-index: 1;
-            width: 75%;
-            margin: -1.6em 0 0 0;
-            font-size: 1.4rem;
-            line-height: 1.5;
-        }
-
-        .quote-text a {
-            background: #fafcff;
-            color: #10233d;
-            border: 1.5px solid #1b5fa8;
-            text-decoration: underline;
-            box-decoration-break: clone;
-            -webkit-box-decoration-break: clone;
-            padding: 0.05em 0.3em;
-        }
-
-        .big-statement {
-            font-size: 2.75rem;
-            line-height: 1.15;
-            font-weight: 500;
-            text-align: left;
-            margin: 0;
-        }
-
-        .big-statement-footnote {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: #4a6d8f;
-            margin: 1rem 0 0 0;
-        }
-
-        .triangle-frame {
-            position: relative;
-            width: 55%;
-            max-width: 280px;
-            aspect-ratio: 1 / 1.05;
-            padding: 10px;
-            background: #1b5fa8;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            margin: 0 0 2rem auto;
-        }
-
-        .triangle-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 12%;
-            display: block;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .critique-quote {
-            text-align: right;
-            font-size: 1.3rem;
-            line-height: 1.4;
-            margin: 0 0 1rem 0;
-        }
-
-        .critique-quote:last-child {
-            margin-bottom: 0;
-        }
-
-        .dome-row {
-            display: flex;
-            align-items: stretch;
-            gap: 1.5rem;
-            margin: 0 0 1rem 0;
-        }
-
-        .dome-strip {
-            flex: 0 0 auto;
-            width: calc(60% + (50vw - 50%));
-            height: 92px;
-            object-fit: cover;
-            display: block;
-            margin-left: calc(50% - 50vw);
-        }
-
-        .dome-caption {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            margin: 0;
-            font-size: 0.75rem;
-            line-height: 1.35;
-            color: #10233d;
-        }
-
-        .nightmare-cutout {
-            width: 22%;
-            max-width: 130px;
-            height: 90px;
-            display: block;
-            margin: 0.5rem 0 2rem auto;
-            position: relative;
-            z-index: 1;
-            transform: rotate(-9deg);
-        }
-
-        @media (max-width: 768px) {
-            .dome-row {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .dome-strip {
-                width: 100%;
-                height: auto;
-                object-fit: initial;
-                margin-left: 0;
-            }
-
-            .dome-caption {
-                font-size: 0.85rem;
-            }
-
-            .nightmare-cutout {
-                width: 32%;
-                max-width: 110px;
-                height: 75px;
-                margin: 0.5rem 0.5rem 1.5rem auto;
-                transform: rotate(-7deg);
-            }
-        }
-
-        .literary-line {
-            font-style: italic;
-            font-size: 1.3rem;
-            line-height: 1.5;
-            color: #10233d;
-            max-width: 70%;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .gigs-section {
-            text-align: right;
-            align-self: flex-end;
-            width: 50%;
-            margin: 0 0 9rem 0;
-        }
-
-        .gigs-section p {
-            margin: 0 0 0.75rem 0;
-        }
-
-        .gigs-section p:last-child {
-            margin-bottom: 0;
-        }
-
-        .gigs-section .hl {
-            display: inline;
-            padding: 0.05em 0.3em;
-            box-decoration-break: clone;
-            -webkit-box-decoration-break: clone;
-        }
-
-        .gigs-header .hl {
-            background: #fafcff;
-            color: #10233d;
-            border: 2px solid #1b5fa8;
-            font-size: 1.3rem;
-            font-weight: 600;
-            line-height: 1.6;
-        }
-
-        .gig-item .hl {
-            background: #fafcff;
-            color: #10233d;
-            border: 1.5px dashed #4a6d8f;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 768px) {
-            .gigs-section {
-                width: 100%;
-            }
-
-            .gigs-header .hl {
-                font-size: 1.05rem;
-            }
-
-            .gig-item .hl {
-                font-size: 0.85rem;
-            }
-        }
-
-        .mivos-image {
-            width: 65%;
-            max-width: 340px;
-            height: auto;
-            display: block;
-            margin: 6.5rem 0 0 0;
-        }
-
-        .mivos-caption {
-            font-size: 0.8rem;
-            font-style: italic;
-            color: #4a6d8f;
-            margin: 0.5rem 0 0 0;
-        }
-
-        .scriabin-media {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin: 1.5rem 0 0 0;
-        }
-
-        .scriabin-media img {
-            width: 60%;
-            max-width: 300px;
-            height: auto;
-            display: block;
-        }
-
-        .scriabin-quote {
-            position: relative;
-            z-index: 1;
-            align-self: flex-end;
-            text-align: right;
-            width: 50%;
-            margin: -1.4em 0 0 0;
-            font-style: italic;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #10233d;
-        }
-
-        @media (max-width: 768px) {
-            .quote-media {
-                align-items: center;
-            }
-
-            .quote-media img {
-                width: 90%;
-            }
-
-            .quote-text {
-                align-self: center;
-                width: 90%;
-                margin-top: -1.3em;
-                font-size: 1.15rem;
-            }
-
-            .literary-line {
-                max-width: 100%;
-            }
-
-            .mivos-image {
-                width: 85%;
-                margin-top: 4.5rem;
-            }
-
-            .scriabin-media {
-                align-items: center;
-            }
-
-            .scriabin-media img {
-                width: 85%;
-            }
-
-            .scriabin-quote {
-                align-self: center;
-                text-align: center;
-                width: 90%;
-                margin-top: -1em;
-                font-size: 0.85rem;
-            }
-
-            .big-statement {
-                font-size: 1.8rem;
-            }
-
-            .triangle-frame {
-                width: 75%;
-                max-width: 220px;
-            }
-
-            .critique-quote {
-                font-size: 1.05rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                --gap-1: 18vh;
-            }
-
-            body {
-                padding: 1.5rem 1rem 4rem;
-                font-size: 14px;
-            }
-
-            .bio,
-            .aside {
-                max-width: 100%;
-            }
-
-            .section-label {
-                font-size: 1.5rem;
-            }
-
-            .two-col-table {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .two-col-table .label {
-                margin-top: 1.25rem;
-            }
-
-            .two-col-table .label:first-child {
-                margin-top: 0;
-            }
-
-            .sho-feature {
-                flex-direction: column;
-                gap: 1.25rem;
-                margin: 5rem 0;
-            }
-
-            .full-bleed-strip img {
-                height: 80px;
-            }
-
-            .sho-feature p {
-                text-align: center;
-                max-width: none;
-            }
-
-            .minerva-feature {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .minerva-feature img {
-                width: 100%;
-            }
-
-            .section-musings {
-                margin-top: 3rem;
-            }
-        }
-
-        .room-lines {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .room-lines svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .room-lines line,
-        .room-lines rect {
-            fill: none;
-            stroke: #1b5fa8;
-            stroke-width: 2;
-            vector-effect: non-scaling-stroke;
-            opacity: 0.35;
-        }
-
-        .room-lines .tick line {
-            stroke-width: 1;
-            opacity: 0.55;
-        }
-
-        .room-lines .dim-line line {
-            stroke-width: 1;
-            opacity: 0.45;
-        }
-
-        .dim-label {
-            position: fixed;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            color: #1b5fa8;
-            opacity: 0.55;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .dim-label-1 {
-            top: 57%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .dim-label-2 {
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-transform: uppercase;
-        }
-
-        .dim-label-3 {
-            top: 29%;
-            left: 22%;
-            transform: translate(-50%, -50%) rotate(180deg);
-            writing-mode: vertical-rl;
-        }
-
-        @media (max-width: 768px) {
-            .dim-label {
-                display: none;
-            }
-        }
-
-        .ceiling-hugger {
-            position: fixed;
-            bottom: -60px;
-            right: -50px;
-            width: 220px;
-            height: auto;
-            transform: rotate(180deg);
-            z-index: 5;
-            pointer-events: none;
-            box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
-        }
-
-        @media (max-width: 768px) {
-            .ceiling-hugger {
-                width: 140px;
-                bottom: -36px;
-                right: -30px;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zak Hap — m1c2</title>
+<meta name="description" content="m1c2 is the product studio of Zak Hap, a New York programmer who studied computer science and music composition at Columbia.">
+<link rel="canonical" href="https://m1c2.xyz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="m1c2">
+<meta property="og:title" content="Zak Hap — m1c2">
+<meta property="og:description" content="Measure once, cut twice. The product studio of Zak Hap.">
+<meta property="og:url" content="https://m1c2.xyz/">
+<meta property="og:image" content="https://m1c2.xyz/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://m1c2.xyz/img/og.png">
+<meta name="theme-color" content="#4a5fa5">
+<link rel="alternate" type="application/rss+xml" title="m1c2" href="feed.xml">
+<link rel="preload" href="fonts/stix-two-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/engine.css">
+<link rel="stylesheet" href="css/type.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Zak Hap","url":"https://m1c2.xyz/","alumniOf":"Columbia University","homeLocation":"New York","sameAs":["https://x.com/zakhap","https://github.com/zakhap","https://www.are.na/zak-hap"]}
+</script>
 </head>
 <body>
-    <div class="room-lines" aria-hidden="true">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-            <line x1="0" y1="0" x2="32" y2="10" />
-            <line x1="100" y1="0" x2="68" y2="10" />
-            <line x1="0" y1="100" x2="32" y2="48" />
-            <line x1="100" y1="100" x2="68" y2="48" />
-            <rect x="32" y="10" width="36" height="38" />
-
-            <g class="tick">
-                <line x1="30" y1="10" x2="34" y2="10" />
-                <line x1="32" y1="8" x2="32" y2="12" />
-                <line x1="66" y1="10" x2="70" y2="10" />
-                <line x1="68" y1="8" x2="68" y2="12" />
-                <line x1="30" y1="48" x2="34" y2="48" />
-                <line x1="32" y1="46" x2="32" y2="50" />
-                <line x1="66" y1="48" x2="70" y2="48" />
-                <line x1="68" y1="46" x2="68" y2="50" />
-                <line x1="48" y1="27" x2="52" y2="27" />
-                <line x1="50" y1="25" x2="50" y2="29" />
-            </g>
-
-            <g class="dim-line">
-                <line x1="32" y1="54" x2="32" y2="58" />
-                <line x1="68" y1="54" x2="68" y2="58" />
-                <line x1="32" y1="56" x2="68" y2="56" />
-                <line x1="26" y1="10" x2="22" y2="10" />
-                <line x1="26" y1="48" x2="22" y2="48" />
-                <line x1="24" y1="10" x2="24" y2="48" />
-            </g>
-        </svg>
+<main class="scene" style="--last: 10">   <!-- --last = number of panes minus one -->
+  <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <section class="stop" id="top">
+    <div class="wall">
+      <h1>Zak Hap</h1>
+      <div class="split">
+        <nav aria-label="Sections">
+          <ul class="toc">
+            <li><a href="#daylight">~daylight</a></li>
+            <li><a href="#moonlight">~moonlight</a></li>
+            <li><a href="#writings">~writings</a></li>
+            <li><a href="#apps">~app musings</a></li>
+            <li><a href="#talks">~speaking</a></li>
+            <li><a href="#elsewhere">~elsewhere</a></li>
+          </ul>
+        </nav>
+        <p class="lede"><b>Measure once, cut twice.</b> m1c2 is the product studio of Zak Hap, a New York programmer who studied computer science and music composition at Columbia.</p>
+      </div>
     </div>
-
-    <div class="dim-label dim-label-1">9'-4"</div>
-    <div class="dim-label dim-label-2">M1C2 STUDIO</div>
-    <div class="dim-label dim-label-3">6'-8"</div>
-
-    <img class="ceiling-hugger" src="images/geotic-abysma.jpg" alt="">
-
-    <script>
-        (function () {
-            var room = document.querySelector('.room-lines');
-            if (!room) return;
-            var maxShift = 16;
-            function update() {
-                var scrollable = document.documentElement.scrollHeight - window.innerHeight;
-                var progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-                progress = Math.min(1, Math.max(0, progress));
-                var shift = maxShift - progress * (maxShift * 2);
-                room.style.transform = 'translateY(' + shift + 'px)';
-            }
-            window.addEventListener('scroll', update, { passive: true });
-            window.addEventListener('resize', update);
-            update();
-        })();
-    </script>
-
-    <section class="section-intro">
-        <div class="name">Zak Hap</div>
-        <div class="subtitle">measure once, cut twice — m1c2 product studio</div>
-
-        <img class="hero-image" src="images/glassbead-cover.jpg" alt="">
-
-        <div class="spacer" style="height: var(--gap-1);"></div>
-
-        <p class="bio">Zak Hap is a programmer based in NYC. He studied computer science and music composition at Columbia University.</p>
-
-        <div class="dots-gap">
-            <div class="dot-line" style="height: 10vh;"></div>
-            <div class="dot-line" style="height: 12vh;"></div>
-            <div class="dot-line" style="height: 14vh;"></div>
-            <div class="dot-line" style="height: 12vh;"></div>
-        </div>
-    </section>
-
-    <div class="full-bleed-strip">
-        <img src="images/iceland-strip.jpg" alt="">
+  </section>
+  <section class="stop" id="daylight">
+    <div class="wall">
+      <h2>~daylight</h2>
+      <ul class="rows n-m">
+      <li><span class="k">tech lead<br>2025&ndash;2026</span><span class="v"><a href="https://hit.one">Hit One</a><small>Solo-built a 1000x leverage trading platform on MegaETH; $600M+ traded in its first three weeks</small></span></li>
+      <li><span class="k">product lead<br>2019&ndash;2024</span><span class="v">Common<small>One of DAO governance&rsquo;s foundational platforms: $1B+ in token value across 300+ communities</small></span></li>
+      <li><span class="k">co-founder<br>2019</span><span class="v">Odefi<small>A MakerDAO-native layer splitting leveraged risk from stablecoin stability. <em>Directionally right, too early.</em></small></span></li>
+      <li><span class="k">co-founder<br>2018</span><span class="v">Liminal Media<small>Shot commercials, ghostwrote whitepapers, helped blockchain founders raise ~$50M</small></span></li>
+      </ul>
     </div>
-    <div class="full-bleed-strip">
-        <img src="images/redbridge-strip.jpg" alt="">
+  </section>
+  <section class="stop" id="drawing">
+    <div class="wall">
+      <h2>~bro how the fuck do bitcoins work</h2>
+      <figure class="plate">
+        <img src="img/minerva.webp" alt="Figure drawing from art class" width="1100" height="808" loading="lazy">
+        <figcaption>Something I drew in <a href="https://www.springstudiosoho.com/">Minerva</a>&rsquo;s art class</figcaption>
+      </figure>
+      <p class="foot"><em>You must wonder what else this person does with their time.</em></p>
     </div>
-
-    <section class="section-daylight">
-        <h2 class="moonlight-header">Daylight</h2>
-
-        <div class="two-col-table">
-            <p class="label"><a href="https://hit.one" target="_blank">Tech Lead at Hit One</a></p>
-            <p class="desc">Solo-built a 1000x leverage trading platform on MegaETH; $600M+ traded in its first three weeks.</p>
-
-            <p class="label">Product Lead at Common</p>
-            <p class="desc">Helped build one of DAO governance's foundational platforms, governing $1B+ in token value across 300+ communities.</p>
-
-            <p class="label">Co-founder at Odefi</p>
-            <p class="desc">Built a MakerDAO-native smart contract layer splitting leveraged risk from stablecoin stability, out of Columbia's blockchain accelerator; directionally right, too early.</p>
-
-            <p class="label">Co-founder at Liminal Media</p>
-            <p class="desc">Shot commercials, ghostwrote whitepapers, helped blockchain founders raise ~$50M.</p>
-        </div>
-    </section>
-
-    <section class="section-wondering">
-        <p class="btc-aside">Bro how the Fuck do Bitcoins Work</p>
-
-        <div class="dots-gap">
-            <div class="dot-line" style="height: 10.5vh;"></div>
-            <div class="dot-line" style="height: 14vh;"></div>
-            <div class="dot-line" style="height: 17.5vh;"></div>
-            <div class="dot-line" style="height: 21vh;"></div>
-            <div class="dot-line" style="height: 24.5vh;"></div>
-
-            <div class="minerva-feature">
-                <img src="images/minerva-drawing.jpg" alt="Figure drawing from art class">
-                <p>Something I drew in <a href="https://www.springstudiosoho.com/" target="_blank">Minerva</a>'s art class</p>
-            </div>
-
-            <div class="dot-line" style="height: 37.5vh;"></div>
-        </div>
-
-        <p class="aside">You must wonder what else this person does with their time.</p>
-    </section>
-
-    <section class="section-moonlight">
-        <div class="moon-cycle" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon0"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon0)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="20" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon1"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon1)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="11" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon2"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon2)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="2" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon3"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon3)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="-7" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon4"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon4)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="-16" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon5"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon5)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="47" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon6"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon6)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="38" cy="20" r="18" fill="#fafcff" /></g></svg>
-            <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4a6d8f" stroke-width="1" opacity="0.5" /><clipPath id="moon7"><circle cx="20" cy="20" r="18" /></clipPath><g clip-path="url(#moon7)"><rect width="40" height="40" fill="#1b5fa8" /><circle cx="29" cy="20" r="18" fill="#fafcff" /></g></svg>
-        </div>
-
-        <h2 class="moonlight-header">Moonlight</h2>
-
-        <div class="two-col-table">
-            <p class="label"><a href="https://studyhall.nyc" target="_blank">Cohost of Study Hall</a></p>
-            <p class="desc">A creative building series on Monday nights in New York, with <a href="https://charliefreiberg.com/" target="_blank">Charlie Freiberg</a>, since 2025. Past venues include Lincoln Center, Collaborative Fund, NYC Resistor.</p>
-
-            <p class="label"><a href="https://qubitmusic.com/" target="_blank">Board member at Qubit</a></p>
-            <p class="desc">A contemporary music and performance art initiative founded in 2010. Past venues include DiMenna Center, Center for Performance Research, BAM Fisher - Fishman Space.</p>
-        </div>
-
-        <div class="sho-feature">
-            <img src="images/sho1.png" alt="Zak playing the Shō">
-            <p>He also plays<br>the Shō.</p>
-        </div>
-    </section>
-
-    <div class="full-bleed-strip">
-        <img src="images/glitch-strip.jpg" alt="">
+  </section>
+  <section class="stop" id="moonlight">
+    <div class="wall tiled">
+      <h2>~moonlight</h2>
+      <ul class="rows n-xl">
+      <li><span class="k">cohost</span><span class="v"><a href="https://studyhall.nyc">Study Hall</a><small>A creative building series on Monday nights in New York, with <a href="https://charliefreiberg.com/">Charlie Freiberg</a>, since 2025. Past venues include Lincoln Center, Collaborative Fund, NYC Resistor</small></span></li>
+      <li><span class="k">board</span><span class="v"><a href="https://qubitmusic.com">Qubit</a><small>Contemporary music and performance art, founded 2010. Past venues include DiMenna Center, Center for Performance Research, BAM Fisher</small></span></li>
+      </ul>
+      <p class="foot"><em>Also plays the <span class="peek" tabindex="0">sh&#333;<img src="img/sho.webp" alt="Zak playing the sh&#333; on stage, lit in blue" width="343" height="700" loading="lazy"></span>.</em></p>
     </div>
-    <div class="full-bleed-strip">
-        <img src="images/pinkdesert-strip.jpg" alt="">
+  </section>
+  <section class="stop" id="scriabin">
+    <div class="wall">
+      <h2>~music not meant to be heard</h2>
+      <p class="say">I was once told about a woman living in Paris&mdash;a descendant of Scriabin&mdash;who spent her entire life writing music not meant to be heard. What it is, and how she does it, is not very clear; but I have always envied this woman. I envy her insanity, her impracticality.</p>
     </div>
-
-    <section class="section-writings">
-        <div class="section-label">Some writings</div>
-        <div class="chip-list">
-            <a class="chip-item" href="tenets.html">Studio Practice Tenets</a>
-            <a class="chip-item" href="latent-space-as-medium.html">Latent Space as Medium</a>
-            <a class="chip-item" href="signatures.html">Signatures</a>
-            <a class="chip-item" href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a>
-        </div>
-    </section>
-
-    <section class="section-musings">
-        <div class="section-label">Some app musings</div>
-        <div class="chip-list">
-            <a class="chip-item" href="https://zindex.m1c2.xyz/" target="_blank">Z-Index: Book Recommendation Engine</a>
-            <a class="chip-item" href="https://gbg.m1c2.xyz/" target="_blank">Glass Bead Game</a>
-            <a class="chip-item" href="https://orange.m1c2.xyz/" target="_blank">Orange Shrine</a>
-        </div>
-    </section>
-
-    <section class="section-machine-vision">
-        <div class="machine-vision-row">
-            <p class="machine-vision-text">Machines have learned to see. Without us. I have spent the summer teaching my machine to see like Baldessari, like Hockney. To see fairies. To see fractals. I want to see what happens to the phone camera if we rewire its optical unconscious.</p>
-            <img class="machine-vision-img" src="images/machine-vision.gif" alt="">
-        </div>
-    </section>
-
-    <section class="section-literary">
-        <div class="gigs-section">
-            <p class="gigs-header"><span class="hl">Some very important past speaking and thinking gigs:</span></p>
-            <p class="gig-item"><span class="hl">"Real-time Composable Finance," MegaETH MegaArcade,<br>Seoul, South Korea — May 2026</span></p>
-            <p class="gig-item"><span class="hl">"Product Development for DAOs" (Panel), ETHCC<br>Paris, France — July 2023</span></p>
-            <p class="gig-item"><span class="hl">"State of DAOs" (Panel), DAO<br>Tokyo, Japan — April 2023</span></p>
-            <p class="gig-item"><span class="hl">"Future of DAOs," NEARCON Red Hook,<br>Brooklyn, NY — July 2022</span></p>
-            <p class="gig-item"><span class="hl">Blockchain for Impact Global Summit convened by the Blockchain Commission for Sustainable Development,<br>United Nations, NY — June 2018</span></p>
-        </div>
-
-        <div class="spacer" style="height: 5.5rem;"></div>
-
-        <div class="scriabin-media">
-            <img src="https://d2w9rnfcy7mm78.cloudfront.net/7952319/original_5913823c215196ee9e5e5d98e5ff7842.gif?1594334114" alt="">
-            <p class="scriabin-quote">I was one told about a woman living in Paris—a descendant of Scriabin—who spent her entire life writing music not meant to be heard. What it is, and how she does it, is not very clear; but I have always envied this woman. I envy her insanity, her impracticality.</p>
-        </div>
-
-        <img class="mivos-image" src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyMDYzMC9vcmlnaW5hbF9mM2FjM2FjMDYzNWI0Nzc2NDYwMzEzNDNmMTJmN2ZjNS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==" alt="Mivos Quartet at Project Q, 2018">
-        <p class="mivos-caption">A Qubit show</p>
-    </section>
-
-    <section class="section-gif-quote">
-        <div class="quote-media">
-            <img src="https://38.media.tumblr.com/7e3a5ecf17c477bff46c9efacf0beacf/tumblr_mica3281wE1rb2treo1_500.gif" alt="">
-            <p class="quote-text"><a href="https://psychclassics.yorku.ca/James/energies.htm" target="_blank">psychology professor has discovered the secret to unlimited human potential is either:<br>yoga, a nervous breakdown, or getting shot at</a></p>
-        </div>
-    </section>
-
-    <section class="section-dome">
-        <div class="dome-row">
-            <img class="dome-strip" src="images/dome-strip.jpg" alt="">
-            <p class="dome-caption">Hey! What's wrong with my muse? She's in bed!</p>
-        </div>
-        <img class="nightmare-cutout" src="images/nightmare-woman.jpg" alt="">
-    </section>
-
-    <section class="section-statement">
-        <p class="big-statement">soup is<br>a vegetable<br>in tea form,<br>meat ancillary*</p>
-        <p class="big-statement-footnote">*friends say i should make a cookbook on the boundaries of food</p>
-    </section>
-
-    <section class="section-critique">
-        <div class="triangle-frame">
-            <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzMTY0MTMzL29yaWdpbmFsX2JmOTA0ZDFjNDkyOTA5OTMzMGQ1MTQ5OTU4NDkzZmRlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MTIwMCwiaGVpZ2h0IjoxMjAwLCJmaXQiOiJpbnNpZGUiLCJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWV9LCJ3ZWJwIjp7InF1YWxpdHkiOjc1fSwianBlZyI6eyJxdWFsaXR5Ijo3NX0sInJvdGF0ZSI6bnVsbH19" alt="">
-        </div>
-        <p class="critique-quote">Yet they have created a climate that<br>has brought the intellectual<br>activity of an entire nation<br>down to a middle-grade level.</p>
-        <p class="critique-quote">Why do we assume we are the exception?</p>
-    </section>
-
-    <p class="footer-links"><a href="https://x.com/zakhap" target="_blank">X</a> <a href="https://github.com/zakhap" target="_blank">GitHub</a> <a href="https://www.are.na/zak-hap" target="_blank">Are.na</a> <a href="/feed.xml">RSS</a></p>
+  </section>
+  <section class="stop" id="writings">
+    <div class="wall">
+      <h2>~writings</h2>
+      <ul class="rows full n-lx">
+      <li><span class="v"><a href="tenets.html">Studio Practice Tenets</a></span></li>
+      <li><span class="v"><a href="latent-space-as-medium.html">Latent Space as Medium</a></span></li>
+      <li><span class="v"><a href="signatures.html">Signatures</a></span></li>
+      <li><span class="v"><a href="tyranny-of-pre-digestion.html">The Tyranny of Pre-digestion</a></span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="stop" id="apps">
+    <div class="wall">
+      <h2>~app musings</h2>
+      <ul class="rows full n-xxl">
+      <li><span class="v"><a href="https://zindex.m1c2.xyz">Z-Index</a><small>A book recommendation engine</small></span></li>
+      <li><span class="v"><a href="https://gbg.m1c2.xyz">Glass Bead Game</a></span></li>
+      <li><span class="v"><a href="https://orange.m1c2.xyz">Orange Shrine</a></span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="stop" id="vision">
+    <div class="wall">
+      <h2>~machine vision</h2>
+      <figure class="plate half">
+        <img src="img/machine-vision.gif" alt="A phone camera feed redrawn by a vision model" width="408" height="408" loading="lazy">
+        <figcaption class="say">Machines have learned to see. Without us. I have spent the summer teaching my machine to see like Baldessari, like Hockney. To see fairies. To see fractals. I want to see what happens to the phone camera if we rewire its optical unconscious.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="stop" id="talks">
+    <div class="wall">
+      <h2>~speaking</h2>
+      <ul class="rows n-s">
+      <li><span class="k">May 2026</span><span class="v">Real-time Composable Finance<small>MegaETH MegaArcade, Seoul</small></span></li>
+      <li><span class="k">Jul 2023</span><span class="v">Product Development for DAOs<small>ETHCC, Paris</small></span></li>
+      <li><span class="k">Apr 2023</span><span class="v">State of DAOs<small>Tokyo</small></span></li>
+      <li><span class="k">Jul 2022</span><span class="v">Future of DAOs<small>NEARCON, Brooklyn</small></span></li>
+      <li><span class="k">Jun 2018</span><span class="v">Blockchain for Impact Global Summit<small>United Nations, New York</small></span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="stop" id="soup">
+    <div class="wall">
+      <h2>~the boundaries of food</h2>
+      <p class="statement">soup is<br>a vegetable<br>in tea form,<br>meat ancillary*</p>
+      <p class="foot"><em>*friends say i should make a cookbook on the boundaries of food</em></p>
+    </div>
+  </section>
+  <section class="stop" id="elsewhere">
+    <div class="wall">
+      <h2>~elsewhere</h2>
+      <ul class="rows n-m">
+      <li><span class="k">X</span><span class="v"><a href="https://x.com/zakhap">x.com/zakhap</a></span></li>
+      <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/zakhap">github.com/zakhap</a></span></li>
+      <li><span class="k">Are.na</span><span class="v"><a href="https://are.na/zak-hap">are.na/zak-hap</a></span></li>
+      <li><span class="k">RSS</span><span class="v"><a href="feed.xml">m1c2.xyz/feed.xml</a></span></li>
+      </ul>
+    </div>
+  </section>
+  <div class="cue" aria-hidden="true"></div>
+  <div class="rail" aria-hidden="true"><a href="#top" tabindex="-1"></a><a href="#daylight" tabindex="-1"></a><a href="#drawing" tabindex="-1"></a><a href="#moonlight" tabindex="-1"></a><a href="#scriabin" tabindex="-1"></a><a href="#writings" tabindex="-1"></a><a href="#apps" tabindex="-1"></a><a href="#vision" tabindex="-1"></a><a href="#talks" tabindex="-1"></a><a href="#soup" tabindex="-1"></a><a href="#elsewhere" tabindex="-1"></a></div>
+  <a class="totop" href="#top">^top</a>
+</main>
 </body>
 </html>
