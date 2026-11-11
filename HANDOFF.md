@@ -119,7 +119,11 @@ asking; the "no JS" property is the point of the piece.
 5. **Mid-turn on portrait phones** the two visible walls are cropped at the screen edges.
 6. On the two turns where a wall passes through the viewer (panes 1→2 and 5→6), outgoing and
    incoming text overlap briefly.
-7. Not tested: real Safari, real iOS, Firefox, a screen reader. Testing so far was headless
+7. **Safari bug, fixed 11 Nov 2026:** Safari 26 (macOS and iOS) miscomputes `tan(atan2(1vmin, 1px))`, which the engine
+   used to get px-per-vmin (`--vpx`). The walls drew at ~1/16 size while the lines were fine. `engine.css` now uses
+   `calc(1vmin / 1px)` wherever `@supports` says the browser can divide lengths (Safari 26, Chrome), and keeps the
+   trig trick only as a fallback. Still not tested: Firefox (gets the stacked fallback), a screen reader.
+   Earlier note: not tested: real Safari, real iOS, Firefox, a screen reader. Testing so far was headless
    Chrome screenshots at 1512 × 823 and 390 × 844.
 8. `engine.css` is ~500 lines of generated `calc()`. The generator was a throwaway Python script
    and was not kept. If you need to change the maths, edit the CSS directly; the structure is

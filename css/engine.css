@@ -399,7 +399,12 @@ body { height: calc((var(--pages) + 1) * 100vh); overscroll-behavior: none; }
 @property --show { syntax: '<number>'; inherits: false; initial-value: 0; }
 
 
-.scene { --vpx: tan(atan2(1vmin, 1px)); }   /* how many px in 1vmin, as a plain number */
+.scene { --vpx: tan(atan2(1vmin, 1px)); }   /* how many px in 1vmin, as a plain number (older Chrome) */
+/* Browsers that can divide a length by a length get the direct answer. Safari needs this: it miscomputes
+   tan(atan2()) with lengths (on iOS 26 it gave a negative number and the walls drew at ~1/16 size). */
+@supports (z-index: calc(1px / 1px)) {
+  .scene { --vpx: calc(1vmin / 1px); }
+}
 
 /* Each page is a real in-flow section one screen tall, so the document
    has ordinary scroll positions and #anchors; its text is lifted out
