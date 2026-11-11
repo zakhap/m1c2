@@ -24,14 +24,12 @@ asking; the "no JS" property is the point of the piece.
 
 | Path | What it is | Edit? |
 |---|---|---|
-| `index.html` | Home: 11 panes (name, ~daylight, drawing, ~moonlight, scriabin, ~writings, ~app musings, ~machine vision, ~speaking, soup, ~elsewhere) | Yes, by hand |
+| `index.html` | Home: 7 panes (name + social icons, ~daylight, ~moonlight, ~writings, ~app musings, ~speaking, ~elsewhere) | Yes, by hand |
 | `tenets.html`, `latent-space-as-medium.html`, `signatures.html`, `tyranny-of-pre-digestion.html` | Essays as paged panes. Text verbatim from the previous site | Yes, by hand |
 | `css/type.css` | All typography, layout, colour scheme, heavily commented | **Yes. This is the file to work in** |
 | `css/engine.css` | The tesseract. Generated originally, then hand-patched | Only the knobs in the first `:root` block and the camera media queries |
 | `fonts/` | STIX Two Text (variable, Latin subset), SIL OFL | No |
-| `img/stars.gif` | 48px two-frame tile for the ~moonlight pane (original drawing) | No |
 | `img/sho.webp` | Web-sized copy of `images/sho1.png`, shown on hover of "shō" | No |
-| `img/minerva.webp`, `img/machine-vision.gif` | From the previous site's `images/` | No |
 | `img/og.png` | 1200 × 630 share card: a screenshot of the first pane. Retake it if the first pane changes | Regenerate |
 | `images/` | The previous site's assets. Nothing references them now; kept so outside links don't break | Can go eventually |
 | `sitemap.xml`, `robots.txt`, `llms.txt`, `feed.xml` | Hand-written discovery files | Update when adding an essay |
@@ -77,14 +75,20 @@ asking; the "no JS" property is the point of the piece.
   is a little over twice the smallest. Scale: 19 / 22 / then 24–44 for names.
 - **Layout is a 6-column grid** with rows that fill each pane top to bottom, ruled edge to edge.
   Pane titles are small, lower-case, with a leading tilde (`~daylight`).
+  The title band is 58px with a rule under it, edge to edge like the row rules (tightened from 78px with no rule, 11 Nov 2026).
 - **Links:** no underline at rest, a small drawn arrow after the text, wavy underline on hover.
 - **No page numbers, no colophon line, no "tesseract is css" label.** All tried and removed.
 - **Essays:** paged, one pane per ~140 words. The scrolling, crawl and zoom variants were deleted
   (recoverable from the Claude app session if ever wanted).
 - **Links inside running text** (descriptions, captions) have a hairline underline instead of the arrow.
-- **Asides from the old site** are ported as their own panes, one each: the Minerva drawing, the Scriabin
-  story, machine vision, soup. Left out: hotlinked GIFs/images (Are.na, Tumblr, CloudFront), the decorative
-  photo strips, the "middle-grade level" critique quote and the Qubit show photo. Add them back as panes if wanted.
+- **"recent" box** on the first pane, between the name and the contents: a dashed box with up to two items
+  (link + one small line), each with a blinking "new!" hanging just left of its name. On a phone there are only ~24px to spare,
+  so a third item or a longer line will clip the contents list. The bold "Measure once, cut twice." was removed from the intro.
+- **No asides.** The old site's asides (Minerva drawing, Scriabin story, machine vision, soup) were ported as
+  panes, then removed on 11 Nov 2026 to trim the site before new projects go in. They are in git history.
+- **Social icons** (X, GitHub, Are.na, RSS) sit at the far right of the name on the first pane: inline SVG,
+  white via `currentColor`, no arrow. The ~elsewhere pane keeps the same links in full. The Are.na mark is
+  their official logo path, taken from the inline SVG on are.na's home page.
 - **Scroll cue arrow stays visible between panes**; it only fades on the last pane.
 - Years on the ~daylight pane were supplied by Zak: Liminal Media 2018, Odefi 2019,
   Common 2019–2024, Hit One 2025–2026.
@@ -94,13 +98,13 @@ asking; the "no JS" property is the point of the piece.
 - **Home copy** now follows the previous site's `index.html` (commit 66a69ef), condensed to fit the panes:
   the daylight figures ($600M+, $1B+, ~$50M), the Study Hall and Qubit venues, the Charlie Freiberg link.
   "BAM Fisher - Fishman Space" is shortened to "BAM Fisher". The Scriabin story's "I was one told" is
-  corrected to "I was once told". Pane titles for the asides are new (they had none before): check with Zak.
+  corrected to "I was once told" (that pane has since been removed).
 - `signatures.html`: the third paragraph is too long for one pane, so it is split across two
   panes at "Perhaps." That is a layout split, not an edit to the text.
 - Possible typos in the source essay "Latent Space as Medium", left untouched: "a lot time",
   "the LLMs probabilistic prediction", "envelopes us".
 - `about.html` was deleted from the old site in Aug 2026 and its content folded into the home page;
-  that content is now on the home panes. The shō hover is done without JS on ~moonlight.
+  that content is now on the home panes. The shō hover is done without JS on ~moonlight (the photo shows at 460px tall over the label column). ~moonlight no longer has the star tile background.
 
 ## Known problems
 

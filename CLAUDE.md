@@ -15,7 +15,7 @@ made, known problems and the working method (check every pane for overflow at de
 
 ## Files
 
-- `index.html` home (11 panes); `tenets.html` and three essays (`latent-space-as-medium.html`,
+- `index.html` home (7 panes); `tenets.html` and three essays (`latent-space-as-medium.html`,
   `signatures.html`, `tyranny-of-pre-digestion.html`), paged by hand at ~140 words per pane
 - `css/type.css` all typography, layout and colour. This is the file to work in
 - `css/engine.css` the tesseract maths. Touch only the knobs in its first `:root` block and the camera media queries
