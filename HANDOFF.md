@@ -14,6 +14,8 @@ viewport height turns the tesseract a quarter-turn through a 4D plane, carrying 
 page in on its own wall.
 
 **Hard constraint, by Zak's choice: HTML and CSS only. There is no JavaScript anywhere.**
+The one exception is the `<script type="application/ld+json">` block in each page's `<head>`: it is
+structured data for search engines, not code, and the browser never runs it. Keep it.
 The 4D rotation, both perspective projections, line clipping and the text warp are all done
 in `calc()` driven by one scroll-linked number. Do not add a script to fix something without
 asking; the "no JS" property is the point of the piece.
@@ -54,8 +56,9 @@ asking; the "no JS" property is the point of the piece.
 - Knobs at the top of `engine.css`: `--cam` (eye position; 2.2 = just outside the tesseract,
   0.55 = inside the inner room), `--focal` (lens), `--ease` (how much each turn eases),
   `--in-at/--in-len/--out-at/--out-len` (when pages fade during a turn).
-- Desktop `--cam` is 1.6 (was 2.2): the wall is ~484px tall on a 823px-high laptop, so 19px text renders ~15px.
-  The outer cube still frames it left and right; its top and bottom edges are off-screen.
+- Desktop is `--cam: 1.6; --focal: 90` (was 2.2 / 100), Zak's pick. On an 823px-high laptop the wall is
+  ~436px tall. 100 made the wall ~484px but cropped the outer cube; 85 showed all of it at ~412px.
+  Raise `--focal` for bigger text, lower it to show more of the tesseract.
 - Portrait screens override `--cam`/`--focal` to sit inside the room so the text wall fills ~85% of the width.
 - Landscape phones (`orientation: landscape` and `max-height: 500px`) also sit inside the room, with a lens
   that fills the height, and move the scroll cue beside the wall. `type.css` gives them the portrait type sizes.

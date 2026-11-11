@@ -8,6 +8,7 @@ Static site for m1c2.xyz, the product studio of Zak Hap. The site is drawn as th
 tesseract: each page of content is a 600 × 600 px square of HTML pinned to a wall, and scrolling turns the
 tesseract through 4D to bring the next one in. **HTML and CSS only, no JavaScript** (a deliberate constraint;
 ask before adding a script).
+The `application/ld+json` blocks in each `<head>` are allowed: structured data for search, never executed.
 
 **Read `HANDOFF.md` before changing anything.** It covers how the engine works, the design decisions already
 made, known problems and the working method (check every pane for overflow at desktop and phone size).
