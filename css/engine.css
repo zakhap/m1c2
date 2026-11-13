@@ -88,7 +88,7 @@
   --wdist: 2;      /* 4D eye distance along w */
   --cam: 1.6;      /* 3D eye, outside the tesseract (2.2 = whole outer cube in view, 0.55 = inside the inner room) */
   --near: 0.1;     /* near clip plane */
-  --focal: 90;     /* vmin; 85 shows the whole outer cube on a laptop, 100 crops it; 90 is the pick */
+  --focal: 84;     /* vmin; 84 keeps the outer cube clear of the screen edges on a laptop; 90 touched them, 100 crops it */
 
   /* ---- animation knobs ---- */
   --ease: 0.6;     /* 0 = turn tracks the scroll exactly; 1 = each turn eases in and out, so pages settle */

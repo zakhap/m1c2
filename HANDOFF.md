@@ -54,8 +54,9 @@ asking; the "no JS" property is the point of the piece.
 - Knobs at the top of `engine.css`: `--cam` (eye position; 2.2 = just outside the tesseract,
   0.55 = inside the inner room), `--focal` (lens), `--ease` (how much each turn eases),
   `--in-at/--in-len/--out-at/--out-len` (when pages fade during a turn).
-- Desktop is `--cam: 1.6; --focal: 90` (was 2.2 / 100), Zak's pick. On an 823px-high laptop the wall is
-  ~436px tall. 100 made the wall ~484px but cropped the outer cube; 85 showed all of it at ~412px.
+- Desktop is `--cam: 1.6; --focal: 84` (was 2.2 / 100). On an 823px-high laptop the wall is ~407px tall and
+  the outer cube's frame sits clear of the screen edges. 90 (wall ~436px) put the frame right on the edges, and
+  Zak asked for a little more room; 100 (wall ~484px) cropped it.
   Raise `--focal` for bigger text, lower it to show more of the tesseract.
 - Portrait screens override `--cam`/`--focal` to sit inside the room so the text wall fills ~85% of the width.
 - Landscape phones (`orientation: landscape` and `max-height: 500px`) also sit inside the room, with a lens
